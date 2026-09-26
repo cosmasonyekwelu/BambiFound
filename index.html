@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BambiFound — AI-Powered Startup Ecosystem Matching</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       BAMBIFOUND DESIGN SYSTEM - CSS CUSTOM PROPERTIES & TOKENS
+       ========================================================================== */
+    :root {
+      /* Color Palette Tokens */
+      --color-brand-primary: #1E3A2B;       /* Deep Forest Green - Primary Brand */
+      --color-brand-primary-hover: #152B20; /* Darker Forest Green */
+      --color-brand-light: #EAF2ED;         /* Soft Forest Green - Secondary Surface */
+      --color-brand-light-hover: #DCFAF2;   /* Hover Soft Green */
+
+      --color-accent: #C25E00;              /* Warm Terracotta / Trail Accent */
+      --color-accent-soft: #FFF4EB;         /* Soft Terracotta Tint */
+      --color-accent-hover: #A34E00;        /* Deep Accent Hover */
+
+      --color-bg-app: #F9F9F6;              /* Warm Off-White Main Background */
+      --color-surface-card: #FFFFFF;        /* Clean White Cards/Surfaces */
+      --color-surface-muted: #F2F3EE;       /* Muted Surface / Field Background */
+
+      --color-text-primary: #1A201C;        /* Dark Charcoal - High Contrast Body */
+      --color-text-secondary: #4A554E;      /* Muted Slate - Secondary Information */
+      --color-text-muted: #738078;          /* Light Muted - Captions & Metadata */
+      --color-text-on-dark: #FFFFFF;        /* White text for primary brand surfaces */
+
+      --color-border: #E2E8E4;              /* Soft Subtle Border */
+      --color-border-hover: #B8C7BE;        /* Stronger Border on Focus/Hover */
+
+      --color-success: #16A34A;             /* Success state badge */
+      --color-success-bg: #F0FDF4;          /* Soft success tint */
+
+      /* Shadows & Elevations */
+      --shadow-sm: 0 1px 2px 0 rgba(26, 32, 28, 0.05);
+      --shadow-md: 0 4px 12px -2px rgba(26, 32, 28, 0.08), 0 2px 4px -1px rgba(26, 32, 28, 0.04);
+      --shadow-lg: 0 12px 28px -4px rgba(26, 32, 28, 0.12), 0 4px 8px -2px rgba(26, 32, 28, 0.04);
+      --shadow-glow: 0 0 0 3px rgba(30, 58, 43, 0.15);
+
+      /* Typography Tokens */
+      --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+      /* Layout & Spacing */
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --container-max-width: 1200px;
+    }
+
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-bg-app);
+      color: var(--color-text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding-bottom: 80px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout Utility Containers */
+    .container {
+      width: 100%;
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== */
+    .navbar {
+      background-color: var(--color-surface-card);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 22px;
+      color: var(--color-brand-primary);
+      letter-spacing: -0.5px;
+    }
+
+    .brand-compass-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--color-brand-light);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-brand-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      transition: color 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--color-brand-primary);
+      font-weight: 600;
+    }
+
+    .nav-link.active::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--color-brand-primary);
+      position: relative;
+      bottom: -25px;
+      border-radius: 2px;
+    }
+
+    .user-profile-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 12px;
+      background: var(--color-surface-muted);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .user-profile-area:hover {
+      border-color: var(--color-border-hover);
+      background: var(--color-brand-light);
+    }
+
+    .user-avatar-sm {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-full);
+      background: var(--color-brand-primary);
+      color: var(--color-text-on-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .user-info-sm {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-name-sm {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    .user-role-sm {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+    }
+
+    /* ==========================================================================
+       WELCOME & DASHBOARD HEADER
+       ========================================================================== */
+    .dashboard-header {
+      padding: 32px 0 24px 0;
+    }
+
+    .welcome-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .welcome-text h1 {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--color-brand-primary);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    .welcome-text p {
+      font-size: 16px;
+      color: var(--color-text-secondary);
+    }
+
+    .profile-completion-card {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+      min-width: 280px;
+    }
+
+    .completion-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-full);
+      background: var(--color-brand-light);
+      color: var(--color-brand-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .completion-details {
+      flex: 1;
+    }
+
+    .completion-title {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 6px;
+      background: var(--color-surface-muted);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 85%;
+      background: var(--color-brand-primary);
+      border-radius: var(--radius-full);
+    }
+
+    /* ==========================================================================
+       VALUE PROPOSITION PIPELINE BANNER
+       ========================================================================== */
+    .value-pipeline-banner {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 12px 20px;
+      margin: 20px 0 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      overflow-x: auto;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pipeline-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+
+    .pipeline-step.active {
+      color: var(--color-brand-primary);
+    }
+
+    .step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: var(--radius-full);
+      background: var(--color-surface-muted);
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+    }
+
+    .pipeline-step.active .step-number {
+      background: var(--color-brand-primary);
+      color: var(--color-text-on-dark);
+    }
+
+    .pipeline-divider {
+      color: var(--color-border-hover);
+      font-size: 14px;
+    }
+
+    /* ==========================================================================
+       MAIN CONTENT GRID LAYOUT
+       ========================================================================== */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 28px;
+    }
+
+    @media (max-width: 992px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+       SIDEBAR: PROFILE INTENT & FILTER CONTROLS
+       ========================================================================== */
+    .sidebar-card {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 24px;
+    }
+
+    .sidebar-title {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-brand-primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .intent-quote-box {
+      background: var(--color-brand-light);
+      border: 1px solid rgba(30, 58, 43, 0.15);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      font-size: 13.5px;
+      color: var(--color-brand-primary);
+      line-height: 1.5;
+      font-weight: 500;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .intent-quote-box::before {
+      content: '"';
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--color-brand-primary);
+      line-height: 0;
+      position: relative;
+      top: 4px;
+      margin-right: 4px;
+    }
+
+    .sidebar-sublabel {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 8px;
+    }
+
+    .my-skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .my-skill-tag {
+      background: var(--color-surface-muted);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-primary);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+    }
+
+    /* Filter Controls UI */
+    .filter-group {
+      margin-bottom: 20px;
+    }
+
+    .filter-label {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-pill {
+      background: var(--color-surface-muted);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-secondary);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .filter-pill:hover {
+      background: var(--color-brand-light);
+      border-color: var(--color-border-hover);
+      color: var(--color-brand-primary);
+    }
+
+    .filter-pill.active {
+      background: var(--color-brand-primary);
+      color: var(--color-text-on-dark);
+      border-color: var(--color-brand-primary);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       MAIN CONTENT: SEARCH & AI MATCH CARDS
+       ========================================================================== */
+    /* Search Bar */
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 14px 18px 14px 48px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--color-text-primary);
+      background-color: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--color-brand-primary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-muted);
+      pointer-events: none;
+    }
+
+    /* Section Heading */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--color-brand-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-header p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      margin-top: 2px;
+    }
+
+    .matches-count-badge {
+      background: var(--color-brand-light);
+      color: var(--color-brand-primary);
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(30, 58, 43, 0.15);
+    }
+
+    /* AI Match Cards List */
+    .match-cards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Individual Match Card */
+    .match-card {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .match-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-border-hover);
+    }
+
+    .match-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--color-brand-primary);
+    }
+
+    .match-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .profile-meta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .avatar-circle {
+      width: 58px;
+      height: 58px;
+      border-radius: var(--radius-full);
+      background-color: var(--color-brand-light);
+      border: 2px solid var(--color-brand-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--color-brand-primary);
+      flex-shrink: 0;
+    }
+
+    .profile-info h3 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 2px;
+    }
+
+    .profile-headline {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--color-brand-primary);
+      margin-bottom: 4px;
+    }
+
+    .profile-location-intent {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    /* Subtle, Distinct AI Match Indicator Badge */
+    .match-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background-color: var(--color-brand-light);
+      border: 1px solid rgba(30, 58, 43, 0.2);
+      border-radius: var(--radius-full);
+      color: var(--color-brand-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .match-badge-label {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-brand-primary);
+      opacity: 0.85;
+    }
+
+    .match-score-value {
+      font-family: var(--font-heading);
+      color: var(--color-brand-primary);
+      font-size: 15px;
+      font-weight: 800;
+      border-left: 1px solid rgba(30, 58, 43, 0.2);
+      padding-left: 8px;
+    }
+
+    /* Capability Chips */
+    .skills-section {
+      margin-top: 16px;
+    }
+
+    .skills-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      background: var(--color-surface-muted);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-secondary);
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      font-size: 12.5px;
+      font-weight: 500;
+      transition: background 0.15s ease;
+    }
+
+    .chip.primary-strength {
+      background: var(--color-brand-light);
+      color: var(--color-brand-primary);
+      font-weight: 600;
+      border-color: rgba(30, 58, 43, 0.15);
+    }
+
+    /* Why This Matches AI Explanation Box - Product Intelligence Module */
+    .ai-explanation-box {
+      background: var(--color-surface-muted);
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-brand-primary);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      margin-top: 20px;
+    }
+
+    .ai-explanation-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .ai-explanation-title-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ai-sparkle-icon {
+      color: var(--color-brand-primary);
+      font-size: 14px;
+    }
+
+    .ai-explanation-title {
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--color-brand-primary);
+    }
+
+    .ai-intelligence-tag {
+      font-family: var(--font-heading);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      background: var(--color-brand-light);
+      color: var(--color-brand-primary);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(30, 58, 43, 0.15);
+    }
+
+    .ai-explanation-text {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--color-text-primary);
+      font-weight: 400;
+    }
+
+    /* Card Actions */
+    .card-actions {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Button System */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background-color: var(--color-brand-primary);
+      color: var(--color-text-on-dark);
+      border-color: var(--color-brand-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-brand-primary-hover);
+      border-color: var(--color-brand-primary-hover);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary {
+      background-color: var(--color-surface-card);
+      color: var(--color-brand-primary);
+      border-color: var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--color-brand-light);
+      border-color: var(--color-border-hover);
+    }
+
+    .btn-success {
+      background-color: var(--color-success-bg);
+      color: var(--color-success);
+      border-color: var(--color-success);
+    }
+
+    /* Connection CTA Box */
+    .connection-cta-box {
+      margin-top: 36px;
+      background: linear-gradient(135deg, var(--color-brand-primary) 0%, #152B20 100%);
+      color: var(--color-text-on-dark);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .cta-content h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .cta-content p {
+      font-size: 14px;
+      color: var(--color-brand-light);
+      opacity: 0.9;
+    }
+
+    .btn-accent {
+      background-color: var(--color-accent);
+      color: #FFFFFF;
+      border-color: var(--color-accent);
+      padding: 12px 24px;
+      font-size: 15px;
+    }
+
+    .btn-accent:hover {
+      background-color: var(--color-accent-hover);
+    }
+
+    /* No Matches Empty State */
+    .no-matches-state {
+      display: none;
+      background: var(--color-surface-card);
+      border: 1px border-dash var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      text-align: center;
+      color: var(--color-text-secondary);
+    }
+
+    .no-matches-state h3 {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-brand-primary);
+      margin-bottom: 8px;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--color-brand-primary);
+      color: white;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 64px;
+      border-top: 1px solid var(--color-border);
+      padding-top: 24px;
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 13px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-compass-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 19 21 12 17 5 21 12 2"></polygon>
+          </svg>
+        </div>
+        <span>BambiFound</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#" class="nav-link active">Dashboard</a></li>
+          <li><a href="#discover" class="nav-link">Discover</a></li>
+          <li><a href="#opportunities" class="nav-link">Opportunities</a></li>
+          <li><a href="#connections" class="nav-link">Connections</a></li>
+        </ul>
+      </nav>
+
+      <!-- Profile / Avatar Area -->
+      <div class="user-profile-area" title="Logged in as Cosmas Onyekwelu">
+        <div class="user-avatar-sm">C</div>
+        <div class="user-info-sm">
+          <span class="user-name-sm">Cosmas Onyekwelu</span>
+          <span class="user-role-sm">Technical Founder</span>
+        </div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- WELCOME SECTION -->
+    <section class="dashboard-header">
+      <div class="welcome-row">
+        <div class="welcome-text">
+          <h1>Good morning, Cosmas</h1>
+          <p>Here’s what’s happening with your startup journey today.</p>
+        </div>
+
+        <!-- Profile Completion Indicator -->
+        <div class="profile-completion-card">
+          <div class="completion-icon">85%</div>
+          <div class="completion-details">
+            <div class="completion-title">
+              <span>Profile Completion</span>
+              <span style="color: var(--color-brand-primary);">85%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Value Proposition Pipeline Flow Banner -->
+      <div class="value-pipeline-banner">
+        <div class="pipeline-step active">
+          <span class="step-number">1</span>
+          <span>PROFILE</span>
+        </div>
+        <span class="pipeline-divider">→</span>
+        <div class="pipeline-step active">
+          <span class="step-number">2</span>
+          <span>INTENT</span>
+        </div>
+        <span class="pipeline-divider">→</span>
+        <div class="pipeline-step active">
+          <span class="step-number">3</span>
+          <span>AI UNDERSTANDING</span>
+        </div>
+        <span class="pipeline-divider">→</span>
+        <div class="pipeline-step active">
+          <span class="step-number">4</span>
+          <span>MATCH</span>
+        </div>
+        <span class="pipeline-divider">→</span>
+        <div class="pipeline-step active">
+          <span class="step-number">5</span>
+          <span>EXPLANATION</span>
+        </div>
+        <span class="pipeline-divider">→</span>
+        <div class="pipeline-step active">
+          <span class="step-number">6</span>
+          <span>CONNECTION</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT GRID LAYOUT -->
+    <div class="content-grid">
+
+      <!-- LEFT SIDEBAR: PROFILE INTENT & FILTERS -->
+      <aside class="sidebar">
+
+        <!-- PROFILE / INTENT SUMMARY -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            Your Current Intent
+          </div>
+
+          <div class="sidebar-sublabel">ACTIVE GOAL</div>
+          <div class="intent-quote-box">
+            Looking for a technical co-founder to build a fintech product.
+          </div>
+
+          <div class="sidebar-sublabel">YOUR CORE SKILLS</div>
+          <div class="my-skills-list">
+            <span class="my-skill-tag">Node.js</span>
+            <span class="my-skill-tag">React</span>
+            <span class="my-skill-tag">Python</span>
+            <span class="my-skill-tag">Django</span>
+            <span class="my-skill-tag">APIs</span>
+          </div>
+
+          <button class="btn btn-secondary" style="width: 100%; padding: 8px; font-size: 13px;" id="update-intent-btn">
+            Update Your Goal &amp; Skills
+          </button>
+        </div>
+
+        <!-- FILTER / INTENT CONTROLS -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+            Filter Matches
+          </div>
+
+          <!-- Filter: Looking For -->
+          <div class="filter-group">
+            <span class="filter-label">Looking For</span>
+            <div class="filter-pills" id="role-filters">
+              <span class="filter-pill active" data-filter-role="all">All Roles</span>
+              <span class="filter-pill" data-filter-role="Co-Founder">Co-Founder</span>
+              <span class="filter-pill" data-filter-role="Talent">Talent</span>
+              <span class="filter-pill" data-filter-role="Collaborator">Collaborator</span>
+            </div>
+          </div>
+
+          <!-- Filter: Skills -->
+          <div class="filter-group">
+            <span class="filter-label">Primary Skillset</span>
+            <div class="filter-pills" id="skill-filters">
+              <span class="filter-pill active" data-filter-skill="all">All Skills</span>
+              <span class="filter-pill" data-filter-skill="Engineering">Engineering</span>
+              <span class="filter-pill" data-filter-skill="Product">Product</span>
+              <span class="filter-pill" data-filter-skill="Growth">Growth</span>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- MAIN AREA: SEARCH & RECOMMENDED MATCHES -->
+      <section class="main-content">
+
+        <!-- SEARCH INPUT -->
+        <div class="search-wrapper">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Search people, skills, startups or opportunities..."
+            autocomplete="off"
+          >
+        </div>
+
+        <!-- SECTION HEADER -->
+        <div class="section-header">
+          <div>
+            <h2>
+              Recommended Matches
+              <span class="matches-count-badge" id="matches-count">3 Matches</span>
+            </h2>
+            <p>People BambiFound thinks could help you build.</p>
+          </div>
+        </div>
+
+        <!-- AI MATCH CARDS CONTAINER -->
+        <div class="match-cards-list" id="match-cards-container">
+
+          <!-- CARD 1: SARAH OKAFOR -->
+          <div class="match-card" data-name="Sarah Okafor" data-role="Co-Founder" data-skills="Product Strategy Growth Fintech Product" data-location="Lagos, Nigeria">
+            <div class="match-card-top">
+              <div class="profile-meta">
+                <div class="avatar-circle">SO</div>
+                <div class="profile-info">
+                  <h3>Sarah Okafor</h3>
+                  <div class="profile-headline">Product Founder</div>
+                  <div class="profile-location-intent">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Lagos, Nigeria • Seeking Technical Co-Founder
+                  </div>
+                </div>
+              </div>
+
+              <!-- AI Match Percentage Badge -->
+              <div class="match-badge">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 19 21 12 17 5 21 12 2"></polygon>
+                </svg>
+                <span class="match-badge-label">AI Match</span>
+                <span class="match-score-value">92%</span>
+              </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="skills-section">
+              <div class="sidebar-sublabel">CORE CAPABILITIES</div>
+              <div class="skills-chips">
+                <span class="chip primary-strength">Product Strategy</span>
+                <span class="chip primary-strength">Growth</span>
+                <span class="chip">Fintech</span>
+                <span class="chip">User Research</span>
+              </div>
+            </div>
+
+            <!-- AI Explanation -->
+            <div class="ai-explanation-box">
+              <div class="ai-explanation-header">
+                <div class="ai-explanation-title-group">
+                  <span class="ai-sparkle-icon">✦</span>
+                  <span class="ai-explanation-title">Why this matches</span>
+                </div>
+                <span class="ai-intelligence-tag">Product Intelligence</span>
+              </div>
+              <div class="ai-explanation-text">
+                "Strong product-building complementarity. Your backend engineering experience complements her product and growth background."
+              </div>
+            </div>
+
+            <!-- Action CTA -->
+            <div class="card-actions">
+              <span style="font-size: 13px; color: var(--color-text-muted);">Open to remote collaboration</span>
+              <button class="btn btn-primary connect-btn" data-person="Sarah Okafor">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <line x1="19" y1="8" x2="19" y2="14"></line>
+                  <line x1="22" y1="11" x2="16" y2="11"></line>
+                </svg>
+                Connect
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 2: ALEX CHEN -->
+          <div class="match-card" data-name="Alex Chen" data-role="Talent" data-skills="React TypeScript UI/UX Mobile Engineering" data-location="San Francisco, CA">
+            <div class="match-card-top">
+              <div class="profile-meta">
+                <div class="avatar-circle">AC</div>
+                <div class="profile-info">
+                  <h3>Alex Chen</h3>
+                  <div class="profile-headline">Senior Frontend &amp; Mobile Engineer</div>
+                  <div class="profile-location-intent">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    San Francisco, CA (Remote) • Seeking Founding Role
+                  </div>
+                </div>
+              </div>
+
+              <!-- AI Match Percentage Badge -->
+              <div class="match-badge">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 19 21 12 17 5 21 12 2"></polygon>
+                </svg>
+                <span class="match-badge-label">AI Match</span>
+                <span class="match-score-value">88%</span>
+              </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="skills-section">
+              <div class="sidebar-sublabel">CORE CAPABILITIES</div>
+              <div class="skills-chips">
+                <span class="chip primary-strength">React</span>
+                <span class="chip primary-strength">TypeScript</span>
+                <span class="chip">UI/UX Architecture</span>
+                <span class="chip">React Native</span>
+              </div>
+            </div>
+
+            <!-- AI Explanation -->
+            <div class="ai-explanation-box">
+              <div class="ai-explanation-header">
+                <div class="ai-explanation-title-group">
+                  <span class="ai-sparkle-icon">✦</span>
+                  <span class="ai-explanation-title">Why this matches</span>
+                </div>
+                <span class="ai-intelligence-tag">Product Intelligence</span>
+              </div>
+              <div class="ai-explanation-text">
+                "Direct stack alignment. Alex’s high-precision frontend and mobile interface capabilities pair seamlessly with your API and backend platform foundation."
+              </div>
+            </div>
+
+            <!-- Action CTA -->
+            <div class="card-actions">
+              <span style="font-size: 13px; color: var(--color-text-muted);">Available immediately for full-time founding role</span>
+              <button class="btn btn-primary connect-btn" data-person="Alex Chen">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <line x1="19" y1="8" x2="19" y2="14"></line>
+                  <line x1="22" y1="11" x2="16" y2="11"></line>
+                </svg>
+                Connect
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 3: DAVID ADELEKE -->
+          <div class="match-card" data-name="David Adeleke" data-role="Collaborator" data-skills="Growth B2B Marketing User Acquisition Fintech" data-location="London, UK">
+            <div class="match-card-top">
+              <div class="profile-meta">
+                <div class="avatar-circle">DA</div>
+                <div class="profile-info">
+                  <h3>David Adeleke</h3>
+                  <div class="profile-headline">Growth &amp; Marketing Lead</div>
+                  <div class="profile-location-intent">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    London, UK (Hybrid/Remote) • Seeking Fintech Startup
+                  </div>
+                </div>
+              </div>
+
+              <!-- AI Match Percentage Badge -->
+              <div class="match-badge">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 19 21 12 17 5 21 12 2"></polygon>
+                </svg>
+                <span class="match-badge-label">AI Match</span>
+                <span class="match-score-value">85%</span>
+              </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="skills-section">
+              <div class="sidebar-sublabel">CORE CAPABILITIES</div>
+              <div class="skills-chips">
+                <span class="chip primary-strength">Growth</span>
+                <span class="chip primary-strength">B2B Marketing</span>
+                <span class="chip">User Acquisition</span>
+                <span class="chip">Fintech Distribution</span>
+              </div>
+            </div>
+
+            <!-- AI Explanation -->
+            <div class="ai-explanation-box">
+              <div class="ai-explanation-header">
+                <div class="ai-explanation-title-group">
+                  <span class="ai-sparkle-icon">✦</span>
+                  <span class="ai-explanation-title">Why this matches</span>
+                </div>
+                <span class="ai-intelligence-tag">Product Intelligence</span>
+              </div>
+              <div class="ai-explanation-text">
+                "GTM &amp; Distribution complementarity. Has a proven track record in fintech user acquisition complementary to your technical product build."
+              </div>
+            </div>
+
+            <!-- Action CTA -->
+            <div class="card-actions">
+              <span style="font-size: 13px; color: var(--color-text-muted);">Open to advisory and growth collaboration</span>
+              <button class="btn btn-primary connect-btn" data-person="David Adeleke">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <line x1="19" y1="8" x2="19" y2="14"></line>
+                  <line x1="22" y1="11" x2="16" y2="11"></line>
+                </svg>
+                Connect
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- NO MATCHES EMPTY STATE -->
+        <div class="no-matches-state" id="no-matches">
+          <h3>No matches found</h3>
+          <p>Try adjusting your search query or filter criteria to see more recommended profiles.</p>
+          <button class="btn btn-secondary" style="margin-top: 16px;" id="reset-filters-btn">Reset Filters</button>
+        </div>
+
+        <!-- CONNECTION CTA BANNER -->
+        <div class="connection-cta-box">
+          <div class="cta-content">
+            <h3>Ready to expand your build team?</h3>
+            <p>Generate more AI-recommended matches based on updated intent, or complete your profile skills.</p>
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button class="btn btn-secondary" style="background: white; color: var(--color-brand-primary);" id="complete-profile-btn">
+              Complete Your Profile
+            </button>
+            <button class="btn btn-accent" id="find-more-btn">
+              Find More Matches
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <footer class="footer container">
+    <p>BambiFound — AI-Powered Startup Ecosystem Matching Prototype (Task 3) • 2025</p>
+  </footer>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toast-message">Connection request sent!</span>
+  </div>
+
+  <!-- INTERACTIVE CLIENT-SIDE JAVASCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('search-input');
+      const cards = document.querySelectorAll('.match-card');
+      const noMatchesState = document.getElementById('no-matches');
+      const matchesCount = document.getElementById('matches-count');
+      const roleFilters = document.querySelectorAll('#role-filters .filter-pill');
+      const skillFilters = document.querySelectorAll('#skill-filters .filter-pill');
+      const resetFiltersBtn = document.getElementById('reset-filters-btn');
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toast-message');
+
+      let currentRoleFilter = 'all';
+      let currentSkillFilter = 'all';
+
+      // Toast Notification function
+      function showToast(msg) {
+        toastMessage.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3000);
+      }
+
+      // Filter Logic
+      function filterCards() {
+        const query = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          const name = card.dataset.name.toLowerCase();
+          const role = card.dataset.role;
+          const skills = card.dataset.skills.toLowerCase();
+          const location = card.dataset.location.toLowerCase();
+          const content = card.textContent.toLowerCase();
+
+          const matchesSearch = !query || name.includes(query) || skills.includes(query) || location.includes(query) || content.includes(query);
+          const matchesRole = currentRoleFilter === 'all' || role === currentRoleFilter;
+          const matchesSkill = currentSkillFilter === 'all' || skills.includes(currentSkillFilter.toLowerCase());
+
+          if (matchesSearch && matchesRole && matchesSkill) {
+            card.style.display = 'block';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        matchesCount.textContent = `${visibleCount} Match${visibleCount === 1 ? '' : 'es'}`;
+
+        if (visibleCount === 0) {
+          noMatchesState.style.display = 'block';
+        } else {
+          noMatchesState.style.display = 'none';
+        }
+      }
+
+      // Event Listeners for Search Input
+      searchInput.addEventListener('input', filterCards);
+
+      // Event Listeners for Role Filters
+      roleFilters.forEach(pill => {
+        pill.addEventListener('click', () => {
+          roleFilters.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          currentRoleFilter = pill.dataset.filterRole;
+          filterCards();
+        });
+      });
+
+      // Event Listeners for Skill Filters
+      skillFilters.forEach(pill => {
+        pill.addEventListener('click', () => {
+          skillFilters.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          currentSkillFilter = pill.dataset.filterSkill;
+          filterCards();
+        });
+      });
+
+      // Reset Filters Button
+      resetFiltersBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        currentRoleFilter = 'all';
+        currentSkillFilter = 'all';
+        roleFilters.forEach(p => p.classList.remove('active'));
+        roleFilters[0].classList.add('active');
+        skillFilters.forEach(p => p.classList.remove('active'));
+        skillFilters[0].classList.add('active');
+        filterCards();
+      });
+
+      // Connect Buttons State Toggle
+      document.querySelectorAll('.connect-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const person = btn.dataset.person;
+          if (btn.classList.contains('btn-success')) {
+            btn.classList.remove('btn-success');
+            btn.classList.add('btn-primary');
+            btn.innerHTML = `
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
+              Connect
+            `;
+            showToast(`Connection request cancelled for ${person}`);
+          } else {
+            btn.classList.remove('btn-primary');
+            btn.classList.add('btn-success');
+            btn.innerHTML = `
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Connection Sent
+            `;
+            showToast(`Connection request sent to ${person}!`);
+          }
+        });
+      });
+
+      // Extra CTA Buttons
+      document.getElementById('find-more-btn').addEventListener('click', () => {
+        showToast('Refreshing BambiFound AI match recommendations...');
+      });
+
+      document.getElementById('complete-profile-btn').addEventListener('click', () => {
+        showToast('Navigating to Profile Completion editor...');
+      });
+
+      document.getElementById('update-intent-btn').addEventListener('click', () => {
+        showToast('Opening Intent & Goals editor...');
+      });
+    });
+  </script>
+
+</body>
+</html>
