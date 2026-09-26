@@ -477,6 +477,187 @@
       color: var(--color-brand-primary);
     }
 
+    /* Value Proposition Pipeline Flow Banner */
+    .value-pipeline {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      margin-bottom: 24px;
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      letter-spacing: 0.3px;
+      overflow-x: auto;
+      gap: 6px;
+    }
+
+    .pipeline-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .pipeline-step.active {
+      color: var(--color-brand-primary);
+    }
+
+    .pipeline-step-num {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--color-surface-muted);
+      color: var(--color-text-secondary);
+      font-size: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pipeline-step.active .pipeline-step-num {
+      background: var(--color-brand-primary);
+      color: var(--color-text-on-dark);
+    }
+
+    .pipeline-arrow {
+      color: var(--color-text-muted);
+      font-size: 12px;
+      user-select: none;
+      padding: 0 2px;
+      flex-shrink: 0;
+    }
+
+    /* Refined Match Indicator Badge */
+    .match-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background-color: var(--color-brand-light);
+      border: 1px solid rgba(30, 58, 43, 0.2);
+      border-radius: var(--radius-full);
+      color: var(--color-brand-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .match-badge-label {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-brand-primary);
+      opacity: 0.85;
+    }
+
+    .match-score-value {
+      font-family: var(--font-heading);
+      color: var(--color-brand-primary);
+      font-size: 15px;
+      font-weight: 800;
+      border-left: 1px solid rgba(30, 58, 43, 0.2);
+      padding-left: 8px;
+    }
+
+    .section-sublabel {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 8px;
+    }
+
+    /* Why This Matches AI Explanation Box - Product Intelligence Module */
+    .ai-explanation-box {
+      background: var(--color-surface-muted);
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-brand-primary);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      margin-top: 20px;
+    }
+
+    .ai-explanation-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .ai-explanation-title-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ai-sparkle-icon {
+      color: var(--color-brand-primary);
+      font-size: 14px;
+    }
+
+    .ai-explanation-title {
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--color-brand-primary);
+    }
+
+    .ai-intelligence-tag {
+      font-family: var(--font-heading);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      background: var(--color-brand-light);
+      color: var(--color-brand-primary);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(30, 58, 43, 0.15);
+    }
+
+    .ai-intelligence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .ai-intelligence-item {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+    }
+
+    .ai-intelligence-item-label {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-brand-primary);
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .ai-intelligence-item-desc {
+      font-size: 12.5px;
+      color: var(--color-text-secondary);
+      line-height: 1.4;
+    }
+
     /* Why This Matches AI Explanation Box */
     .ai-explanation-box {
       background: linear-gradient(135deg, var(--color-brand-light) 0%, rgba(255,255,255,0.8) 100%);
@@ -925,56 +1106,132 @@
     </div>
 
     <section class="match-preview-section">
+
+      <!-- Value Proposition Pipeline Flow -->
+      <div class="value-pipeline">
+        <div class="pipeline-step active">
+          <span class="pipeline-step-num">1</span>
+          <span>PROFILE</span>
+        </div>
+        <span class="pipeline-arrow">→</span>
+        <div class="pipeline-step active">
+          <span class="pipeline-step-num">2</span>
+          <span>INTENT</span>
+        </div>
+        <span class="pipeline-arrow">→</span>
+        <div class="pipeline-step active">
+          <span class="pipeline-step-num">3</span>
+          <span>AI UNDERSTANDING</span>
+        </div>
+        <span class="pipeline-arrow">→</span>
+        <div class="pipeline-step active">
+          <span class="pipeline-step-num">4</span>
+          <span>MATCH</span>
+        </div>
+        <span class="pipeline-arrow">→</span>
+        <div class="pipeline-step active">
+          <span class="pipeline-step-num">5</span>
+          <span>EXPLANATION</span>
+        </div>
+        <span class="pipeline-arrow">→</span>
+        <div class="pipeline-step active">
+          <span class="pipeline-step-num">6</span>
+          <span>CONNECTION</span>
+        </div>
+      </div>
+
       <div class="match-card">
         <div class="match-header">
           <div class="profile-meta">
             <div class="avatar">SO</div>
             <div class="profile-info">
-              <h3>Sarah Okafor</h3>
-              <div class="profile-title">Product Founder</div>
+              <h3 style="font-size: 22px; font-weight: 700; letter-spacing: -0.3px; color: var(--color-text-primary);">Sarah Okafor</h3>
+              <div class="profile-title" style="font-size: 15px; font-weight: 600; color: var(--color-brand-primary);">Product Founder &amp; Growth Strategist</div>
               <div class="profile-location">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                Lagos, Nigeria
+                Lagos, Nigeria • Open to Technical Co-founder
               </div>
             </div>
           </div>
 
-          <!-- Subtle AI Match Indicator -->
+          <!-- Subtle, Distinct AI Match Indicator Badge -->
           <div class="match-badge">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="12 8 8 12 12 16 16 12 12 8"></polygon>
             </svg>
-            <span>AI Match:</span>
-            <span class="match-score-value">92% Match</span>
+            <span class="match-badge-label">AI Match Indicator</span>
+            <span class="match-score-value">92% Fit</span>
           </div>
         </div>
 
         <!-- Capability Chips -->
-        <div class="skills-chips">
-          <span class="chip">Product Strategy</span>
-          <span class="chip">Growth</span>
-          <span class="chip">Fintech</span>
-          <span class="chip">User Research</span>
-          <span class="chip">Go-To-Market</span>
+        <div style="margin-top: 16px;">
+          <div class="section-sublabel">Core Capabilities &amp; Focus</div>
+          <div class="skills-chips" style="margin-bottom: 0;">
+            <span class="chip" style="font-weight: 600; color: var(--color-brand-primary); background: var(--color-brand-light);">Product Strategy</span>
+            <span class="chip" style="font-weight: 600; color: var(--color-brand-primary); background: var(--color-brand-light);">Growth Marketing</span>
+            <span class="chip">Fintech Systems</span>
+            <span class="chip">User Research</span>
+            <span class="chip">Go-To-Market Execution</span>
+          </div>
         </div>
 
-        <!-- AI Match Explanation Block -->
+        <!-- AI Match Explanation - Product Intelligence Module -->
         <div class="ai-explanation-box">
           <div class="ai-explanation-header">
-            <span class="ai-sparkle-icon">✦</span>
-            <span class="ai-explanation-title">Why this matches</span>
+            <div class="ai-explanation-title-group">
+              <span class="ai-sparkle-icon">✦</span>
+              <span class="ai-explanation-title">Why This Matches — Product Intelligence</span>
+            </div>
+            <span class="ai-intelligence-tag">BambiFound AI Engine</span>
           </div>
-          <p class="ai-explanation-text">
-            Strong product-building complementarity. Your backend engineering experience complements her product and growth background.
-          </p>
+
+          <div class="ai-intelligence-grid">
+            <div class="ai-intelligence-item">
+              <div class="ai-intelligence-item-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Complementary Skillset
+              </div>
+              <div class="ai-intelligence-item-desc">
+                Your full-stack technical background directly pairs with her high-growth product & GTM leadership.
+              </div>
+            </div>
+
+            <div class="ai-intelligence-item">
+              <div class="ai-intelligence-item-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Shared Build Intent
+              </div>
+              <div class="ai-intelligence-item-desc">
+                Both profiles express active intent to co-found early-stage fintech products with remote readiness.
+              </div>
+            </div>
+
+            <div class="ai-intelligence-item">
+              <div class="ai-intelligence-item-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Domain Alignment
+              </div>
+              <div class="ai-intelligence-item-desc">
+                100% alignment on target industry (Fintech/Payments) and startup development stage.
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 12px;">
-          <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 14px;">Save Profile</button>
-          <button class="btn btn-primary" style="padding: 8px 18px; font-size: 14px;">Connect with Sarah</button>
+        <div style="margin-top: 24px; display: flex; justify-content: flex-end; gap: 12px; align-items: center;">
+          <button class="btn btn-secondary" style="padding: 9px 18px; font-size: 14px;">Save Profile</button>
+          <button class="btn btn-primary" style="padding: 9px 20px; font-size: 14px;">
+            Request Connection
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
         </div>
       </div>
     </section>
