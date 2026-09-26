@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BambiFound — Visual Design System Preview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              primary: '#0F172A',     // Slate 900 (Deep Forest / Slate)
+              secondary: '#0284C7',   // Sky 600 (Connect Teal / Cyan)
+              accent: '#10B981',      // Emerald 500 (Bambi Match Green)
+              bg: '#F8FAFC',          // Slate 50 (Soft Canvas Background)
+              surface: '#FFFFFF',     // Pure White Surface
+              text: '#0F172A',        // Slate 900 High-contrast Text
+              muted: '#64748B',       // Slate 500 Supporting Text
+              border: '#E2E8F0',      // Slate 200 Card/Input Borders
+              hover: '#0369A1'        // Darker Sky for hover
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F8FAFC;
+      color: #0F172A;
+    }
+    .custom-btn-primary {
+      background-color: #0284C7;
+      color: #FFFFFF;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.2), 0 2px 4px -2px rgba(2, 132, 199, 0.1);
+      transition: all 0.2s ease-in-out;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: 1px solid transparent;
+    }
+    .custom-btn-primary:hover {
+      background-color: #0369A1;
+      box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.3), 0 4px 6px -4px rgba(2, 132, 199, 0.2);
+      transform: translateY(-1px);
+    }
+    .custom-btn-primary:active {
+      transform: translateY(0);
+    }
+    .custom-input {
+      width: 100%;
+      padding: 0.875rem 1.25rem;
+      background-color: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 0.625rem;
+      color: #0F172A;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+    .custom-input:focus {
+      border-color: #0284C7;
+      box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+    }
+    .custom-input::placeholder {
+      color: #94A3B8;
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-20">
+
+  <!-- Header Banner -->
+  <header class="bg-brand-primary text-white py-10 px-6 border-b border-slate-800 shadow-md">
+    <div class="max-w-6xl mx-mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4 max-w-6xl mx-auto">
+      <div>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="bg-brand-accent text-slate-900 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Design System Preview</span>
+          <span class="text-slate-400 text-xs">Task 2 Assessment</span>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">BambiFound Design Preview</h1>
+        <p class="text-slate-300 mt-1 text-base">Intelligent Startup Ecosystem Matching — <span class="text-brand-accent font-semibold">Find &rarr; Match &rarr; Connect &rarr; Build</span></p>
+      </div>
+      <div class="bg-slate-800/80 border border-slate-700 px-4 py-3 rounded-lg text-xs text-slate-300">
+        <div class="font-semibold text-white mb-1">Preview Context</div>
+        <p>Standalone visual design system preview for BambiFound MVP.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 pt-10 space-y-12">
+
+    <!-- Section 1: Color Palette -->
+    <section id="colors" class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
+      <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+        <div>
+          <h2 class="text-2xl font-bold text-brand-primary tracking-tight">1. Color Palette</h2>
+          <p class="text-brand-muted text-sm mt-0.5">Coherent color palette designed for high legibility, trust, and AI match recognition.</p>
+        </div>
+        <span class="bg-sky-50 text-sky-700 text-xs font-medium px-3 py-1 rounded-full border border-sky-200">Inspectable Swatches</span>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <!-- Primary -->
+        <div class="flex flex-col rounded-xl overflow-hidden border border-slate-200 shadow-xs">
+          <div class="h-24 bg-[#0F172A] p-3 flex flex-col justify-between">
+            <span class="text-xs font-semibold text-slate-300">Primary</span>
+            <span class="text-xs font-mono text-white font-bold">#0F172A</span>
+          </div>
+          <div class="p-3 bg-white flex-1">
+            <p class="text-xs font-bold text-slate-900">Slate Dark</p>
+            <p class="text-[11px] text-slate-500 mt-1">Headers, navigation, primary branding</p>
+          </div>
+        </div>
+
+        <!-- Secondary -->
+        <div class="flex flex-col rounded-xl overflow-hidden border border-slate-200 shadow-xs">
+          <div class="h-24 bg-[#0284C7] p-3 flex flex-col justify-between">
+            <span class="text-xs font-semibold text-sky-100">Secondary</span>
+            <span class="text-xs font-mono text-white font-bold">#0284C7</span>
+          </div>
+          <div class="p-3 bg-white flex-1">
+            <p class="text-xs font-bold text-slate-900">Connect Sky</p>
+            <p class="text-[11px] text-slate-500 mt-1">Primary action buttons, active tabs, links</p>
+          </div>
+        </div>
+
+        <!-- Accent -->
+        <div class="flex flex-col rounded-xl overflow-hidden border border-slate-200 shadow-xs">
+          <div class="h-24 bg-[#10B981] p-3 flex flex-col justify-between">
+            <span class="text-xs font-semibold text-emerald-900">Accent</span>
+            <span class="text-xs font-mono text-emerald-950 font-bold">#10B981</span>
+          </div>
+          <div class="p-3 bg-white flex-1">
+            <p class="text-xs font-bold text-slate-900">Bambi Mint</p>
+            <p class="text-[11px] text-slate-500 mt-1">Match percentage pills, success states, highlights</p>
+          </div>
+        </div>
+
+        <!-- Background -->
+        <div class="flex flex-col rounded-xl overflow-hidden border border-slate-200 shadow-xs">
+          <div class="h-24 bg-[#F8FAFC] p-3 flex flex-col justify-between border-b border-slate-200">
+            <span class="text-xs font-semibold text-slate-600">Background</span>
+            <span class="text-xs font-mono text-slate-800 font-bold">#F8FAFC</span>
+          </div>
+          <div class="p-3 bg-white flex-1">
+            <p class="text-xs font-bold text-slate-900">Soft Canvas</p>
+            <p class="text-[11px] text-slate-500 mt-1">Main page layout background</p>
+          </div>
+        </div>
+
+        <!-- Surface -->
+        <div class="flex flex-col rounded-xl overflow-hidden border border-slate-200 shadow-xs">
+          <div class="h-24 bg-[#FFFFFF] p-3 flex flex-col justify-between border-b border-slate-200">
+            <span class="text-xs font-semibold text-slate-500">Surface</span>
+            <span class="text-xs font-mono text-slate-700 font-bold">#FFFFFF</span>
+          </div>
+          <div class="p-3 bg-white flex-1">
+            <p class="text-xs font-bold text-slate-900">Pure Surface</p>
+            <p class="text-[11px] text-slate-500 mt-1">Cards, dialogs, form containers</p>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="flex flex-col rounded-xl overflow-hidden border border-slate-200 shadow-xs">
+          <div class="h-24 bg-[#0F172A] p-3 flex flex-col justify-between">
+            <span class="text-xs font-semibold text-slate-300">Text</span>
+            <span class="text-xs font-mono text-white font-bold">#0F172A</span>
+          </div>
+          <div class="p-3 bg-white flex-1">
+            <p class="text-xs font-bold text-slate-900">Charcoal Slate</p>
+            <p class="text-[11px] text-slate-500 mt-1">Body text, field titles, labels</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Typography Hierarchy -->
+    <section id="typography" class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
+      <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+        <div>
+          <h2 class="text-2xl font-bold text-brand-primary tracking-tight">2. Typography Hierarchy</h2>
+          <p class="text-brand-muted text-sm mt-0.5">Visually obvious hierarchy scaled for structured startup discovery.</p>
+        </div>
+        <span class="bg-slate-100 text-slate-700 text-xs font-medium px-3 py-1 rounded-full">Inter / System Sans</span>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Page / Hero Heading -->
+        <div class="p-5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <div class="flex items-center justify-between text-xs text-slate-400 font-mono mb-1">
+            <span>PAGE / HERO HEADING</span>
+            <span>32px (2rem) &bull; Bold (700)</span>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-extrabold text-brand-primary tracking-tight">
+            Find your people. Build your future.
+          </h1>
+        </div>
+
+        <!-- Section Heading -->
+        <div class="p-5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <div class="flex items-center justify-between text-xs text-slate-400 font-mono mb-1">
+            <span>SECTION HEADING</span>
+            <span>20px (1.25rem) &bull; SemiBold (600)</span>
+          </div>
+          <h2 class="text-xl font-semibold text-brand-primary">
+            Recommended Co-Founders & Opportunity Matches
+          </h2>
+        </div>
+
+        <!-- Body Text -->
+        <div class="p-5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <div class="flex items-center justify-between text-xs text-slate-400 font-mono mb-1">
+            <span>BODY TEXT</span>
+            <span>15px (0.9375rem) &bull; Regular (400)</span>
+          </div>
+          <p class="text-base text-slate-800 leading-relaxed">
+            BambiFound uses natural language processing and hybrid complementarity scoring to match technical builders with visionary business founders based on intent, skills, availability, and shared startup goals.
+          </p>
+        </div>
+
+        <!-- Supporting / Small Text -->
+        <div class="p-5 rounded-xl bg-slate-50 border border-slate-200/80">
+          <div class="flex items-center justify-between text-xs text-slate-400 font-mono mb-1">
+            <span>SUPPORTING / SMALL TEXT</span>
+            <span>13px (0.8125rem) &bull; Medium (500) & Muted</span>
+          </div>
+          <p class="text-xs text-brand-muted font-medium">
+            Match confidence calculated via skill overlap (85%), work preference alignment (Remote), and expressed fintech intent.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Styled Button -->
+    <section id="buttons" class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
+      <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+        <div>
+          <h2 class="text-2xl font-bold text-brand-primary tracking-tight">3. Styled Button</h2>
+          <p class="text-brand-muted text-sm mt-0.5">Interactive primary call-to-action button with hover state, padding, and subtle depth.</p>
+        </div>
+        <span class="bg-emerald-50 text-emerald-700 text-xs font-medium px-3 py-1 rounded-full border border-emerald-200">Interactive Component</span>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <!-- Interactive Preview -->
+        <div class="p-8 rounded-xl bg-slate-50 border border-slate-200 flex flex-col items-center justify-center gap-4 text-center">
+          <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Hover over the button below</div>
+
+          <!-- Primary Action Button -->
+          <button class="custom-btn-primary">
+            <span>Request Connection</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </button>
+
+          <p class="text-xs text-slate-500 mt-2">
+            Features sky-600 background, 12px 24px padding, 8px border-radius, soft elevation shadow, and smooth translation on hover.
+          </p>
+        </div>
+
+        <!-- Button Specs -->
+        <div class="space-y-3 text-sm text-slate-700">
+          <h3 class="font-bold text-slate-900 border-b border-slate-200 pb-2">Button Design Specifications</h3>
+          <ul class="space-y-2 text-xs">
+            <li class="flex items-center justify-between">
+              <span class="text-slate-500">Background Color:</span>
+              <span class="font-mono font-semibold text-slate-800">#0284C7 (Sky 600)</span>
+            </li>
+            <li class="flex items-center justify-between">
+              <span class="text-slate-500">Hover State:</span>
+              <span class="font-mono font-semibold text-slate-800">#0369A1 (Sky 700) + -1px translateY</span>
+            </li>
+            <li class="flex items-center justify-between">
+              <span class="text-slate-500">Typography:</span>
+              <span class="font-mono font-semibold text-slate-800">Inter SemiBold 14px, White</span>
+            </li>
+            <li class="flex items-center justify-between">
+              <span class="text-slate-500">Padding:</span>
+              <span class="font-mono font-semibold text-slate-800">12px Top/Bottom, 24px Left/Right</span>
+            </li>
+            <li class="flex items-center justify-between">
+              <span class="text-slate-500">Border Radius:</span>
+              <span class="font-mono font-semibold text-slate-800">8px ( rounded-lg )</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Sample BambiFound Inputs -->
+    <section id="inputs" class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
+      <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+        <div>
+          <h2 class="text-2xl font-bold text-brand-primary tracking-tight">4. Sample Input</h2>
+          <p class="text-brand-muted text-sm mt-0.5">Realistic BambiFound form input with clear focus ring, label hierarchy, and placeholder guidance.</p>
+        </div>
+        <span class="bg-sky-50 text-sky-700 text-xs font-medium px-3 py-1 rounded-full border border-sky-200">Natural Language Intent Input</span>
+      </div>
+
+      <div class="space-y-6 max-w-3xl">
+        <!-- Sample Input 1: Natural Language Intent -->
+        <div class="space-y-2">
+          <label for="intent-input" class="block text-sm font-bold text-slate-900">
+            What are you looking for? <span class="text-emerald-600 font-normal text-xs ml-1">(Natural Language Intent)</span>
+          </label>
+          <div class="relative">
+            <input
+              type="text"
+              id="intent-input"
+              class="custom-input"
+              value="I'm building a fintech startup and need a technical co-founder with backend experience open to remote."
+              placeholder="e.g., Looking for a founding engineer with React & Node.js skills for an AI health app..."
+            />
+          </div>
+          <p class="text-xs text-slate-500 flex items-center gap-1.5 mt-1">
+            <svg class="w-3.5 h-3.5 text-sky-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+            </svg>
+            BambiFound AI parses your natural language into structured skills, stage, and role attributes.
+          </p>
+        </div>
+
+        <!-- Sample Input 2: Skills / Capabilities Tag Input -->
+        <div class="space-y-2 pt-2">
+          <label for="skills-input" class="block text-sm font-bold text-slate-900">
+            Your skills & capabilities
+          </label>
+          <div class="custom-input flex flex-wrap items-center gap-2 min-h-[50px] cursor-text">
+            <span class="inline-flex items-center gap-1 bg-sky-100 text-sky-800 text-xs font-semibold px-2.5 py-1 rounded-md border border-sky-200">
+              Node.js
+              <button class="hover:text-sky-950">&times;</button>
+            </span>
+            <span class="inline-flex items-center gap-1 bg-sky-100 text-sky-800 text-xs font-semibold px-2.5 py-1 rounded-md border border-sky-200">
+              TypeScript
+              <button class="hover:text-sky-950">&times;</button>
+            </span>
+            <span class="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-1 rounded-md border border-emerald-200">
+              System Architecture
+              <button class="hover:text-emerald-950">&times;</button>
+            </span>
+            <input
+              type="text"
+              id="skills-input"
+              class="bg-transparent outline-none flex-1 min-w-[120px] text-sm text-slate-800 placeholder-slate-400"
+              placeholder="Add skill (e.g. React, Python)..."
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Integrated BambiFound Product Card Preview -->
+    <section id="preview-card" class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-8 border border-slate-700 shadow-lg">
+      <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-700">
+        <div>
+          <span class="text-brand-accent text-xs font-bold uppercase tracking-wider">System Integration Demo</span>
+          <h2 class="text-2xl font-bold text-white tracking-tight mt-0.5">BambiFound Match Card Preview</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold px-3 py-1 rounded-full">
+            94% Match Score
+          </span>
+        </div>
+      </div>
+
+      <div class="bg-white text-slate-900 rounded-xl p-6 shadow-xl border border-slate-200 space-y-5">
+        <!-- Card Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-full bg-slate-900 text-white font-bold text-xl flex items-center justify-center border-2 border-brand-accent shadow-sm">
+              AK
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-900">Alex Chen</h3>
+              <p class="text-xs font-medium text-slate-500">Senior Backend Engineer &bull; San Francisco, CA (Remote)</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold px-3 py-1.5 rounded-full">
+              Looking for Co-Founder
+            </span>
+          </div>
+        </div>
+
+        <!-- Intent Statement -->
+        <div class="bg-slate-50 rounded-lg p-4 border border-slate-200/80">
+          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">User Intent</div>
+          <p class="text-sm text-slate-800 font-medium">
+            &ldquo;Experienced backend developer seeking a Fintech business co-founder to build next-gen payment infrastructure.&rdquo;
+          </p>
+        </div>
+
+        <!-- AI Match Explanation -->
+        <div class="space-y-2">
+          <div class="text-xs font-bold text-sky-700 uppercase tracking-wider flex items-center gap-1">
+            <svg class="w-4 h-4 text-sky-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1a1 1 0 10-2 0v1a1 1 0 102 0zM12 14a1 1 0 100-2 1 1 0 000 2z"/>
+            </svg>
+            Why this match? (AI Explanation)
+          </div>
+          <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside bg-sky-50/50 p-3 rounded-lg border border-sky-100">
+            <li><strong>Complementary Skillset:</strong> Alex brings 7 years of backend engineering; complements your fintech domain strategy.</li>
+            <li><strong>Intent Alignment:</strong> Both seeking early co-founder equity alignment in Fintech.</li>
+            <li><strong>Work Preference:</strong> Open to remote collaboration with synchronous PST overlap.</li>
+          </ul>
+        </div>
+
+        <!-- Card Action Footer -->
+        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+          <span class="text-xs text-slate-400">Match generated 2h ago</span>
+          <div class="flex items-center gap-3">
+            <button class="px-4 py-2 border border-slate-300 text-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 transition">
+              Save for later
+            </button>
+            <button class="custom-btn-primary text-xs py-2 px-4">
+              <span>Connect with Alex</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-6xl mx-auto px-6 mt-12 text-center text-xs text-slate-400 border-t border-slate-200 pt-6">
+    BambiFound Visual Design Preview &bull; Assessment Task 2 Requirement 1 &bull; Standalone File: <code class="bg-slate-200 text-slate-800 px-1.5 py-0.5 rounded">design.html</code>
+  </footer>
+
+</body>
+</html>
