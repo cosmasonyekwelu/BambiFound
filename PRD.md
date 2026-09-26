@@ -1,9 +1,9 @@
 # BambiFound — Product Requirements Document (PRD)
 
-**Product:** BambiFound  
-**Version:** 1.0  
+**Product:** BambiFound
+**Version:** 1.0
 **Status:** MVP Definition & Assessment Plan
-**Category:** Impact & Innovation  
+**Category:** Impact & Innovation
 **Tagline:** Find your people. Build your future.
 
 ---
