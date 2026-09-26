@@ -32,6 +32,34 @@
 
 ---
 
+## Design Preview & Refinement
+
+### Design Preview
+`design.html` was created as the standalone BambiFound visual design preview. It serves as a visual design prototype and demonstrates:
+- **Color system:** Deep Forest Green (`#1E3A2B`) primary brand identity, Soft Forest Green (`#EAF2ED`) surface tint, Warm Terracotta (`#C25E00`) trail accent, and Warm Off-White (`#F9F9F6`) app background.
+- **Typography hierarchy:** Modern scale using Plus Jakarta Sans for headings (Hero 48px/800, Section 20px/700, Card 16px/700) and Inter for body text (14px/400, Muted 13px/400, Labels 11px/700 uppercase).
+- **Styled buttons:** Primary brand buttons (`.btn-primary`), secondary outlined buttons (`.btn-secondary`), and terracotta accent CTA buttons (`.btn-accent`).
+- **Styled sample input:** Interactive natural-language intent field (`#user-intent-demo`) with focus states (`--shadow-glow`) and automated extraction hint text.
+- **BambiFound product identity:** Warm, forest-themed ecosystem navigation, hero header, value proposition pipeline banner (PROFILE → INTENT → AI UNDERSTANDING → MATCH → EXPLANATION → CONNECTION), and ecosystem pathway cards.
+- **AI Match visual language:** Explainable match card featuring structured capability chips, profile metadata, subtle match badge indicator, and a Product Intelligence explanation module.
+
+### Human-Steered Design Refinement
+The following exact human design instruction was received and documented:
+
+> "The design should feel more distinctive to BambiFound rather than like a generic SaaS product. Refine the visual hierarchy around the AI Match experience by making the AI Match indicator visually distinct but subtle, improving the hierarchy between the match percentage, person's name, professional headline, skills, and Why this matches explanation, and making the explanation feel like useful product intelligence while maintaining BambiFound's forest-green visual identity and avoiding excessive AI effects."
+
+This human steering refinement was applied directly to `design.html` with the following concrete implementation details:
+- **Forest-Green Visual Identity over Generic SaaS Styling:** Maintained Deep Forest Green (`#1E3A2B`) and Soft Forest Green (`#EAF2ED`) CSS custom property tokens for cards, badges, and headers instead of generic blue or aggressive neon AI gradients.
+- **Subtle & Visually Distinct AI Match Indicator:** Implemented `.match-badge` as a rounded pill (`border-radius: var(--radius-full)`) with a soft forest-green background (`#EAF2ED`), dark green border (`rgba(30, 58, 43, 0.2)`), compass icon, uppercase `AI MATCH INDICATOR` label, and an embedded `92% Fit` match percentage score separated by a vertical border divider.
+- **Refined Information & Visual Hierarchy:**
+  - **Person's Name:** Highlighted with top priority in 22px bold dark charcoal (`Plus Jakarta Sans 22px / 700`, `#1A201C`) inside `.profile-info h3`.
+  - **Professional Headline:** Set in 15px semi-bold forest green (`.profile-title`, `#1E3A2B`) positioned directly below the name with location metadata in secondary muted text (`.profile-location`).
+  - **Skills Hierarchy:** Grouped under the uppercase sublabel `CORE CAPABILITIES & FOCUS` with skill chips formatted using soft green backgrounds (`#EAF2ED`) for primary strengths and neutral muted surfaces (`#F2F3EE`) for secondary attributes.
+  - **Match Percentage:** Positioned at the top right inside the subtle `.match-badge`, cleanly separating score metadata from user identity details.
+- **Useful Product Intelligence Module:** Structured the "Why this matches" explanation into a dedicated Product Intelligence container (`.ai-explanation-box`) with a 3px solid forest-green left border (`border-left: 3px solid #1E3A2B`), an header titled `WHY THIS MATCHES — PRODUCT INTELLIGENCE`, a `BambiFound AI Engine` tag, and a 3-column structured grid (`.ai-intelligence-grid`) detailing specific rationale items (Complementary Skillset, Shared Build Intent, Domain Alignment) with checkmark icons rather than unstructured paragraph text or decorative AI animations.
+
+---
+
 ## 1. Product Overview
 
 BambiFound is an AI-powered startup ecosystem designed to help founders, startups, talent, and opportunity seekers find the right people and opportunities needed to build and grow startups.
