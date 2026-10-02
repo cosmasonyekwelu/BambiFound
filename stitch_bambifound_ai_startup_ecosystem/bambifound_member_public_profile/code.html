@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-tint":"#436653","primary-fixed-dim":"#a9cfb9","on-surface":"#191c1a","inverse-primary":"#a9cfb9","on-tertiary-fixed-variant":"#753400","primary-container":"#183b2b","on-tertiary-fixed":"#321200","on-secondary-fixed":"#161d1a","surface":"#f8faf6","surface-bright":"#f8faf6","surface-container-lowest":"#ffffff","outline":"#727973","inverse-surface":"#2e312f","surface-container-highest":"#e1e3df","on-primary":"#ffffff","secondary":"#58605c","surface-variant":"#e1e3df","primary-fixed":"#c4ecd4","secondary-fixed-dim":"#c0c8c4","on-surface-variant":"#414844","on-tertiary":"#ffffff","surface-container-low":"#f3f4f0","on-tertiary-container":"#e88341","on-error-container":"#93000a","inverse-on-surface":"#f0f1ed","background":"#f8faf6","error-container":"#ffdad6","secondary-container":"#d7dfda","surface-container":"#edeeeb","primary":"#002517","secondary-fixed":"#dce4df","tertiary-container":"#592600","error":"#ba1a1a","on-primary-fixed-variant":"#2b4e3d","outline-variant":"#c1c8c2","on-secondary":"#ffffff","on-primary-fixed":"#002113","tertiary-fixed":"#ffdbc9","tertiary-fixed-dim":"#ffb68c","on-primary-container":"#80a690","on-secondary-fixed-variant":"#414845","surface-container-high":"#e7e9e5","on-background":"#191c1a","on-error":"#ffffff","surface-dim":"#d9dad7","on-secondary-container":"#5b635f","tertiary":"#381500"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"margin":"2.5rem","space-xl":"2.5rem","margin-sm":"1.25rem","space-sm":"0.5rem","gutter":"1.5rem","space-xs":"0.25rem","space-lg":"1.5rem","gutter-sm":"1rem","space-md":"1rem"},fontFamily:{"body-sm":["Hanken Grotesk"],"label-sm":["Hanken Grotesk"],"body-lg":["Hanken Grotesk"],"label-md":["Hanken Grotesk"],"title-md":["Hanken Grotesk"],"headline-lg-mobile":["Hanken Grotesk"],"display-lg-mobile":["Hanken Grotesk"],"headline-sm":["Hanken Grotesk"],"headline-lg":["Hanken Grotesk"],"display-lg":["Hanken Grotesk"],"body-md":["Hanken Grotesk"],"headline-md":["Hanken Grotesk"]},fontSize:{"body-sm":["0.875rem",{"lineHeight":"1.375rem","letterSpacing":"0.005em","fontWeight":"400"}],"label-sm":["0.75rem",{"lineHeight":"1rem","letterSpacing":"0.03em","fontWeight":"600"}],"body-lg":["1.125rem",{"lineHeight":"1.75rem","letterSpacing":"0em","fontWeight":"400"}],"label-md":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0.01em","fontWeight":"600"}],"title-md":["1.125rem",{"lineHeight":"1.625rem","letterSpacing":"-0.005em","fontWeight":"500"}],"headline-lg-mobile":["1.75rem",{"lineHeight":"2.25rem","letterSpacing":"-0.02em","fontWeight":"600"}],"display-lg-mobile":["2.25rem",{"lineHeight":"2.75rem","letterSpacing":"-0.025em","fontWeight":"700"}],"headline-sm":["1.25rem",{"lineHeight":"1.75rem","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg":["2.25rem",{"lineHeight":"2.75rem","letterSpacing":"-0.02em","fontWeight":"600"}],"display-lg":["3.5rem",{"lineHeight":"4rem","letterSpacing":"-0.03em","fontWeight":"700"}],"body-md":["1rem",{"lineHeight":"1.5rem","letterSpacing":"0em","fontWeight":"400"}],"headline-md":["1.5rem",{"lineHeight":"2rem","letterSpacing":"-0.015em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(25,28,26,0.04)]"><div class="h-16 w-full px-margin-sm lg:px-margin flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-xl"><div class="flex items-center gap-space-md"><img alt="BambiFound Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1X4gqtRs8CgxkIt7AI-bwPWGQ8s_lQh7fz-YJV0q_X427R-IJKyn2la1tfgYgzbJAjwvOjzeQtolGVioSfYT1VYi5Oie7tLCyKWfF6q0gFv5YlnBheA5Fs_-9yrXDmrM294_ORIf922-WLBiwJai9zgphCZRLyQgiWd24sTCjKnAAez9oV-hkl1PvvdzpXGlIsgXjfAlAWwhizd3ZXk4-1RC0UpTzE4gu3dsnCsqmtHxAHXQFlniTdVCSeC"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">BambiFound</span></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-bold rounded-lg"><a class="px-space-md py-space-sm font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors" data-path="dashboard" href="#">Dashboard</a><a class="px-space-md py-space-sm font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors" data-path="discover" href="#">Discover</a><a class="px-space-md py-space-sm font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors" data-path="opportunities" href="#">Opportunities</a><a class="px-space-md py-space-sm font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors" data-path="connections" href="#">Connections</a><a class="px-space-md py-space-sm font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors" data-path="messages" href="#">Messages</a></nav></div><div class="flex items-center gap-space-md flex-1 justify-end max-w-lg"><div class="relative w-full max-w-xs hidden sm:block"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span><input class="w-full h-11 pl-10 pr-space-md rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-secondary font-body-sm text-body-sm shadow-[0_1px_3px_rgba(25,28,26,0.03)] focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search co-founders, skill sets, AI synergy..." type="text"/></div><button class="relative p-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-on-tertiary-container ring-2 ring-surface"></span></button><div class="flex items-center gap-space-sm pl-space-xs cursor-pointer group"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_1px_3px_rgba(25,28,26,0.06)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeidtY0UhMYf7ZcfQk64SZuThGYiTb8k34frrspd1pwWaZk41qUovEud9zg6TdEAz3Dndj85CneJn57pJPNCslrULC_9Y9KQtdKBXrqljnV7vNASJRAEAK5B9o79vEVAi9e7KQ7_PJJ76wk8D2BhzSM5wc38D7l3uGhgHmxk1dSK07XDMtQGJBKusvMxjXASnAeK3RWTsz3qjxwydq-sC6xooifuVygZcVab1e5C7OrNkY8oN3sZj1OA"/><div class="hidden md:flex flex-col text-left"><span class="font-label-sm text-label-sm text-on-surface font-semibold group-hover:text-primary transition-colors">Cosmas G.</span><span class="font-label-sm text-label-sm text-on-surface-variant text-[11px]">Technical Founder</span></div><span class="material-symbols-outlined text-on-surface-variant text-[18px] hidden md:block">expand_more</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive View State Bar (Self Preview vs Public Mode) -->
+<div class="w-full bg-surface-container-high px-margin-sm lg:px-margin py-space-sm flex flex-wrap items-center justify-between gap-space-sm shadow-sm">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-on-tertiary-container ring-4 ring-on-tertiary-container/20"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Profile State: <strong class="text-on-surface">Delaware C-Corp Ready · Active Explorer</strong></span>
+<span class="hidden sm:inline-block text-outline-variant">•</span>
+<span class="hidden sm:inline-flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-surface-tint">verified_user</span> Verified via BambiFound Trust Ledger
+      </span>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="inline-flex items-center p-0.5 rounded-lg bg-surface-container-lowest shadow-sm">
+<button class="px-space-md py-1 rounded font-label-sm text-label-sm bg-primary text-on-primary transition-all flex items-center gap-1" id="toggle-preview">
+<span class="material-symbols-outlined text-[14px]">visibility</span> Public Visitor View
+        </button>
+<button class="px-space-md py-1 rounded font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1" id="toggle-edit">
+<span class="material-symbols-outlined text-[14px]">edit_note</span> Edit Profile Mode
+        </button>
+</div>
+<button class="px-space-md py-1 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm hover:bg-surface-container transition-colors flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">share</span> Share Dossier
+      </button>
+</div>
+</div>
+<!-- Ambient Hero Header -->
+<div class="relative w-full overflow-hidden bg-primary-container text-on-primary">
+<!-- Algorithmic vector background patterns -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg class="w-full h-full" fill="none" preserveaspectratio="none" viewbox="0 0 1200 360">
+<circle cx="200" cy="180" r="160" stroke="currentColor" stroke-dasharray="6 6" stroke-width="1.5"></circle>
+<circle cx="200" cy="180" r="260" stroke="currentColor" stroke-width="1.2"></circle>
+<circle cx="1000" cy="80" r="220" stroke="currentColor" stroke-dasharray="4 8" stroke-width="1.5"></circle>
+<path d="M 0 280 C 300 240, 600 320, 1200 220" stroke="currentColor" stroke-width="2"></path>
+<path d="M 0 120 C 400 190, 800 60, 1200 160" stroke="currentColor" stroke-dasharray="3 6" stroke-width="1.2"></path>
+</svg>
+</div>
+<!-- Soft amber glow beacon in the top right -->
+<div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-on-tertiary-container/15 blur-3xl pointer-events-none"></div>
+<div class="relative max-w-7xl mx-auto px-margin-sm lg:px-margin pt-space-xl pb-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-space-lg">
+<div class="flex flex-col gap-space-sm max-w-3xl">
+<div class="flex flex-wrap items-center gap-space-xs text-primary-fixed">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-lowest/15 backdrop-blur-md font-label-sm text-label-sm tracking-wide">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+            Algorithmic Anchor: Active Vector
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-fixed/20 text-primary-fixed font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">shield_person</span> Verified Builder
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-lowest/10 font-label-sm text-label-sm text-surface-container-highest">
+            ID #BF-8829-KE
+          </span>
+</div>
+<h1 class="font-display-lg text-headline-lg lg:text-display-lg font-bold tracking-tight text-on-primary">
+          Cosmas G.
+        </h1>
+<p class="font-title-md text-title-md text-primary-fixed-dim font-normal max-w-2xl leading-relaxed">
+          Staff Distributed Systems Engineer <span class="text-on-tertiary-container font-semibold">|</span> Seeking GTM &amp; Commercial Co-Founder in Climate FinTech
+        </p>
+</div>
+<!-- Action Suite -->
+<div class="flex flex-wrap items-center gap-space-sm shrink-0">
+<button class="px-space-lg py-3 rounded-lg bg-surface-container-lowest text-primary hover:bg-surface-container-low transition-all font-label-md text-label-md shadow-md hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span> Bookmark
+        </button>
+<button class="px-space-xl py-3 rounded-lg bg-on-tertiary-container text-on-primary hover:bg-tertiary-container transition-all font-label-md text-label-md shadow-md hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2 font-semibold">
+<span class="material-symbols-outlined text-[18px]">handshake</span> Request Intro &amp; Chat
+        </button>
+</div>
+</div>
+</div>
+<!-- Main Profile Body with Asymmetrical Forest Grid -->
+<div class="max-w-7xl mx-auto w-full px-margin-sm lg:px-margin -mt-8 pb-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Primary Core Dossier Column (8 Cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Profile Identity & Metadata Strip -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="relative shrink-0">
+<img alt="Cosmas G." class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover shadow-sm ring-4 ring-surface-container-lowest" src="https://lh3.googleusercontent.com/aida/AEtjO1VbLMJx3c48-KOiUZXXUAIfdpziyCrXMw7U45ez0J0IxWxQIDl2se_kbBkZvXnWlvFbOSj1Gq4SfO6m2UE35XQSEfPnj54O5zVIdwwyxNo31fimF2_31lJLuHheCM_Ip2t5T35C3GvhfJAEykw6c9ssmhe4r8BeV61Z-xnmbpyN8Z1LvmlWfBjHoa67xx3sa4yDx7rrD-il0o9n1me4Xu42vSD24_JMjOGIYPF71AjdW4a0SF28o-Nt1VI"/>
+<div class="absolute -bottom-1 -right-1 bg-surface-tint text-on-primary rounded-full p-1 shadow-sm flex items-center justify-center" title="Verified Track Record">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Cosmas G.</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-label-sm text-label-sm">Top 1% Synergy</span>
+</div>
+<div class="flex flex-wrap items-center gap-y-1 gap-x-3 mt-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-surface-tint">location_on</span> Nairobi, Kenya &amp; London, UK (Hybrid)
+                </span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">schedule</span> UTC+3 (East Africa)
+                </span>
+</div>
+<div class="mt-2 flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Full-Time Immediate • Ready to deploy
+                </span>
+</div>
+</div>
+</div>
+<!-- Credential Badges Cluster -->
+<div class="flex flex-wrap sm:flex-col items-start sm:items-end gap-1.5 w-full sm:w-auto pt-space-xs sm:pt-0">
+<span class="px-2.5 py-1 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-on-tertiary-container">school</span> YC Startup School '23
+            </span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">domain_verification</span> ex-FinEdge Capital (Acquired)
+            </span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-surface-tint">gavel</span> Delaware C-Corp Ready
+            </span>
+</div>
+</div>
+<!-- 2. AI Founder Compass Synthesis (Forest & Compass Aesthetic) -->
+<div class="relative overflow-hidden bg-primary-container text-on-primary rounded-xl p-space-lg lg:p-space-xl shadow-md">
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-on-tertiary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="relative flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-tertiary-container text-[24px]">explore</span>
+<span class="font-headline-sm text-headline-sm font-semibold tracking-tight text-on-primary">
+                  AI Algorithmic Founder Thesis
+                </span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-lowest/15 backdrop-blur-sm text-primary-fixed font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span> Calibrated 2 days ago
+                </span>
+</div>
+</div>
+<p class="font-body-lg text-body-lg text-surface-bright leading-relaxed">
+              Cosmas is a senior systems architect with deep infrastructure pedigree in pan-African fintech and high-concurrency ledgers. Seeking a commercial counterpart (VP Product / Growth archetype) with enterprise B2B sales acumen, regulatory experience, and institutional venture fundraising capability in Climate Tech.
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md mt-2 pt-space-md">
+<div class="p-space-md rounded-lg bg-surface-container-lowest/10 backdrop-blur-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-2 text-primary-fixed">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="font-label-md text-label-md">Cosmas Anchors</span>
+</div>
+<ul class="flex flex-col gap-1 text-on-primary-container font-body-sm text-body-sm">
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span> Distributed systems architecture (99.999% SLA)
+                  </li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span> Fault-tolerant offline-first synchronization
+                  </li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span> Verifiable ledgers &amp; cryptographic audit trails
+                  </li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span> Low-bandwidth IoT &amp; sensor telemetry rails
+                  </li>
+</ul>
+</div>
+<div class="p-space-md rounded-lg bg-tertiary-container/30 backdrop-blur-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-2 text-on-tertiary-container">
+<span class="material-symbols-outlined text-[18px]">compare_arrows</span>
+<span class="font-label-md text-label-md">Desired Counterbalance</span>
+</div>
+<ul class="flex flex-col gap-1 text-tertiary-fixed font-body-sm text-body-sm">
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span> Enterprise GTM &amp; Climate Distribution pipelines
+                  </li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span> Seed / Series A institutional narrative &amp; cap table design
+                  </li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span> Pan-African energy &amp; agricultural regulatory compliance
+                  </li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span> Customer-facing VP Product / Chief Commercial Officer lens
+                  </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. Target Venture Thesis & Co-Founder Doctrine -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">rocket_launch</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Target Venture Thesis &amp; Co-Founding Dynamics</h2>
+</div>
+<span class="px-2.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Stage: Inception</span>
+</div>
+<!-- Thesis Quote Card -->
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">The Problem Space</span>
+<p class="font-title-md text-title-md text-on-surface italic font-medium leading-relaxed">
+              “Building resilient micro-treasury and automated MRV (Measurement, Reporting, Verification) settlement rails for decentralized carbon insetting across Sub-Saharan Africa.”
+            </p>
+</div>
+<!-- 4 Pillars Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<div class="p-space-md rounded-lg bg-surface-container flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Equity Doctrine</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">50 / 50</span>
+<span class="font-body-sm text-body-sm text-secondary">Equal split, 4-yr vest, 1-yr standard cliff</span>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Commitment</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">Full-Time</span>
+<span class="font-body-sm text-body-sm text-secondary">Immediate kickoff; incorporated within 60 days</span>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Entity Jurisdiction</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">Delaware C</span>
+<span class="font-body-sm text-body-sm text-secondary">With Nairobi &amp; London operating subsidiaries</span>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Partner Archetype</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-tertiary-container">VP Growth</span>
+<span class="font-body-sm text-body-sm text-secondary">Prior climate tech, agri-B2B, or fintech exit</span>
+</div>
+</div>
+</div>
+<!-- 4. Verified Track Record & Career Trajectory -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">history_edu</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Verified Track Record &amp; History</h2>
+</div>
+<span class="font-label-sm text-label-sm text-surface-tint flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[16px]">verified</span> 3 Institutional Endorsements
+            </span>
+</div>
+<div class="relative pl-6 flex flex-col gap-space-xl">
+<!-- Continuous line indicator -->
+<div class="absolute left-2 top-2 bottom-2 w-0.5 bg-surface-container-high"></div>
+<!-- Experience 1 -->
+<div class="relative flex flex-col gap-1">
+<div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-surface-container-lowest"></div>
+<div class="flex flex-wrap items-center justify-between gap-1">
+<span class="font-title-md text-title-md font-bold text-on-surface">Lead Infrastructure Architect</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">2021 – 2024 · 3 yrs</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm font-medium">
+<span class="text-primary font-semibold">FinEdge Capital</span>
+<span>•</span>
+<span class="text-surface-tint font-semibold">Acquired via Series B M&amp;A</span>
+<span>•</span>
+<span>Nairobi, KE</span>
+</div>
+<p class="font-body-md text-body-md text-secondary mt-1 leading-relaxed">
+                Architected and scaled real-time multi-currency settlement rails processing $45M+ in monthly transactional volume across Kenya, Rwanda, Nigeria, and Uganda. Sustained 99.999% uptime through mobile-money telecommunication blackouts. Handled technical diligence directly leading to corporate buyout.
+              </p>
+</div>
+<!-- Experience 2 -->
+<div class="relative flex flex-col gap-1">
+<div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-surface-tint ring-4 ring-surface-container-lowest"></div>
+<div class="flex flex-wrap items-center justify-between gap-1">
+<span class="font-title-md text-title-md font-bold text-on-surface">Senior Systems Engineer</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">2018 – 2021 · 3 yrs</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm font-medium">
+<span class="text-primary font-semibold">Stripe (EMEA Core Payouts)</span>
+<span>•</span>
+<span>London, UK &amp; Remote</span>
+</div>
+<p class="font-body-md text-body-md text-secondary mt-1 leading-relaxed">
+                Engineered zero-loss immutable ledger partition replication mechanisms for multi-tenant payout ledgers. Co-authored automated latency-reduction routing and anomaly mitigation heuristics across low-reliability regional edge networks.
+              </p>
+</div>
+<!-- Experience 3 -->
+<div class="relative flex flex-col gap-1">
+<div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-outline-variant ring-4 ring-surface-container-lowest"></div>
+<div class="flex flex-wrap items-center justify-between gap-1">
+<span class="font-title-md text-title-md font-bold text-on-surface">Technical Fellow &amp; Research Assistant</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">2016 – 2018 · 2 yrs</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm font-medium">
+<span class="text-primary font-semibold">Distributed Systems Lab</span>
+<span>•</span>
+<span>Nairobi, KE</span>
+</div>
+<p class="font-body-md text-body-md text-secondary mt-1 leading-relaxed">
+                Published empirical research on gossip protocols and eventual consistency dynamics over constrained 2G/3G cellular telemetry for agricultural logistics.
+              </p>
+</div>
+</div>
+</div>
+<!-- 5. Key Verified Projects & Open Source Artifacts -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">code_blocks</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Verified Code Repositories &amp; Artifacts</h2>
+</div>
+<a class="font-label-sm text-label-sm text-primary hover:underline flex items-center gap-1 font-semibold" href="#">
+              View Github Archive <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Project 1 -->
+<div class="p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors flex flex-col justify-between gap-space-sm">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">Production</span>
+</div>
+<h3 class="font-title-md text-title-md font-bold text-on-surface mt-1">FinEdge Micro-Treasury Engine</h3>
+<p class="font-body-sm text-body-sm text-secondary">High-throughput multi-tenant double-entry ledger handling 4,000 tx/sec with deterministic audit logging.</p>
+</div>
+<div class="flex items-center gap-2 pt-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-tint"></span> Go · Kafka · PostgreSQL
+              </div>
+</div>
+<!-- Project 2 -->
+<div class="p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors flex flex-col justify-between gap-space-sm">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-on-tertiary-container text-[20px]">sensors</span>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">Open Source</span>
+</div>
+<h3 class="font-title-md text-title-md font-bold text-on-surface mt-1">KaziSync LoRaWAN Gateway</h3>
+<p class="font-body-sm text-body-sm text-secondary">Offline-first cryptographic cache engineered for farm telemetry and carbon flux verification sensors.</p>
+</div>
+<div class="flex items-center gap-2 pt-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-on-tertiary-container"></span> Rust · CoAP · SQLite
+              </div>
+</div>
+<!-- Project 3 -->
+<div class="p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors flex flex-col justify-between gap-space-sm">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-secondary text-[20px]">analytics</span>
+<span class="px-2 py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">Benchmark</span>
+</div>
+<h3 class="font-title-md text-title-md font-bold text-on-surface mt-1">Pan-African Payment Rails Audit</h3>
+<p class="font-body-sm text-body-sm text-secondary">Automated latency, packet loss, and settlement finality analysis tool across 12 mobile money operators.</p>
+</div>
+<div class="flex items-center gap-2 pt-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-outline"></span> Python · eBPF · Grafana
+              </div>
+</div>
+</div>
+</div>
+<!-- 6. Skills & Architectural Stack -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">psychology</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Core Competencies &amp; Stack Depth</h2>
+</div>
+<div class="flex flex-col gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider block mb-2">Systems &amp; Distributed Engineering</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md">Distributed Systems Architecture</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md">Go / Golang</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md">Rust</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md">Apache Kafka</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md">PostgreSQL (High Concurrency)</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md">Smart Contract Rails / Web3</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md">Offline-First CRDTs</span>
+</div>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider block mb-2">Leadership &amp; Technical Doctrine</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md">Async RFC Engineering Culture</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md">Zero-to-One Technical Hiring</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md">FinTech Threat Modeling</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md">Auditable Balance Sheet Systems</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 7. Working Style & Values -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">handshake</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Operating Philosophy &amp; Working Style</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<span class="material-symbols-outlined text-primary text-[24px]">terminal</span>
+<h3 class="font-title-md text-title-md font-bold text-on-surface">Deep Async Default</h3>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+                4-hour uninterrupted engineering blocks daily. Rigorous written documentation over endless synchronicity.
+              </p>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<span class="material-symbols-outlined text-surface-tint text-[24px]">verified</span>
+<h3 class="font-title-md text-title-md font-bold text-on-surface">Radical Transparency</h3>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+                Open cap-table governance, unambiguous division of responsibilities, and ego-free partnership.
+              </p>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<span class="material-symbols-outlined text-on-tertiary-container text-[24px]">bolt</span>
+<h3 class="font-title-md text-title-md font-bold text-on-surface">Weekly Shipping Cadence</h3>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+                No endless ivory tower architecture. Deploy to staging weekly and validate against real customers.
+              </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right-Side Rail / Synergy Telemetry (4 Cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Algorithmic Synergy Telemetry Widget -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-tertiary-container text-[20px]">hub</span>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Synergy Fit</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold">
+              98% Matched
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Based on your Commercial / Product Operator profile, Cosmas represents an optimal engineering counterbalance:
+          </p>
+<!-- Telemetry Bars -->
+<div class="flex flex-col gap-3 pt-1">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface font-medium">Technical &amp; Systems Completeness</span>
+<span class="text-primary font-bold">10 / 10</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface font-medium">Archetype Counterbalance</span>
+<span class="text-on-tertiary-container font-bold">9.8 / 10</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-on-tertiary-container rounded-full" style="width: 98%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface font-medium">Domain Alignment (Climate / FinTech)</span>
+<span class="text-surface-tint font-bold">9.5 / 10</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-surface-tint rounded-full" style="width: 95%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface font-medium">Working Style Sync (Async Default)</span>
+<span class="text-primary font-bold">9.2 / 10</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 92%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Mutual Discovery Discussion Sparks -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-tertiary-container text-[20px]">local_cafe</span>
+<h3 class="font-title-md text-title-md font-bold text-on-surface">Curated Coffee Chat Sparks</h3>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+            AI-generated talking points specifically designed for your initial discovery call with Cosmas:
+          </p>
+<div class="flex flex-col gap-space-sm">
+<div class="p-3 rounded-lg bg-surface-container-low flex items-start gap-2">
+<span class="font-label-sm text-label-sm font-bold text-on-tertiary-container">01</span>
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+                “How do you navigate offline MRV verification when sensor telemetry drops for 48+ hours?”
+              </p>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low flex items-start gap-2">
+<span class="font-label-sm text-label-sm font-bold text-on-tertiary-container">02</span>
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+                “What does your ideal commercial feedback loop look like during the first 90 days of prototyping?”
+              </p>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low flex items-start gap-2">
+<span class="font-label-sm text-label-sm font-bold text-on-tertiary-container">03</span>
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+                “How should we structure compliance relationships between UK holding entities and African operating subsidiaries?”
+              </p>
+</div>
+</div>
+</div>
+<!-- Trust & Safety Verification Ledger -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-surface-tint text-[20px]">lock</span>
+<h3 class="font-title-md text-title-md font-bold text-on-surface">Trust &amp; Safety Ledger</h3>
+</div>
+<span class="text-surface-tint font-label-sm text-label-sm font-bold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">done_all</span> 100% Cleared
+            </span>
+</div>
+<div class="flex flex-col gap-2.5 font-body-sm text-body-sm">
+<div class="flex items-center justify-between py-1">
+<span class="text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-surface-tint">badge</span> Government Identity (Passport)
+              </span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Verified</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-surface-tint">terminal</span> GitHub Commit History &amp; Scans
+              </span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Validated</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-surface-tint">group_add</span> Previous Founder References
+              </span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">3 on File</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-surface-tint">gavel</span> Background &amp; Entity Standing
+              </span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Good Standing</span>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container font-label-sm text-label-sm text-secondary flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary shrink-0">info</span>
+<span>All discovery introductions are double opt-in with mutual non-disclosure and intellectual property protection enabled.</span>
+</div>
+</div>
+<!-- Direct Connect Double Opt-in Action Card -->
+<div class="bg-primary text-on-primary rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-tertiary-container text-[24px]">connect_without_contact</span>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-primary">Initialize Dialogue</h3>
+</div>
+<p class="font-body-sm text-body-sm text-surface-bright leading-relaxed">
+            Send an introductory note to Cosmas. If accepted, BambiFound will instantly coordinate a 30-minute introductory coffee chat.
+          </p>
+<div class="flex flex-col gap-2">
+<textarea class="w-full p-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-on-tertiary-container placeholder:text-secondary resize-none" id="intro-note" placeholder="Hey Cosmas, I saw your thesis on decentralized MRV in Africa. I lead GTM at..." rows="3"></textarea>
+<button class="w-full py-3 rounded-lg bg-on-tertiary-container text-on-primary font-label-md text-label-md font-bold hover:bg-tertiary-container transition-all flex items-center justify-center gap-2 shadow-sm" id="send-intro-btn">
+<span class="material-symbols-outlined text-[18px]">send</span> Send Double Opt-In Intro
+            </button>
+</div>
+<span class="text-[11px] text-primary-fixed-dim text-center">Protected by BambiFound Mutual Safe-Intro Protocol</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+    // Micro-interaction handlers for preview toggles & intro triggers
+    const togglePreview = document.getElementById('toggle-preview');
+    const toggleEdit = document.getElementById('toggle-edit');
+    const sendIntroBtn = document.getElementById('send-intro-btn');
+    const introNote = document.getElementById('intro-note');
+
+    if (togglePreview && toggleEdit) {
+      togglePreview.addEventListener('click', () => {
+        togglePreview.className = "px-space-md py-1 rounded font-label-sm text-label-sm bg-primary text-on-primary transition-all flex items-center gap-1";
+        toggleEdit.className = "px-space-md py-1 rounded font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1";
+      });
+
+      toggleEdit.addEventListener('click', () => {
+        toggleEdit.className = "px-space-md py-1 rounded font-label-sm text-label-sm bg-primary text-on-primary transition-all flex items-center gap-1";
+        togglePreview.className = "px-space-md py-1 rounded font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1";
+      });
+    }
+
+    if (sendIntroBtn && introNote) {
+      sendIntroBtn.addEventListener('click', () => {
+        if (!introNote.value.trim()) {
+          introNote.placeholder = "Please enter a short note introducing your background...";
+          introNote.focus();
+          return;
+        }
+        sendIntroBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span> Routing Introduction...';
+        setTimeout(() => {
+          sendIntroBtn.className = "w-full py-3 rounded-lg bg-primary-container text-primary-fixed font-label-md text-label-md font-bold flex items-center justify-center gap-2";
+          sendIntroBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span> Intro Dispatched & Pending';
+          introNote.value = '';
+          introNote.disabled = true;
+        }, 800);
+      });
+    }
+  </script>
+</div></main></body></html>
