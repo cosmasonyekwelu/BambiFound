@@ -7,6 +7,7 @@ import { RegisterPage } from '../pages/auth/RegisterPage';
 import { ForgotPasswordPage } from '../pages/auth/ForgotPasswordPage';
 import { SetNewPasswordPage } from '../pages/auth/SetNewPasswordPage';
 import { VerifyEmailPage } from '../pages/auth/VerifyEmailPage';
+import { AuthCallbackPage } from '../pages/auth/AuthCallbackPage';
 import { OnboardingPage } from '../pages/OnboardingPage';
 import { DashboardPage } from '../pages/DashboardPage';
 import { DiscoverPage } from '../pages/DiscoverPage';
@@ -124,6 +125,7 @@ export const AppRoutes: React.FC = () => {
       <Route path="/auth/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/auth/set-new-password" element={<SetNewPasswordPage />} />
       <Route path="/auth/verify-email" element={<VerifyEmailPage />} />
+      <Route path="/auth/callback" element={<AuthCallbackPage />} />
       <Route
         path="/onboarding"
         element={

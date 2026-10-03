@@ -12,15 +12,22 @@ import {
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import type { Request, Response } from 'express';
+import { ConfigService } from '@nestjs/config';
 import { AuthService } from './auth.service.js';
 import { RegisterDto } from './dto/register.dto.js';
 import { LoginDto } from './dto/login.dto.js';
 import { JwtAuthGuard } from './guards/jwt-auth.guard.js';
+import { GoogleAuthGuard } from './guards/google-auth.guard.js';
+import { GithubAuthGuard } from './guards/github-auth.guard.js';
+import { OAuthUserPayload } from './strategies/google.strategy.js';
 
 @ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly configService: ConfigService,
+  ) {}
 
   private setRefreshTokenCookie(res: Response, refreshToken: string) {
     res.cookie('refreshToken', refreshToken, {
@@ -113,5 +120,58 @@ export class AuthController {
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   async getMe(@Req() req: Request & { user: { id: string } }) {
     return this.authService.getCurrentUser(req.user.id);
+  }
+
+  @Get('google')
+  @UseGuards(GoogleAuthGuard)
+  @ApiOperation({ summary: 'Initiate Google OAuth authentication' })
+  async googleAuth() {
+    // Guard initiates Google OAuth redirect
+  }
+
+  @Get('google/callback')
+  @UseGuards(GoogleAuthGuard)
+  @ApiOperation({ summary: 'Google OAuth callback endpoint' })
+  async googleAuthCallback(
+    @Req() req: Request & { user?: OAuthUserPayload },
+    @Res() res: Response,
+  ) {
+    if (!req.user) return;
+    return this.handleOAuthCallback(req.user, res);
+  }
+
+  @Get('github')
+  @UseGuards(GithubAuthGuard)
+  @ApiOperation({ summary: 'Initiate GitHub OAuth authentication' })
+  async githubAuth() {
+    // Guard initiates GitHub OAuth redirect
+  }
+
+  @Get('github/callback')
+  @UseGuards(GithubAuthGuard)
+  @ApiOperation({ summary: 'GitHub OAuth callback endpoint' })
+  async githubAuthCallback(
+    @Req() req: Request & { user?: OAuthUserPayload },
+    @Res() res: Response,
+  ) {
+    if (!req.user) return;
+    return this.handleOAuthCallback(req.user, res);
+  }
+
+  private async handleOAuthCallback(oauthPayload: OAuthUserPayload, res: Response) {
+    const frontendUrl = this.configService.get<string>('FRONTEND_URL', 'http://localhost:3000');
+    try {
+      const result = await this.authService.validateOAuthUser(oauthPayload);
+      this.setRefreshTokenCookie(res, result.refreshToken);
+      return res.redirect(`${frontendUrl}/auth/callback?token=${encodeURIComponent(result.accessToken)}`);
+    } catch (err: any) {
+      let errorCode = 'oauth_failed';
+      if (err?.message === 'ACCOUNT_EXISTS_LINK_REQUIRED') {
+        errorCode = 'account_exists_link_required';
+      } else if (err?.status === 400 || err?.response?.message?.includes('Email')) {
+        errorCode = 'missing_email';
+      }
+      return res.redirect(`${frontendUrl}/auth/login?error=${errorCode}`);
+    }
   }
 }

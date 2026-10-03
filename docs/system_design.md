@@ -84,9 +84,14 @@ graph TD
 
 ## 9. Authentication Architecture
 *   **Strategy:** Stateless JWT access tokens + stateful/rotatable refresh tokens.
-*   **Storage:** Refresh tokens stored in secure, HttpOnly, SameSite cookies to mitigate XSS. Access tokens stored in memory by the client.
-*   **Hashing:** Argon2id for robust password security.
-*   **Flow:** Login issues both tokens. Access token expires quickly (e.g., 15m). Client uses refresh token endpoint to obtain a new access token seamlessly.
+*   **Supported Authentication Providers:**
+    1. Email + Password (canonical authentication, password hashing via Argon2id).
+    2. Google OAuth 2.0 (`passport-google-oauth20`).
+    3. GitHub OAuth 2.0 (`passport-github2`).
+*   **Identity Mapping:** Core `User` entity linked to `OAuthAccount` records (`provider`, `providerAccountId`).
+*   **Account Matching & Linking:** Deterministic handling that prevents silent account duplication. Unlinked accounts with existing email require password login before social identity link.
+*   **Storage:** Refresh tokens stored in secure, HttpOnly, SameSite cookies. Access tokens stored in memory by the client.
+*   **Flow:** All authentication mechanisms issue standard BambiFound JWT access/refresh tokens. Access token expires in 15m; client uses `/api/auth/refresh` to maintain session seamlessly.
 
 ## 10. AI Architecture
 Business logic is decoupled from specific SDKs via an internal Abstraction Interface.

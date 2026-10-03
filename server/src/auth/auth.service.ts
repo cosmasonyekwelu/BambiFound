@@ -1,4 +1,4 @@
-import { Injectable, ConflictException, UnauthorizedException } from '@nestjs/common';
+import { Injectable, ConflictException, UnauthorizedException, BadRequestException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import * as argon2 from 'argon2';
@@ -101,7 +101,7 @@ export class AuthService {
 
   async login(loginDto: LoginDto): Promise<AuthResponse> {
     const user = await this.usersService.findByEmail(loginDto.email);
-    if (!user) {
+    if (!user || !user.passwordHash) {
       throw new UnauthorizedException('Invalid email or password');
     }
 
@@ -146,6 +146,48 @@ export class AuthService {
     } catch {
       throw new UnauthorizedException('Invalid or expired refresh token');
     }
+  }
+
+  async validateOAuthUser(payload: {
+    provider: 'GOOGLE' | 'GITHUB';
+    providerAccountId: string;
+    email: string | null;
+    fullName: string | null;
+  }): Promise<AuthResponse> {
+    if (!payload.email) {
+      throw new BadRequestException('Email address was not provided by the OAuth identity provider');
+    }
+
+    const oauthAccount = await this.usersService.findOAuthAccount(payload.provider, payload.providerAccountId);
+    if (oauthAccount) {
+      const user = oauthAccount.user;
+      const tokens = await this.generateTokens(user.id, user.email);
+      await this.updateRefreshTokenHash(user.id, tokens.refreshToken);
+      return {
+        user: this.sanitizeUser(user),
+        ...tokens,
+      };
+    }
+
+    const existingUser = await this.usersService.findByEmail(payload.email);
+    if (existingUser) {
+      throw new ConflictException('ACCOUNT_EXISTS_LINK_REQUIRED');
+    }
+
+    const newUser = await this.usersService.createOAuthUser({
+      email: payload.email,
+      fullName: payload.fullName,
+      provider: payload.provider,
+      providerAccountId: payload.providerAccountId,
+    });
+
+    const tokens = await this.generateTokens(newUser.id, newUser.email);
+    await this.updateRefreshTokenHash(newUser.id, tokens.refreshToken);
+
+    return {
+      user: this.sanitizeUser(newUser),
+      ...tokens,
+    };
   }
 
   async logout(userId: string): Promise<void> {

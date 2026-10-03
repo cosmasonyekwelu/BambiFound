@@ -90,15 +90,15 @@ Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &
 
 ## 13. Phase 6 — Authentication
 **AUTH-001 — Backend Auth Module**
-*   **Purpose:** JWT Access/Refresh flow.
+*   **Purpose:** JWT Access/Refresh flow + Social Single Sign-On.
 *   **Dependencies:** API-001
-*   **Implementation:** Registration, Login, Logout endpoints. Argon2id password hashing. HttpOnly cookie handling for refresh tokens.
+*   **Implementation:** Registration, Login, Logout endpoints. Argon2id password hashing. Google OAuth 2.0 and GitHub OAuth 2.0 integration via Passport strategies. HttpOnly cookie handling for refresh tokens. OAuthAccount entity mapping with deterministic account linking.
 *   **Status:** **COMPLETE**
 
 **AUTH-002 — Frontend Auth State**
-*   **Purpose:** Client-side protected routes.
+*   **Purpose:** Client-side protected routes & OAuth UI integration.
 *   **Dependencies:** AUTH-001, WEB-001
-*   **Implementation:** Login/Register forms matching Stitch designs, Auth context, Axios interceptor for JWT refresh, protected route wrappers.
+*   **Implementation:** Login/Register forms matching Stitch designs, "Continue with Google" and "Continue with GitHub" OAuth buttons, AuthCallbackPage component, Auth context, Axios interceptor for JWT refresh, protected route wrappers.
 *   **Status:** **COMPLETE**
 
 ---

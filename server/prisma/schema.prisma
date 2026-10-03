@@ -8,23 +8,38 @@ datasource db {
 }
 
 model User {
-  id                  String    @id @default(uuid())
-  email               String    @unique
-  passwordHash        String
+  id                  String         @id @default(uuid())
+  email               String         @unique
+  passwordHash        String?
   fullName            String?
-  emailVerified       Boolean   @default(false)
+  emailVerified       Boolean        @default(false)
   hashedRefreshToken  String?
-  onboardingCompleted Boolean   @default(false)
-  onboardingSkipped   Boolean   @default(false)
-  onboardingStep      Int       @default(1)
-  onboardingData      Json      @default("{}")
-  membershipTier      String    @default("FREE")
+  onboardingCompleted Boolean        @default(false)
+  onboardingSkipped   Boolean        @default(false)
+  onboardingStep      Int            @default(1)
+  onboardingData      Json           @default("{}")
+  membershipTier      String         @default("FREE")
   membershipExpiresAt DateTime?
   payments            Payment[]
-  createdAt           DateTime  @default(now())
-  updatedAt           DateTime  @updatedAt
+  oauthAccounts       OAuthAccount[]
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
 
   @@map("users")
+}
+
+model OAuthAccount {
+  id                String   @id @default(uuid())
+  userId            String
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  provider          String
+  providerAccountId String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+  @@map("oauth_accounts")
 }
 
 model Payment {

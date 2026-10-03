@@ -18,12 +18,58 @@ export class UsersService {
     });
   }
 
-  async createUser(data: { email: string; passwordHash: string; fullName?: string }): Promise<User> {
+  async createUser(data: { email: string; passwordHash?: string | null; fullName?: string }): Promise<User> {
     return this.prisma.user.create({
       data: {
         email: data.email.toLowerCase(),
-        passwordHash: data.passwordHash,
+        passwordHash: data.passwordHash ?? null,
         fullName: data.fullName,
+      },
+    });
+  }
+
+  async findOAuthAccount(provider: string, providerAccountId: string) {
+    return this.prisma.oAuthAccount.findUnique({
+      where: {
+        provider_providerAccountId: {
+          provider,
+          providerAccountId,
+        },
+      },
+      include: {
+        user: true,
+      },
+    });
+  }
+
+  async createOAuthUser(data: {
+    email: string;
+    fullName?: string | null;
+    provider: string;
+    providerAccountId: string;
+  }): Promise<User> {
+    return this.prisma.user.create({
+      data: {
+        email: data.email.toLowerCase(),
+        fullName: data.fullName ?? null,
+        emailVerified: true,
+        passwordHash: null,
+        oauthAccounts: {
+          create: {
+            provider: data.provider,
+            providerAccountId: data.providerAccountId,
+          },
+        },
+      },
+    });
+  }
+
+  async linkOAuthAccount(userId: string, provider: string, providerAccountId: string) {
+    return this.prisma.oAuthAccount.create({
+      data: {
+        userId,
+        provider,
+        providerAccountId,
       },
     });
   }

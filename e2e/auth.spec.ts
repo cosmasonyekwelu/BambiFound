@@ -11,9 +11,11 @@ test.describe('BambiFound E2E Critical Authentication Flow', () => {
     await page.goto('/');
     await expect(page.locator('h1')).toContainText('Find the people who help you build.');
 
-    // 2. User opens registration
+    // 2. User opens registration and verifies social OAuth buttons
     await page.goto('/auth/register');
     await expect(page.locator('h1')).toContainText('Create your account');
+    await expect(page.locator('button:has-text("Continue with Google")')).toBeVisible();
+    await expect(page.locator('button:has-text("Continue with GitHub")')).toBeVisible();
 
     // 3. User registers
     await page.fill('input[id="fullName"]', fullName);
@@ -32,9 +34,12 @@ test.describe('BambiFound E2E Critical Authentication Flow', () => {
     await page.click('button:has-text("Log Out")');
     await expect(page.locator('header')).toContainText('Log In');
 
-    // 6. User can log in again
+    // 6. User can log in again, verifying OAuth buttons on login page
     await page.click('a:has-text("Log In")');
     await expect(page).toHaveURL(/\/auth\/login/);
+    await expect(page.locator('button:has-text("Continue with Google")')).toBeVisible();
+    await expect(page.locator('button:has-text("Continue with GitHub")')).toBeVisible();
+
     await page.fill('input[type="email"]', email);
     await page.fill('input[type="password"]', password);
     await page.click('button[type="submit"]');
