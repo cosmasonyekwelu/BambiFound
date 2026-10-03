@@ -34,4 +34,37 @@ export class UsersService {
       data: { hashedRefreshToken },
     });
   }
+
+  async updateOnboardingData(
+    userId: string,
+    data: {
+      onboardingStep?: number;
+      onboardingData?: any;
+      onboardingCompleted?: boolean;
+      onboardingSkipped?: boolean;
+    },
+  ): Promise<User> {
+    const existing = await this.findById(userId);
+    if (!existing) {
+      throw new Error('User not found');
+    }
+
+    let mergedData = existing.onboardingData;
+    if (data.onboardingData) {
+      const currentObj = typeof existing.onboardingData === 'object' && existing.onboardingData !== null
+        ? (existing.onboardingData as Record<string, any>)
+        : {};
+      mergedData = { ...currentObj, ...data.onboardingData };
+    }
+
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: {
+        ...(data.onboardingStep !== undefined && { onboardingStep: data.onboardingStep }),
+        ...(data.onboardingCompleted !== undefined && { onboardingCompleted: data.onboardingCompleted }),
+        ...(data.onboardingSkipped !== undefined && { onboardingSkipped: data.onboardingSkipped }),
+        onboardingData: mergedData ?? {},
+      },
+    });
+  }
 }

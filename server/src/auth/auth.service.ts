@@ -18,6 +18,10 @@ export interface AuthResponse {
     email: string;
     fullName: string | null;
     emailVerified: boolean;
+    onboardingCompleted: boolean;
+    onboardingSkipped: boolean;
+    onboardingStep: number;
+    onboardingData: any;
     createdAt: Date;
     updatedAt: Date;
   };
@@ -39,6 +43,10 @@ export class AuthService {
       email: user.email,
       fullName: user.fullName,
       emailVerified: user.emailVerified,
+      onboardingCompleted: user.onboardingCompleted,
+      onboardingSkipped: user.onboardingSkipped,
+      onboardingStep: user.onboardingStep,
+      onboardingData: user.onboardingData,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     };

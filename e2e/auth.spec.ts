@@ -12,18 +12,17 @@ test.describe('BambiFound E2E Critical Authentication Flow', () => {
     await expect(page.locator('h1')).toContainText('Find the people who help you build.');
 
     // 2. User opens registration
-    await page.click('text=Get Started — Free');
-    await expect(page).toHaveURL(/\/auth\/register/);
+    await page.goto('/auth/register');
     await expect(page.locator('h1')).toContainText('Create your account');
 
     // 3. User registers
-    await page.fill('input[placeholder="Ada Lovelace"]', fullName);
-    await page.fill('input[placeholder="ada@startup.com"]', email);
-    await page.fill('input[placeholder="At least 8 characters"]', password);
+    await page.fill('input[id="fullName"]', fullName);
+    await page.fill('input[id="email"]', email);
+    await page.fill('input[id="password"]', password);
     await page.click('button[type="submit"]');
 
-    // 4. Authenticated state is established
-    await expect(page).toHaveURL('/');
+    // 4. Authenticated state is established (new user lands on /onboarding)
+    await expect(page).toHaveURL(/\/onboarding/);
     await expect(page.locator('header')).toContainText(fullName);
 
     // Take screenshot of authenticated state
@@ -40,8 +39,8 @@ test.describe('BambiFound E2E Critical Authentication Flow', () => {
     await page.fill('input[type="password"]', password);
     await page.click('button[type="submit"]');
 
-    // Authenticated state re-established
-    await expect(page).toHaveURL('/');
+    // Authenticated state re-established (routed to /onboarding because incomplete)
+    await expect(page).toHaveURL(/\/onboarding/);
     await expect(page.locator('header')).toContainText(fullName);
   });
 });

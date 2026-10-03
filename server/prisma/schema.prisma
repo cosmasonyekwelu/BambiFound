@@ -8,14 +8,18 @@ datasource db {
 }
 
 model User {
-  id                 String   @id @default(uuid())
-  email              String   @unique
-  passwordHash       String
-  fullName           String?
-  emailVerified      Boolean  @default(false)
-  hashedRefreshToken String?
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
+  id                  String   @id @default(uuid())
+  email               String   @unique
+  passwordHash        String
+  fullName            String?
+  emailVerified       Boolean  @default(false)
+  hashedRefreshToken  String?
+  onboardingCompleted Boolean  @default(false)
+  onboardingSkipped   Boolean  @default(false)
+  onboardingStep      Int      @default(1)
+  onboardingData      Json     @default("{}")
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 
   @@map("users")
 }
