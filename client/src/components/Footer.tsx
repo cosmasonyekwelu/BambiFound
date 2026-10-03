@@ -7,8 +7,9 @@ export const Footer: React.FC = () => {
       <div className="max-w-[1280px] mx-auto px-margin">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-space-xl pb-space-xl border-b border-outline-variant/30">
           <div className="space-y-space-md">
-            <Link to="/" className="font-newsreader text-2xl font-semibold text-primary">
-              BambiFound
+            <Link to="/" className="font-newsreader text-2xl font-semibold text-primary flex items-center gap-2">
+              <img src="/logo.png" alt="BambiFound" className="h-8 w-auto" />
+             
             </Link>
             <p className="font-body-sm text-body-sm text-on-surface-variant max-w-xs leading-relaxed">
               Venture match & founder onboarding platform connecting founders, startups, and talent.
@@ -40,7 +41,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
         <div className="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md font-body-sm text-body-sm text-on-surface-variant">
-          <div>BambiFound — Venture match & founder onboarding platform. © 2025.</div>
+          <div>BambiFound — Venture match & founder onboarding platform. © 2026.</div>
           <div className="flex items-center gap-space-md">
             <span>SOC2 Type II</span>
             <span>•</span>

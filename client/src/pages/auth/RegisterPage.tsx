@@ -157,7 +157,7 @@ export const RegisterPage: React.FC = () => {
                     id="fullName"
                     type="text"
                     {...register('fullName')}
-                    placeholder="Ada Lovelace"
+                    placeholder="Ada Peter-Edochie"
                     className="w-full h-11 px-3.5 bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg outline-none placeholder:text-outline/60 focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#14281D] transition-all"
                   />
                   <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline/50 pointer-events-none text-[18px]">badge</span>
@@ -177,7 +177,7 @@ export const RegisterPage: React.FC = () => {
                     id="email"
                     type="email"
                     {...register('email')}
-                    placeholder="you@example.com"
+                    placeholder="ada@example.com"
                     className="w-full h-11 px-3.5 bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg outline-none placeholder:text-outline/60 focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#14281D] transition-all"
                   />
                   <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline/50 pointer-events-none text-[18px]">mail</span>

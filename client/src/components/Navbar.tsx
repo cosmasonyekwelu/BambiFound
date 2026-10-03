@@ -16,9 +16,8 @@ export const Navbar: React.FC = () => {
       <div className="h-20 max-w-[1280px] mx-auto px-margin flex items-center justify-between">
         <div className="flex items-center gap-space-md">
           <Link to="/" className="flex items-center gap-2">
-            <span className="font-newsreader text-2xl font-semibold tracking-tight text-primary">
-              BambiFound
-            </span>
+            <img src="/logo.png" alt="BambiFound" className="h-8 w-auto" />
+            
           </Link>
         </div>
 
@@ -33,7 +32,7 @@ export const Navbar: React.FC = () => {
             Startups
           </Link>
           <Link to="/dashboard" className="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors">
-            Dashboard
+            Opportunities
           </Link>
         </nav>
 
