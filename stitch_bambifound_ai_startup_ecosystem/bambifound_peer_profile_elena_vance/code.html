@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-tertiary-container":"#cf7249","on-primary-fixed-variant":"#374b3f","on-secondary":"#ffffff","inverse-primary":"#b5ccbc","primary-container":"#14281d","secondary-container":"#b9ebc9","secondary-fixed-dim":"#a1d2b1","primary-fixed":"#d0e8d7","on-surface-variant":"#424844","on-error":"#ffffff","on-primary-container":"#7a9081","surface-tint":"#4e6356","surface-container-low":"#f1f4ef","primary-fixed-dim":"#b5ccbc","surface-container-lowest":"#ffffff","surface-container-highest":"#e0e3de","primary":"#011209","on-tertiary":"#ffffff","inverse-surface":"#2d312e","outline-variant":"#c2c8c2","secondary-fixed":"#bceecc","tertiary-fixed-dim":"#ffb597","error-container":"#ffdad6","inverse-on-surface":"#eff2ec","on-secondary-fixed-variant":"#224f36","error":"#ba1a1a","surface-bright":"#f7faf5","surface":"#f7faf5","on-error-container":"#93000a","tertiary-container":"#441500","surface-container-high":"#e6e9e4","surface-dim":"#d8dbd6","surface-variant":"#e0e3de","surface-container":"#ecefea","on-secondary-fixed":"#002111","background":"#f7faf5","tertiary":"#210600","secondary":"#3a684d","on-surface":"#191d1a","on-primary":"#ffffff","on-secondary-container":"#3f6c51","on-background":"#191d1a","on-tertiary-fixed-variant":"#79310c","outline":"#737873","tertiary-fixed":"#ffdbcd","on-primary-fixed":"#0b1f15","on-tertiary-fixed":"#360f00"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","space-xs":"0.25rem","space-lg":"1.5rem","margin":"2rem","space-md":"1rem","space-xl":"2.5rem","gutter":"1.5rem","margin-sm":"1rem","gutter-sm":"1rem"},"fontFamily":{"body-sm":["Plus Jakarta Sans"],"display-lg-mobile":["Newsreader"],"label-sm":["Plus Jakarta Sans"],"display-lg":["Newsreader"],"body-lg":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"headline-lg-mobile":["Newsreader"],"headline-md":["Plus Jakarta Sans"],"headline-lg":["Newsreader"],"body-md":["Plus Jakarta Sans"]},"fontSize":{"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"display-lg-mobile":["38px",{"lineHeight":"44px","letterSpacing":"-0.015em","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}],"display-lg":["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"400"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"600"}],"headline-sm":["18px",{"lineHeight":"26px","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.015em","fontWeight":"500"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(20,40,29,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm group" data-path="overview" href="#"><img alt="BambiFound" class="h-9 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1WesJyIZSu3XP1VhZx2x249r-DFqWrtp9LkzN6nUJsapp15tolQKORoVivEAlXEwg1bHFZsD-iRYchAJ_dS_Fpm8-gSqLh6pdxX65q7YD_HEx7gU4QbKEllOJ_zMHHwhlJRsiHmLeJppBJj2CB-GL_l4onUJciN9C8mP5PpBjcQH88K65V0VNkrPkHiWeNSpYPHJcQfQecpCYpNySZMmqnm5ab9Eo3gffbtjtN46FfYEsyT_YO8emz0GFY"/></a><nav class="hidden lg:flex items-center gap-space-xs p-1 bg-surface-container-low rounded-full" data-active-classes="bg-surface-container-high text-on-surface font-label-md text-label-md rounded-full"><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" data-path="overview" href="#">Overview</a><a aria-current="page" class="px-space-md py-space-xs transition-colors bg-surface-container-high text-on-surface font-label-md text-label-md rounded-full" data-path="discover-builders" href="#">Discover Builders</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" data-path="venture-listings" href="#">Venture Listings</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" data-path="intros-and-messages" href="#">Intros &amp; Messages</a></nav></div><div class="flex items-center gap-space-md"><button class="hidden md:flex items-center gap-space-sm px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" type="button"><span class="material-symbols-outlined text-[18px]">search</span><span class="font-body-sm text-body-sm">Search builders, ventures...</span><kbd class="px-1.5 py-0.5 rounded bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm shadow-[0_1px_2px_rgba(20,40,29,0.06)]">⌘K</kbd></button><div class="relative flex items-center"><button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors relative" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-4 h-4 bg-tertiary-container text-on-tertiary font-label-sm text-label-sm rounded-full flex items-center justify-center leading-none text-[10px]">3</span></button></div><a class="hidden sm:flex items-center gap-space-xs bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md px-space-md py-space-xs rounded-full shadow-[0_2px_8px_-2px_rgba(20,40,29,0.08)] transition-all" data-path="post-a-project" href="#"><span class="material-symbols-outlined text-[18px]">add</span><span>Post a Project</span></a><div class="relative group pl-space-xs"><button class="flex items-center gap-space-sm focus:outline-none" type="button"><div class="w-9 h-9 rounded-full bg-primary-container border border-outline-variant flex items-center justify-center overflow-hidden shadow-sm"><span class="material-symbols-outlined text-surface-bright text-[20px]">person</span></div><div class="hidden xl:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight">Alex Morgan</span><span class="font-label-sm text-label-sm text-secondary leading-tight flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span>Active Builder</span></div><span class="material-symbols-outlined text-on-surface-variant text-[18px] transition-transform group-hover:rotate-180">expand_more</span></button><div class="absolute right-0 top-full mt-2 w-64 bg-surface-container-lowest rounded-xl shadow-[0_12px_28px_-6px_rgba(20,40,29,0.12),0_4px_10px_-2px_rgba(20,40,29,0.04)] border border-outline-variant/60 py-space-xs hidden group-hover:block hover:block z-50"><div class="px-space-md py-space-sm border-b border-surface-container"><p class="font-label-md text-label-md text-on-surface font-semibold">Alex Morgan</p><p class="font-body-sm text-body-sm text-on-surface-variant truncate">alex.morgan@bambifound.org</p></div><div class="py-space-xs"><a class="flex items-center gap-space-sm px-space-md py-space-xs text-on-surface hover:bg-surface-container-low transition-colors font-body-sm text-body-sm" data-path="profile" href="#"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">person</span>View Profile</a><a class="flex items-center gap-space-sm px-space-md py-space-xs text-on-surface hover:bg-surface-container-low transition-colors font-body-sm text-body-sm" data-path="settings-and-plans" href="#"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">settings</span>Account &amp; Settings</a><a class="flex items-center gap-space-sm px-space-md py-space-xs text-on-surface hover:bg-surface-container-low transition-colors font-body-sm text-body-sm" data-path="settings-and-plans" href="#"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">verified</span>Membership &amp; Plans</a></div><div class="border-t border-surface-container pt-space-xs"><a class="flex items-center gap-space-sm px-space-md py-space-xs text-error hover:bg-error-container/20 transition-colors font-body-sm text-body-sm" data-path="overview" href="#"><span class="material-symbols-outlined text-[18px] text-error">logout</span>Sign Out</a></div></div></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full">
+<!-- Top Context Navigation Ribbon -->
+<section class="w-full bg-surface-container-low shadow-sm">
+<div class="max-w-7xl mx-auto px-margin py-space-sm flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-md text-label-md">
+<a class="hover:text-on-surface transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span>Discover Builders</span>
+</a>
+<span class="text-outline">/</span>
+<span class="text-on-surface font-semibold truncate">Elena Vance</span>
+<span class="text-outline">·</span>
+<span class="text-on-surface-variant font-normal">Public Registry #BF-8841</span>
+<span class="ml-space-xs inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+          Active Window
+        </span>
+</div>
+<div class="flex items-center gap-space-xs self-start md:self-auto">
+<button class="flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-all shadow-sm font-label-md text-label-md" id="bookmarkBtn">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" id="bookmarkIcon">bookmark_border</span>
+<span id="bookmarkText">Bookmark</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-all shadow-sm font-label-md text-label-md" onclick="navigator.clipboard?.writeText(window.location.href); alert('Profile link copied to clipboard.');">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">share</span>
+<span>Share</span>
+</button>
+<a class="flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-primary-container text-on-primary hover:bg-primary transition-all shadow-md font-label-md text-label-md ml-space-xs" href="#intro-desk">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed">bolt</span>
+<span>Request Warm Intro</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Profile Identity Master Header -->
+<section class="w-full max-w-7xl mx-auto px-margin pt-space-lg">
+<div class="relative bg-surface-container-lowest rounded-xl shadow-md p-space-lg md:p-space-xl overflow-hidden">
+<!-- Decorative Organic Aura Backdrop -->
+<div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-secondary-container/30 blur-3xl pointer-events-none"></div>
+<div class="absolute right-48 bottom-0 w-64 h-64 rounded-full bg-primary-fixed/20 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col lg:flex-row lg:items-start justify-between gap-space-lg">
+<!-- Avatar and Core Identity -->
+<div class="flex flex-col sm:flex-row items-start gap-space-lg">
+<div class="relative group">
+<div class="w-28 h-28 md:w-36 md:h-36 rounded-2xl overflow-hidden shadow-lg bg-surface-container ring-4 ring-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="Intimate, warm photographic portrait of Elena Vance, early-30s female founder in a muted sage-green studio. Natural soft window lighting, thoughtful gaze, minimalist sustainable linen clothing, rich filmic grain." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLs84QR9n5Ay3KP54tH9k19d4vrF3d9JSoiYmBTV2TV8v9nCoNWoQyuub_VQ2Bx_AJe7Spa4sSXjCGn3pSI1yk-BS7msaQ0PkoZJaHRg7M8cTgqJF0Ct6XI8xsUL-D9VuNNz9GOI88j-rmubvajl3HPNdXglNVF2QQwfRW55GmO7uzGA7cwfo6usEPccSnFn76GLEh6jpdTvtD_WvEBiQ33llrQEDisI5sXIc_RI6E3emPlhl16ahY"/>
+</div>
+<span class="absolute -bottom-2 -right-2 flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-on-secondary shadow-md" title="Identity &amp; Cap Table Vouched">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="px-space-sm py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Verified Founder
+              </span>
+<span class="px-space-sm py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+                Venture #2
+              </span>
+<span class="px-space-sm py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                Active within 20m
+              </span>
+</div>
+<h1 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface tracking-tight mt-1">
+              Elena Vance
+            </h1>
+<p class="font-headline-sm text-headline-sm text-on-surface-variant">
+              Founder &amp; CEO @ <span class="text-on-surface font-semibold">Horizon Carbon</span>
+<span class="text-outline font-normal mx-1.5">|</span>
+<span class="text-secondary font-medium">Climate Intelligence &amp; Carbon Accounting</span>
+</p>
+<div class="flex flex-wrap items-center gap-space-md text-on-surface-variant font-body-sm text-body-sm mt-space-xs">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[17px] text-outline">location_on</span>
+                San Francisco, CA (Hybrid / Remote)
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[17px] text-outline">work_history</span>
+                Ex-Watershed GTM Lead
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[17px] text-outline">school</span>
+                Stanford MS Earth Systems
+              </span>
+</div>
+</div>
+</div>
+<!-- High Conviction Match Indicator -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-md shadow-sm min-w-[280px] lg:max-w-xs self-stretch lg:self-auto justify-between">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Affinity Metric</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+              Tier 1 Pairing
+            </span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-display-lg text-display-lg text-secondary leading-none">96<span class="text-headline-md font-sans text-secondary">%</span></span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface leading-tight">High Conviction</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Synergy score with Alex Morgan</span>
+</div>
+</div>
+<!-- Mini Sparkline Distribution Chart -->
+<div class="pt-space-xs">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full transition-all duration-1000" style="width: 96%"></div>
+</div>
+<div class="flex justify-between items-center mt-1 text-on-surface-variant font-label-sm text-label-sm">
+<span>Domain: 98%</span>
+<span>Stack: 94%</span>
+<span>Cadence: 97%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Synergy Matrix Deep-Dive Callout Box -->
+<div class="mt-space-lg pt-space-md bg-surface-container-low/70 rounded-xl p-space-md">
+<div class="flex items-start gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px] text-secondary-fixed">auto_awesome</span>
+</div>
+<div class="flex flex-col gap-1 w-full">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Why Elena is a 96% Match for You</h2>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-lowest px-2 py-0.5 rounded-full">Synthesized from Elena's Mandate &amp; Alex's Builder Dossier</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Elena is urgently recruiting a <strong class="text-on-surface font-semibold">Founding Distributed Systems CTO</strong> for Horizon Carbon. Alex's documented 8+ years building edge streaming and offline-first industrial sync protocols directly bridges Elena's Tier-1 SEC audit pipeline bottleneck. Both parties share verified affinity for <em class="text-on-surface font-medium not-italic">high-equity stakes (18–25%)</em> and a <em class="text-on-surface font-medium not-italic">disciplined async remote-first cadence</em>.
+            </p>
+</div>
+</div>
+<!-- Comparative Comparison Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm mt-space-md">
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">check_circle</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Role Alignment</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Needs Founding CTO • Alex actively open to technical co-founder seats</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">check_circle</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Telemetry Stack</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">High-throughput sensor ingestion • Alex pioneered MQTT pipelines at GridSync</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">check_circle</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Equity &amp; Commitment</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">18-25% founder slice • Full-time starting Q2 2025 aligned</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Section Tabs -->
+<section class="w-full max-w-7xl mx-auto px-margin pt-space-lg">
+<div class="flex items-center gap-space-xs overflow-x-auto pb-space-xs scrollbar-none" id="profileTabs">
+<button class="px-space-md py-space-xs rounded-full bg-primary-container text-on-primary font-label-md text-label-md shrink-0 transition-all tab-btn active" data-tab="tab-overview">
+        Profile Overview
+      </button>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md shrink-0 transition-all tab-btn" data-tab="tab-venture">
+        Current Venture: Horizon Carbon ($2.1M)
+      </button>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md shrink-0 transition-all tab-btn" data-tab="tab-pedigree">
+        Builder Background &amp; Track Record
+      </button>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md shrink-0 transition-all tab-btn" data-tab="tab-synergy">
+        Synergy Vectors &amp; Terms
+      </button>
+</div>
+</section>
+<!-- Core Content & Sidebar Workspace Layout -->
+<div class="w-full max-w-7xl mx-auto px-margin py-space-lg grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left & Center Primary Panels (8 Cols) -->
+<main class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- 1. Builder Manifesto & Philosophy -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">Builder Manifesto</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Archived Jan 2025</span>
+</div>
+<blockquote class="font-display-lg text-headline-lg-mobile md:text-headline-lg text-on-surface italic leading-snug my-space-md">
+          “Carbon accounting today is still a tangle of self-reported spreadsheets and static assumptions. We will not solve planetary decarbonization until telemetry is autonomous, auditable at the millisecond edge, and computationally irrefutable.”
+        </blockquote>
+<div class="space-y-space-sm font-body-md text-body-md text-on-surface-variant mt-space-md">
+<p>
+            At Watershed, I saw dozens of Fortune 500 sustainability directors struggle with third-party verification delays lasting 9 to 14 months. We are building the real-time software operating system that connects directly to heavy machinery, substation SCADA grids, and industrial boiler metrics.
+          </p>
+<p>
+            I care deeply about sovereign technical autonomy. I value builders who spend time in the physical plant trenches, write self-healing code, and treat telemetry integrity with the same uncompromising rigor as a central bank treats transaction ledgers.
+          </p>
+</div>
+<!-- Pillar Quotes / Axioms -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md mt-space-lg pt-space-md">
+<div class="bg-surface-container-low p-space-md rounded-lg">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Axiom 01</span>
+<p class="font-headline-sm text-headline-sm text-on-surface mt-1">Ground Truth Sensors</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">No modeled estimates when physical edge current can be metered directly.</p>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Axiom 02</span>
+<p class="font-headline-sm text-headline-sm text-on-surface mt-1">Speed as Moat</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Deploy weekly. Industrial partners adapt quickly when tooling never breaks.</p>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Axiom 03</span>
+<p class="font-headline-sm text-headline-sm text-on-surface mt-1">Extreme Trust</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">50/50 cultural parity between engineering craftsmanship and commercial execution.</p>
+</div>
+</div>
+</section>
+<!-- 2. Active Venture Spotlight: Horizon Carbon -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs pb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-display-lg text-headline-md font-bold">
+              H
+            </div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-on-surface">Horizon Carbon</h3>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">Stealth Pre-Seed</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real-time industrial carbon observability &amp; SEC compliance engine</p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs self-start sm:self-auto">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Stage:</span>
+<span class="font-label-md text-label-md text-on-surface bg-surface-container-high px-2 py-1 rounded-full">$2.1M Pre-Seed Committed</span>
+</div>
+</div>
+<!-- Metric Badges Row -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm my-space-md">
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Capital Backing</span>
+<p class="font-headline-sm text-headline-sm text-on-surface mt-0.5">Lowercarbon • 50Y</p>
+<span class="font-label-sm text-label-sm text-secondary">Co-led Round</span>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Equity Target</span>
+<p class="font-headline-sm text-headline-sm text-on-surface mt-0.5">18% – 25%</p>
+<span class="font-label-sm text-label-sm text-secondary">Founding Partner Slice</span>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Paid Pilots</span>
+<p class="font-headline-sm text-headline-sm text-on-surface mt-0.5">3 Heavy Plants</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">LOIs Totaling $340k ARR</span>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Key Mandate</span>
+<p class="font-headline-sm text-headline-sm text-on-surface mt-0.5">CTO / Co-founder</p>
+<span class="font-label-sm text-label-sm text-secondary">First Technical Hire</span>
+</div>
+</div>
+<!-- Venture Overview Narrative -->
+<div class="mt-space-md space-y-space-sm font-body-md text-body-md text-on-surface-variant">
+<p>
+            Horizon Carbon ingests raw telemetry from concrete kilns, steel mills, and chemical batch facilities to produce provable, SEC Scope 1 &amp; 2 emissions certifications automatically. By integrating cryptographic provenance onto edge gateways, audits that took four months now settle instantly.
+          </p>
+</div>
+<!-- Venture Visual Snapshot & Traction Chart -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md mt-space-lg">
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Telemetry Ingestion Pipeline</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-1">Data Inflow at Live Facility Pilot</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Current edge gateways handling 1.8M events/hr in Stockton, CA.</p>
+</div>
+<!-- Inline SVG Area Chart -->
+<div class="mt-space-md">
+<svg class="w-full h-28 text-secondary" fill="none" preserveaspectratio="none" viewbox="0 0 300 100">
+<defs>
+<lineargradient id="chartGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="currentColor" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="currentColor" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,85 Q40,75 80,60 T160,45 T240,25 T300,10 L300,100 L0,100 Z" fill="url(#chartGrad)"></path>
+<path d="M0,85 Q40,75 80,60 T160,45 T240,25 T300,10" fill="none" stroke="currentColor" stroke-width="2.5"></path>
+<circle cx="240" cy="25" fill="#011209" r="4" stroke="#ffffff" stroke-width="2"></circle>
+<circle cx="300" cy="10" fill="#3a684d" r="4" stroke="#ffffff" stroke-width="2"></circle>
+</svg>
+<div class="flex justify-between text-on-surface-variant font-label-sm text-label-sm mt-1">
+<span>Month 1 (Nov)</span>
+<span>Month 2 (Dec)</span>
+<span>Current (Jan): 1.8M ops/hr</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Current Team Makeup</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-1">Founding Assembly</h4>
+</div>
+<div class="space-y-space-sm my-space-sm">
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-sm font-bold">EV</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Elena Vance</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">CEO, GTM &amp; Regulatory Strategy</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant">Full-time</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center font-label-sm font-bold">Open</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold text-secondary">Founding CTO / Co-founder</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Distributed telemetry &amp; Rust engine</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">Alex Match</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container text-on-surface flex items-center justify-center font-label-sm font-bold">MK</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Mark K. (Contract)</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Hardware Firmware Specialist</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant">15 hrs/wk</span>
+</div>
+</div>
+<div class="pt-2 text-on-surface-variant font-body-sm text-body-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span>
+<span>Clean cap table, Delaware C-Corp fully formed.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Verified Strengths & Past Pedigree -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-space-md">Verified Background &amp; Pedigree</h3>
+<!-- Career Timeline Item 1 -->
+<div class="space-y-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-low">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+<div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">2021 – 2024 (3 yrs)</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-0.5">Watershed • Enterprise Climate GTM Lead</h4>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm self-start sm:self-auto">Grew ARR $0 → $14M</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+              Led zero-to-one sales strategy for industrial manufacturing supply chains. Signed enterprise contracts with 22 multinational operators. Direct relationship network across EPA and SEC carbon registry working groups.
+            </p>
+<div class="flex flex-wrap gap-1.5 mt-space-sm">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm">Enterprise Carbon Auditing</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm">SEC Scope 1-3 Rules</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm">B2B Deal Architecture</span>
+</div>
+</div>
+<!-- Career Timeline Item 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-low">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2018 – 2021</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-0.5">TerraSync (Acquired) • Co-founder &amp; COO</h4>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm self-start sm:self-auto">Acquired by Envira Group</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+              Agricultural yield &amp; soil moisture telemetry SaaS. Scaled to $1.2M ARR before trade-sale acquisition. Bootstrapped through Seed stage with 8 person engineering team.
+            </p>
+</div>
+</div>
+<!-- Core Skill Vector Pills -->
+<div class="mt-space-lg pt-space-md">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant block mb-space-sm">Endorsed Competencies</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-space-md py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified</span>
+              Enterprise Sales Pipeline ($1M+ ACV)
+            </span>
+<span class="px-space-md py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified</span>
+              Climate Hardware Deployments
+            </span>
+<span class="px-space-md py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified</span>
+              SEC &amp; EU CSRD Reporting Standards
+            </span>
+<span class="px-space-md py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified</span>
+              Venture Fundraising (Seed / Series A)
+            </span>
+</div>
+</div>
+</section>
+<!-- 4. Collaboration Non-Negotiables -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center gap-space-xs mb-space-sm">
+<span class="material-symbols-outlined text-secondary text-[24px]">handshake</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">What Elena Looks for in a Co-founder</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          To ensure long-term harmony, Elena has outlined three architectural expectations before any equity vesting or formal co-founder trial:
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mt-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-low">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold text-label-md mb-2">1</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Technical Autonomy</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Full architectural sovereignty over cloud backends, edge gateway OS, and cryptography pipelines without micro-management.</p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold text-label-md mb-2">2</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Extreme Bias for Action</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Prefers rough running code tested directly on plant machines over pristine architectural slide decks.</p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold text-label-md mb-2">3</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Psychological Safety</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Radical candor behind closed boardroom doors, unwavering public alignment in front of customers and investors.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Right Contextual Rail Sidebar (4 Cols) -->
+<aside class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Action 1: Warm Intro Request Desk -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-md sticky top-24" id="intro-desk">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Warm Introduction Desk</span>
+</div>
+<span class="text-secondary font-label-sm text-label-sm font-semibold">Priority Routing</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1">Initiate Private Alignment Sync</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+          BambiFound facilitates direct founder-to-founder intros with bilateral mutual consent.
+        </p>
+<!-- Dynamic Velocity Stats -->
+<div class="my-space-md p-space-sm bg-surface-container-low rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">bolt</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface leading-tight">Median Response</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">2.8 Hours</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest font-label-sm text-label-sm text-on-surface">94% Accepted</span>
+</div>
+<!-- Intro Type Selector -->
+<div class="space-y-space-xs mb-space-md">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Intent Category</label>
+<div class="space-y-1.5" id="introTypeGroup">
+<label class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container cursor-pointer transition-all">
+<span class="flex items-center gap-2">
+<input checked="" class="accent-primary-container" name="intro_type" type="radio" value="cofounder"/>
+<span class="font-label-md text-label-md text-on-surface">Request Co-founder Intro</span>
+</span>
+<span class="text-secondary font-label-sm text-label-sm">High Priority</span>
+</label>
+<label class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container cursor-pointer transition-all">
+<span class="flex items-center gap-2">
+<input class="accent-primary-container" name="intro_type" type="radio" value="advisory"/>
+<span class="font-label-md text-label-md text-on-surface">Fractional Advisory Sync</span>
+</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">1-2 hrs/mo</span>
+</label>
+<label class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container cursor-pointer transition-all">
+<span class="flex items-center gap-2">
+<input class="accent-primary-container" name="intro_type" type="radio" value="coffee"/>
+<span class="font-label-md text-label-md text-on-surface">Informal Peer Dialogue</span>
+</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">SF / Virtual</span>
+</label>
+</div>
+</div>
+<!-- Custom Context Note -->
+<div class="mb-space-md">
+<div class="flex items-center justify-between mb-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="introNote">Opening Synergy Pitch</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Pre-filled with Alex's profile</span>
+</div>
+<textarea class="w-full bg-surface-container-lowest p-space-sm rounded-lg font-body-sm text-body-sm text-on-surface outline-none focus:ring-2 focus:ring-primary-container shadow-inner" id="introNote" placeholder="Why you're excited to partner with Elena..." rows="3">Hi Elena, I saw Horizon Carbon's edge sensor bottleneck. At GridSync, I built the high-throughput MQTT pipelines handling 10M events/day. Would love to unpack technical co-founder alignment.</textarea>
+</div>
+<!-- Submit Button -->
+<button class="w-full py-space-sm px-space-md rounded-full bg-primary-container text-on-primary hover:bg-primary transition-all font-label-md text-label-md flex items-center justify-center gap-2 shadow-md" id="sendIntroBtn">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed">send</span>
+<span>Submit Warm Introduction</span>
+</button>
+<!-- Availability Window Callout -->
+<div class="mt-space-md p-space-xs rounded bg-surface-container-low flex items-center justify-center gap-1.5 text-center">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">3 spots left in Elena's current discovery window</span>
+</div>
+</section>
+<!-- Action 2: Mutual Connections & Vouched Network -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-sm">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Vouched Connections</h4>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">3 Mutuals</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
+          Peers in your verified cluster who have co-invested or built with Elena:
+        </p>
+<div class="space-y-space-sm">
+<!-- Mutual 1 -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-all">
+<div class="flex items-center gap-space-xs">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of Marcus Thorne, venture partner, 40s male with glasses and dark crewneck sweater in an architectural office." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRuz6T4IXYnM6I3_qtDku5qYH5XRjeS-G9j4UbvSVGsoeofIhvA8-7GC2hkacynA-3XiFPrYuNzurv496jWabkAS2zeJcZSN82xwK-kNDXggps2B7bpnPCO0EbadZdE6oGTzQRlBYybbQx0Etz2WgkIaPKq5IrKF3xyo_KVyHCVdRGUW8luKet6skbQ-P9VJmw1oaE1DBkgSpLZhbewUNFvW-aEaJe2AzmtitECZtKW3UOjiKRf_Ou"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Marcus Thorne</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">General Partner @ Acre VC</p>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors" title="Ask Marcus for vouch note">
+<span class="material-symbols-outlined text-[18px]">forward_to_inbox</span>
+</button>
+</div>
+<!-- Mutual 2 -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-all">
+<div class="flex items-center gap-space-xs">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container shrink-0">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of Dr. Priya Desai, female engineering leader, calm smiling expression with minimal neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj92Qj5HmK1NVF730Q_mUpA0PdV8MESNCs2F0EnKZz9QO3prjoya_jVRWY7tPWBGarLrzqZOP1o1VBye8Ob7KUdeGBnifz8amtJ3hMUKuQKBRLxbY_UY-itzJTzqIgEL8DtgeLFQ-3zw9aeK_EoIeuovVpJZhZH7n96LiRdoVOxWCrGKk4nXhKwA2hj1Xkc3fB9GhpcCvvhW6vJ-0us5IP1g61eVy3IAzto6kluDDC5Hx7MdUqq3Os"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Dr. Priya Desai</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">VP Engineering @ PlanetLab</p>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors" title="Ask Priya for vouch note">
+<span class="material-symbols-outlined text-[18px]">forward_to_inbox</span>
+</button>
+</div>
+<!-- Mutual 3: Guild / Cohort -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-all">
+<div class="flex items-center gap-space-xs">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-label-md shrink-0">
+                BS
+              </div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">BuildSpace Climate s24</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Both enrolled alumni</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm">Cohort</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs text-center">
+<a class="font-label-sm text-label-sm text-secondary hover:underline" href="#">View shared cap table &amp; registry graph →</a>
+</div>
+</section>
+<!-- Action 3: Integrity Guarantee & Terms Shield -->
+<section class="bg-surface-container-low rounded-xl p-space-md shadow-sm">
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">lock</span>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface font-semibold">BambiFound Registry Guarantee</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Elena's equity term sheet, incorporation standing, and funding commitments are independently reviewed by BambiFound's Curation Desk under strictly enforced NDA covenants.
+            </p>
+</div>
+</div>
+</section>
+</aside>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+    (function initProfileInteractions() {
+      // Bookmark toggle
+      const bookmarkBtn = document.getElementById('bookmarkBtn');
+      const bookmarkIcon = document.getElementById('bookmarkIcon');
+      const bookmarkText = document.getElementById('bookmarkText');
+      let bookmarked = false;
+
+      if (bookmarkBtn) {
+        bookmarkBtn.addEventListener('click', () => {
+          bookmarked = !bookmarked;
+          if (bookmarked) {
+            bookmarkIcon.textContent = 'bookmark';
+            bookmarkIcon.classList.add('text-secondary');
+            bookmarkText.textContent = 'Saved';
+            bookmarkBtn.classList.add('bg-surface-container-high');
+          } else {
+            bookmarkIcon.textContent = 'bookmark_border';
+            bookmarkIcon.classList.remove('text-secondary');
+            bookmarkText.textContent = 'Bookmark';
+            bookmarkBtn.classList.remove('bg-surface-container-high');
+          }
+        });
+      }
+
+      // Tab selector behavior
+      const tabs = document.querySelectorAll('.tab-btn');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => {
+            t.classList.remove('bg-primary-container', 'text-on-primary', 'active');
+            t.classList.add('bg-surface-container', 'text-on-surface-variant');
+          });
+          tab.classList.remove('bg-surface-container', 'text-on-surface-variant');
+          tab.classList.add('bg-primary-container', 'text-on-primary', 'active');
+        });
+      });
+
+      // Submit Warm Intro confirmation
+      const sendBtn = document.getElementById('sendIntroBtn');
+      if (sendBtn) {
+        sendBtn.addEventListener('click', () => {
+          const originalHTML = sendBtn.innerHTML;
+          sendBtn.disabled = true;
+          sendBtn.innerHTML = `
+            <span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span>
+            <span>Securing Intro Voucher...</span>
+          `;
+          setTimeout(() => {
+            sendBtn.classList.remove('bg-primary-container');
+            sendBtn.classList.add('bg-secondary');
+            sendBtn.innerHTML = `
+              <span class="material-symbols-outlined text-[18px]">done_all</span>
+              <span>Intro Request Dispatched</span>
+            `;
+          }, 900);
+        });
+      }
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-low mt-space-xl"><div class="max-w-7xl mx-auto px-margin py-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><span class="font-label-sm text-label-sm text-on-surface-variant">© 2025 BambiFound. Archival ecosystem for high-conviction ventures.</span><span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>All systems operational</span></div><div class="flex items-center gap-space-lg"><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terms-of-service" href="#">Terms of Service</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="curation-guidelines" href="#">Curation Standards</a></div></div></footer></body></html>

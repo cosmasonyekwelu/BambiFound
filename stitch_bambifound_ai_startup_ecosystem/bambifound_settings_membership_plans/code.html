@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-tertiary-container":"#cf7249","on-primary-fixed-variant":"#374b3f","on-secondary":"#ffffff","inverse-primary":"#b5ccbc","primary-container":"#14281d","secondary-container":"#b9ebc9","secondary-fixed-dim":"#a1d2b1","primary-fixed":"#d0e8d7","on-surface-variant":"#424844","on-error":"#ffffff","on-primary-container":"#7a9081","surface-tint":"#4e6356","surface-container-low":"#f1f4ef","primary-fixed-dim":"#b5ccbc","surface-container-lowest":"#ffffff","surface-container-highest":"#e0e3de","primary":"#011209","on-tertiary":"#ffffff","inverse-surface":"#2d312e","outline-variant":"#c2c8c2","secondary-fixed":"#bceecc","tertiary-fixed-dim":"#ffb597","error-container":"#ffdad6","inverse-on-surface":"#eff2ec","on-secondary-fixed-variant":"#224f36","error":"#ba1a1a","surface-bright":"#f7faf5","surface":"#f7faf5","on-error-container":"#93000a","tertiary-container":"#441500","surface-container-high":"#e6e9e4","surface-dim":"#d8dbd6","surface-variant":"#e0e3de","surface-container":"#ecefea","on-secondary-fixed":"#002111","background":"#f7faf5","tertiary":"#210600","secondary":"#3a684d","on-surface":"#191d1a","on-primary":"#ffffff","on-secondary-container":"#3f6c51","on-background":"#191d1a","on-tertiary-fixed-variant":"#79310c","outline":"#737873","tertiary-fixed":"#ffdbcd","on-primary-fixed":"#0b1f15","on-tertiary-fixed":"#360f00"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","space-xs":"0.25rem","space-lg":"1.5rem","margin":"2rem","space-md":"1rem","space-xl":"2.5rem","gutter":"1.5rem","margin-sm":"1rem","gutter-sm":"1rem"},"fontFamily":{"body-sm":["Plus Jakarta Sans"],"display-lg-mobile":["Newsreader"],"label-sm":["Plus Jakarta Sans"],"display-lg":["Newsreader"],"body-lg":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"headline-lg-mobile":["Newsreader"],"headline-md":["Plus Jakarta Sans"],"headline-lg":["Newsreader"],"body-md":["Plus Jakarta Sans"]},"fontSize":{"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"display-lg-mobile":["38px",{"lineHeight":"44px","letterSpacing":"-0.015em","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}],"display-lg":["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"400"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"600"}],"headline-sm":["18px",{"lineHeight":"26px","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.015em","fontWeight":"500"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(20,40,29,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm group" data-path="overview" href="#"><img alt="BambiFound" class="h-9 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1WesJyIZSu3XP1VhZx2x249r-DFqWrtp9LkzN6nUJsapp15tolQKORoVivEAlXEwg1bHFZsD-iRYchAJ_dS_Fpm8-gSqLh6pdxX65q7YD_HEx7gU4QbKEllOJ_zMHHwhlJRsiHmLeJppBJj2CB-GL_l4onUJciN9C8mP5PpBjcQH88K65V0VNkrPkHiWeNSpYPHJcQfQecpCYpNySZMmqnm5ab9Eo3gffbtjtN46FfYEsyT_YO8emz0GFY"/></a><nav class="hidden lg:flex items-center gap-space-xs p-1 bg-surface-container-low rounded-full" data-active-classes="bg-surface-container-high text-on-surface font-label-md text-label-md rounded-full"><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" data-path="overview" href="#">Overview</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" data-path="discover-builders" href="#">Discover Builders</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" data-path="venture-listings" href="#">Venture Listings</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" data-path="intros-and-messages" href="#">Intros &amp; Messages</a></nav></div><div class="flex items-center gap-space-md"><button class="hidden md:flex items-center gap-space-sm px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" type="button"><span class="material-symbols-outlined text-[18px]">search</span><span class="font-body-sm text-body-sm">Search builders, ventures...</span><kbd class="px-1.5 py-0.5 rounded bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm shadow-[0_1px_2px_rgba(20,40,29,0.06)]">⌘K</kbd></button><div class="relative flex items-center"><button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors relative" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-4 h-4 bg-tertiary-container text-on-tertiary font-label-sm text-label-sm rounded-full flex items-center justify-center leading-none text-[10px]">3</span></button></div><a class="hidden sm:flex items-center gap-space-xs bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md px-space-md py-space-xs rounded-full shadow-[0_2px_8px_-2px_rgba(20,40,29,0.08)] transition-all" data-path="post-a-project" href="#"><span class="material-symbols-outlined text-[18px]">add</span><span>Post a Project</span></a><div class="relative group pl-space-xs"><button class="flex items-center gap-space-sm focus:outline-none" type="button"><div class="w-9 h-9 rounded-full bg-primary-container border border-outline-variant flex items-center justify-center overflow-hidden shadow-sm"><span class="material-symbols-outlined text-surface-bright text-[20px]">person</span></div><div class="hidden xl:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight">Alex Morgan</span><span class="font-label-sm text-label-sm text-secondary leading-tight flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span>Active Builder</span></div><span class="material-symbols-outlined text-on-surface-variant text-[18px] transition-transform group-hover:rotate-180">expand_more</span></button><div class="absolute right-0 top-full mt-2 w-64 bg-surface-container-lowest rounded-xl shadow-[0_12px_28px_-6px_rgba(20,40,29,0.12),0_4px_10px_-2px_rgba(20,40,29,0.04)] border border-outline-variant/60 py-space-xs hidden group-hover:block hover:block z-50"><div class="px-space-md py-space-sm border-b border-surface-container"><p class="font-label-md text-label-md text-on-surface font-semibold">Alex Morgan</p><p class="font-body-sm text-body-sm text-on-surface-variant truncate">alex.morgan@bambifound.org</p></div><div class="py-space-xs"><a class="flex items-center gap-space-sm px-space-md py-space-xs text-on-surface hover:bg-surface-container-low transition-colors font-body-sm text-body-sm" data-path="profile" href="#"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">person</span>View Profile</a><a class="flex items-center gap-space-sm px-space-md py-space-xs text-on-surface hover:bg-surface-container-low transition-colors font-body-sm text-body-sm" data-path="settings-and-plans" href="#"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">settings</span>Account &amp; Settings</a><a class="flex items-center gap-space-sm px-space-md py-space-xs text-on-surface hover:bg-surface-container-low transition-colors font-body-sm text-body-sm" data-path="settings-and-plans" href="#"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">verified</span>Membership &amp; Plans</a></div><div class="border-t border-surface-container pt-space-xs"><a class="flex items-center gap-space-sm px-space-md py-space-xs text-error hover:bg-error-container/20 transition-colors font-body-sm text-body-sm" data-path="overview" href="#"><span class="material-symbols-outlined text-[18px] text-error">logout</span>Sign Out</a></div></div></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full">
+<!-- Subtle Ambient Glow -->
+<div class="relative w-full max-w-7xl mx-auto px-margin py-space-lg">
+<!-- Top Editorial Header & Section Anchor -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pb-space-lg">
+<div class="max-w-2xl">
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold tracking-wider uppercase">Workspace Operations</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Cohort #14 · Spring 2025</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Settings &amp; Workspace</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">Manage your account credentials, notifications, privacy filters, and high-conviction membership subscription tiers.</p>
+</div>
+<!-- Quick Action / Status indicator -->
+<div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-space-xs rounded-full">
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-on-surface">Alex Morgan (Builder Identity #4812)</span>
+</div>
+</div>
+<!-- Main Asymmetric Workspace Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mt-space-sm">
+<!-- Navigation Rail / Sidebar (4 cols on desktop) -->
+<aside class="lg:col-span-3 flex flex-col gap-space-sm">
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex flex-col gap-1">
+<div class="px-space-sm py-space-xs text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Account &amp; Access</div>
+<button class="w-full flex items-center justify-between px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-all text-left" type="button">
+<span class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[19px]">card_membership</span>
+<span>Membership &amp; Plans</span>
+</span>
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span>
+</button>
+<button class="w-full flex items-center justify-between px-space-md py-space-sm rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors text-left" type="button">
+<span class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[19px]">security</span>
+<span>Account Security</span>
+</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant">2FA On</span>
+</button>
+<button class="w-full flex items-center justify-between px-space-md py-space-sm rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors text-left" type="button">
+<span class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[19px]">notifications_active</span>
+<span>Notification Cadence</span>
+</span>
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+</button>
+<button class="w-full flex items-center justify-between px-space-md py-space-sm rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors text-left" type="button">
+<span class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[19px]">visibility_off</span>
+<span>Privacy &amp; Blind Mode</span>
+</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-secondary">Active</span>
+</button>
+<button class="w-full flex items-center justify-between px-space-md py-space-sm rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors text-left" type="button">
+<span class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[19px]">hub</span>
+<span>Connected Accounts</span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2 synced</span>
+</button>
+</div>
+<!-- Curated Concierge Note Card -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-secondary text-[20px]">handshake</span>
+<span>Venture Concierge</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Need an orchestrated syndicate or custom co-founder escrow structure? Dedicated partner desks are bundled into Pro.
+          </p>
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary hover:text-primary transition-colors pt-space-xs" href="#">
+<span>Read Curation Standards</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</aside>
+<!-- Main Settings & Subscription Area (9 cols on desktop) -->
+<main class="lg:col-span-9 flex flex-col gap-space-lg">
+<!-- Top Membership Status Banner / Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-space-lg relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-52 h-52 rounded-full bg-secondary-container/20 pointer-events-none blur-2xl"></div>
+<div class="flex flex-col gap-space-xs z-10 max-w-lg">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm font-semibold tracking-wide uppercase px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface">Tier Level 01</span>
+<span class="text-secondary font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>Active Status
+              </span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary font-semibold">Current Plan: BambiFound Free Tier</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Includes 1 free venture listing, standard matching engine access, and 5 curated warm introductions each calendar cohort.
+            </p>
+<div class="flex flex-wrap items-center gap-space-md pt-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px] text-secondary">check_circle</span>1 Project Live</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px] text-secondary">check_circle</span>Standard Algorithmic Index</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px] text-secondary">check_circle</span>General Roster</span>
+</div>
+</div>
+<!-- Usage Counter Graphic -->
+<div class="w-full md:w-auto bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-xs min-w-[240px] z-10">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Warm Intro Allotment</span>
+<span class="font-label-md text-label-md text-primary font-bold">4 / 5 used</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container-highest rounded-full h-2 overflow-hidden my-1">
+<div class="bg-secondary h-full rounded-full transition-all duration-500" style="width: 80%;"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-[12px]">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Refills May 1
+              </span>
+<span class="text-on-tertiary-container font-semibold">1 Intro Remaining</span>
+</div>
+</div>
+</section>
+<!-- Pricing Matrix Header with Dynamic Toggle -->
+<section class="flex flex-col items-center text-center mt-space-sm pt-space-xs">
+<span class="text-on-tertiary-container font-label-sm text-label-sm uppercase tracking-widest font-semibold mb-space-xs">Ecosystem Allocation</span>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-2xl">
+            Supercharge Your Venture Matching &amp; Discovery
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mt-space-xs">
+            Unlock deep synergy explainability, priority inbox placement, blind outreach, and direct connections to high-reputation technical co-founders.
+          </p>
+<!-- Toggle: Monthly vs Annual -->
+<div class="inline-flex items-center p-1.5 bg-surface-container rounded-full mt-space-md shadow-inner gap-1">
+<button class="px-space-md py-space-xs rounded-full font-label-md text-label-md bg-surface-container-lowest text-primary shadow-sm transition-all duration-200 cursor-pointer" id="toggleMonthly" type="button">
+              Monthly Billing
+            </button>
+<button class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all duration-200 cursor-pointer flex items-center gap-space-xs" id="toggleAnnual" type="button">
+<span>Annual</span>
+<span class="px-space-xs py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-[11px] leading-tight font-bold">Save 20% · 2 mo. free</span>
+</button>
+</div>
+</section>
+<!-- 3-Tier Grid / Cards -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md items-stretch">
+<!-- Tier 1: Free / Standard -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary font-serif">Standard</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Foundational builder access</p>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high font-label-sm text-label-sm text-on-surface-variant font-medium">Included</span>
+</div>
+<div class="flex items-baseline gap-1 py-space-xs">
+<span class="font-headline-lg text-headline-lg font-serif text-primary">$0</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ month</span>
+</div>
+<div class="w-full h-px bg-surface-container"></div>
+<ul class="flex flex-col gap-space-sm font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary mt-0.5 shrink-0">check</span>
+<span><strong>1 Live Venture Listing</strong> with basic profile views counter</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary mt-0.5 shrink-0">check</span>
+<span><strong>5 curated warm intros</strong> per monthly cycle</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary mt-0.5 shrink-0">check</span>
+<span>Standard synergy scoring engine &amp; fit vectors</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary mt-0.5 shrink-0">check</span>
+<span>Public forum &amp; Community Directory access</span>
+</li>
+<li class="flex items-start gap-space-xs opacity-40">
+<span class="material-symbols-outlined text-[18px] mt-0.5 shrink-0">remove</span>
+<span>Instant Cal.com booking link integrations</span>
+</li>
+<li class="flex items-start gap-space-xs opacity-40">
+<span class="material-symbols-outlined text-[18px] mt-0.5 shrink-0">remove</span>
+<span>Stealth Mode &amp; Blind Outreach filters</span>
+</li>
+</ul>
+</div>
+<div class="mt-space-lg pt-space-xs">
+<button class="w-full py-space-xs px-space-md rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md cursor-default text-center" disabled="" type="button">
+                Current Active Tier
+              </button>
+</div>
+</div>
+<!-- Tier 2: BambiFound Plus (Most Popular) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-md flex flex-col justify-between relative transform lg:-translate-y-2 bg-gradient-to-b from-surface-container-lowest to-surface-bright">
+<!-- Popular Badge -->
+<div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary-container text-on-primary px-space-md py-1 rounded-full font-label-sm text-label-sm shadow-sm flex items-center gap-1 tracking-wide uppercase font-semibold">
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed">star</span>
+<span>Most Popular for Builders</span>
+</div>
+<div class="flex flex-col gap-space-md mt-space-xs">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary font-serif">BambiFound Plus</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">High-momentum co-founder search</p>
+</div>
+<span class="w-7 h-7 rounded-full bg-secondary-container/40 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</span>
+</div>
+<!-- Price Switchable Block -->
+<div class="flex items-baseline gap-1 py-space-xs">
+<span class="font-headline-lg text-headline-lg font-serif text-primary tracking-tight" id="pricePlus">$10</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant" id="periodPlus">/ month</span>
+<span class="hidden ml-space-xs text-secondary font-label-sm text-[12px] font-semibold bg-secondary-container/40 px-2 py-0.5 rounded-full" id="notePlus">$96 billed annually</span>
+</div>
+<div class="w-full h-px bg-surface-container-high"></div>
+<ul class="flex flex-col gap-space-sm font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary mt-0.5 shrink-0">check_circle</span>
+<span><strong>20 Curated Warm Intros / month</strong> with priority algorithmic queue ranking</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary mt-0.5 shrink-0">check_circle</span>
+<span><strong>Up to 3 Venture / Project Listings</strong> with granular engagement analytics</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary mt-0.5 shrink-0">check_circle</span>
+<span><strong>Cal.com &amp; Google Calendar</strong> instant booking embeds on match reveal</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary mt-0.5 shrink-0">check_circle</span>
+<span><strong>Synergy Matrix Deep-Dive</strong> (unlimited match explainability insights)</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary mt-0.5 shrink-0">check_circle</span>
+<span>Read Receipts &amp; Priority Direct Messaging pipeline</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary mt-0.5 shrink-0">check_circle</span>
+<span><strong>Verified Builder Badge</strong> in network searches and venture leaderboards</span>
+</li>
+</ul>
+</div>
+<div class="mt-space-lg pt-space-xs flex flex-col gap-space-xs">
+<button class="w-full py-space-sm px-space-md rounded-full bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-space-xs group" id="upgradePlusBtn" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed transition-transform group-hover:scale-110">rocket_launch</span>
+<span id="btnTextPlus">Upgrade to Plus ($10/mo)</span>
+</button>
+<p class="text-center font-label-sm text-[11px] text-on-surface-variant">Instant activation · Cancel or pause anytime</p>
+</div>
+</div>
+<!-- Tier 3: BambiFound Pro -->
+<div class="bg-primary-container text-on-primary rounded-xl p-space-lg shadow-md flex flex-col justify-between relative overflow-hidden">
+<!-- Background Decorative Texture -->
+<div class="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-secondary/15 pointer-events-none blur-3xl"></div>
+<div class="flex flex-col gap-space-md relative z-10">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-surface font-serif">BambiFound Pro</h3>
+<p class="font-body-sm text-body-sm text-on-primary-container mt-0.5">For venture studios &amp; active hirers</p>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-tertiary-container text-tertiary-fixed font-label-sm text-[11px] font-semibold uppercase tracking-wider">Archival</span>
+</div>
+<!-- Price Switchable Block -->
+<div class="flex items-baseline gap-1 py-space-xs">
+<span class="font-headline-lg text-headline-lg font-serif text-surface tracking-tight" id="pricePro">$20</span>
+<span class="font-body-sm text-body-sm text-on-primary-container" id="periodPro">/ month</span>
+<span class="hidden ml-space-xs text-secondary-fixed font-label-sm text-[12px] font-semibold bg-primary/40 px-2 py-0.5 rounded-full" id="notePro">$192 billed annually</span>
+</div>
+<div class="w-full h-px bg-surface-variant/20"></div>
+<ul class="flex flex-col gap-space-sm font-body-sm text-body-sm text-on-primary">
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed mt-0.5 shrink-0">check_circle</span>
+<span><strong>Unlimited Warm Introductions</strong> with 0-wait double-opt-in routing</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed mt-0.5 shrink-0">check_circle</span>
+<span><strong>Unlimited Venture Listings</strong> + Featured placement on Explore index</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed mt-0.5 shrink-0">check_circle</span>
+<span><strong>Complete Archival Talent Database Access</strong> (Full search across all 4,800+ vetted builders)</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed mt-0.5 shrink-0">check_circle</span>
+<span><strong>Blind Stealth Outreach mode</strong> (reach out without exposing current startup identity)</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed mt-0.5 shrink-0">check_circle</span>
+<span><strong>Dedicated Match Concierge</strong> &amp; direct VIP channel in community slack</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed mt-0.5 shrink-0">check_circle</span>
+<span>Priority Listing Audit &amp; Cap-Table legal advisory discount partners</span>
+</li>
+</ul>
+</div>
+<div class="mt-space-lg pt-space-xs flex flex-col gap-space-xs relative z-10">
+<button class="w-full py-space-sm px-space-md rounded-full bg-secondary text-on-secondary hover:bg-secondary/90 font-label-md text-label-md transition-all shadow-md flex items-center justify-center gap-space-xs group" id="upgradeProBtn" type="button">
+<span class="material-symbols-outlined text-[18px] text-surface transition-transform group-hover:scale-110">diamond</span>
+<span id="btnTextPro">Upgrade to Pro ($20/mo)</span>
+</button>
+<p class="text-center font-label-sm text-[11px] text-on-primary-container">Includes enterprise SLA &amp; dedicated onboarding call</p>
+</div>
+</div>
+</div>
+<!-- Founder Tax Deductibility Callout Banner -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary font-semibold">Founder Expense Deductibility</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Classifiable as a venture development, talent recruiting, or professional syndicate operational expense.</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-lowest px-space-md py-1.5 rounded-full font-medium shadow-sm whitespace-nowrap">
+            W-9 / Tax ID Ready
+          </span>
+</div>
+<!-- Billing History & Payment Methods Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md pt-space-xs">
+<!-- Saved Payment Methods (5 cols) -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<h3 class="font-headline-sm text-headline-sm text-primary">Saved Payment Methods</h3>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">lock</span>
+</div>
+<!-- Card Item -->
+<div class="flex flex-col gap-space-sm">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-7 rounded bg-surface-container-highest flex items-center justify-center font-label-sm text-label-sm font-bold text-primary tracking-wider">
+                      VISA
+                    </div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Visa ending in 4192</p>
+<p class="font-body-sm text-[12px] text-on-surface-variant">Expires 09/27 · Default</p>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-[11px] font-semibold">Primary</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-7 rounded bg-primary-container text-on-primary flex items-center justify-center font-label-sm text-[10px] font-bold">
+                      Pay
+                    </div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Apple Pay Connected</p>
+<p class="font-body-sm text-[12px] text-on-surface-variant">Linked to Apple Wallet (Mastercard ••8011)</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors p-1" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Add Method Action -->
+<div class="pt-space-md mt-space-sm">
+<button class="w-full py-space-xs px-space-md rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-space-xs" id="addPaymentBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Add Card or Google Pay</span>
+</button>
+</div>
+</div>
+<!-- Invoices & Receipts (7 cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Invoices &amp; Receipts</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Instant receipt generation with cohort breakdown</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">receipt_long</span>
+</div>
+<!-- Receipts List -->
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="text-on-surface-variant font-label-sm text-[11px] uppercase tracking-wider">
+<th class="pb-space-xs font-semibold">Invoice Date</th>
+<th class="pb-space-xs font-semibold">Description</th>
+<th class="pb-space-xs font-semibold">Amount</th>
+<th class="pb-space-xs font-semibold text-right">PDF</th>
+</tr>
+</thead>
+<tbody class="divide-y-0">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-xs text-on-surface font-medium">Apr 01, 2025</td>
+<td class="py-space-xs text-on-surface-variant">BambiFound Standard Access</td>
+<td class="py-space-xs text-on-surface font-semibold">$0.00</td>
+<td class="py-space-xs text-right">
+<button class="p-1 rounded text-on-surface-variant hover:text-primary transition-colors" title="Download Invoice" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-xs text-on-surface font-medium">Mar 01, 2025</td>
+<td class="py-space-xs text-on-surface-variant">BambiFound Standard Access</td>
+<td class="py-space-xs text-on-surface font-semibold">$0.00</td>
+<td class="py-space-xs text-right">
+<button class="p-1 rounded text-on-surface-variant hover:text-primary transition-colors" title="Download Invoice" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-xs text-on-surface font-medium">Feb 01, 2025</td>
+<td class="py-space-xs text-on-surface-variant">Cohort Onboarding Grant &amp; Verification</td>
+<td class="py-space-xs text-on-surface font-semibold">$0.00</td>
+<td class="py-space-xs text-right">
+<button class="p-1 rounded text-on-surface-variant hover:text-primary transition-colors" title="Download Invoice" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Tax Invoice Details / VAT support -->
+<div class="pt-space-sm mt-space-sm flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span>
+                Stripe Automated Invoicing Engine
+              </span>
+<a class="text-secondary hover:text-primary transition-colors" href="#">Add Corporate Tax ID (VAT/EIN)</a>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+<!-- Interactive Modal Mock for Checkout Trigger -->
+<div class="fixed inset-0 z-50 hidden items-center justify-center bg-primary/40 backdrop-blur-sm p-4" id="checkoutModal">
+<div class="bg-surface-container-lowest rounded-xl max-w-md w-full p-space-lg shadow-2xl relative flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">Secure Checkout</h4>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1" id="closeModalBtn" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-primary font-semibold" id="modalTierName">BambiFound Plus Plan</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="modalBillingCycle">Billed monthly · Next cycle May 15</p>
+</div>
+<span class="font-headline-sm text-headline-sm font-serif text-primary" id="modalAmount">$10.00</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Card Details</label>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between text-on-surface font-body-sm text-body-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary">credit_card</span>
+<span>•••• 4192 (Default Visa)</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Ready</span>
+</div>
+</div>
+<button class="w-full py-space-sm px-space-md rounded-full bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md transition-all shadow-md flex items-center justify-center gap-space-xs" id="confirmCheckoutBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span id="confirmBtnText">Confirm Membership ($10)</span>
+</button>
+<p class="text-center font-label-sm text-[11px] text-on-surface-variant">
+        Protected by 256-bit encryption. Instantly applied to builder account.
+      </p>
+</div>
+</div>
+</div>
+<script>
+  (function initSubscriptionLogic() {
+    let isAnnual = false;
+
+    const toggleMonthly = document.getElementById('toggleMonthly');
+    const toggleAnnual = document.getElementById('toggleAnnual');
+
+    const pricePlus = document.getElementById('pricePlus');
+    const periodPlus = document.getElementById('periodPlus');
+    const notePlus = document.getElementById('notePlus');
+    const btnTextPlus = document.getElementById('btnTextPlus');
+
+    const pricePro = document.getElementById('pricePro');
+    const periodPro = document.getElementById('periodPro');
+    const notePro = document.getElementById('notePro');
+    const btnTextPro = document.getElementById('btnTextPro');
+
+    const checkoutModal = document.getElementById('checkoutModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const upgradePlusBtn = document.getElementById('upgradePlusBtn');
+    const upgradeProBtn = document.getElementById('upgradeProBtn');
+
+    const modalTierName = document.getElementById('modalTierName');
+    const modalBillingCycle = document.getElementById('modalBillingCycle');
+    const modalAmount = document.getElementById('modalAmount');
+    const confirmBtnText = document.getElementById('confirmBtnText');
+
+    function updatePricingUI() {
+      if (isAnnual) {
+        // Annual state: Plus $8/mo ($96/yr), Pro $16/mo ($192/yr)
+        pricePlus.textContent = '$8';
+        periodPlus.textContent = '/ month';
+        notePlus.classList.remove('hidden');
+        btnTextPlus.textContent = 'Upgrade to Plus ($96/yr)';
+
+        pricePro.textContent = '$16';
+        periodPro.textContent = '/ month';
+        notePro.classList.remove('hidden');
+        btnTextPro.textContent = 'Upgrade to Pro ($192/yr)';
+
+        // Toggle buttons style
+        toggleAnnual.className = 'px-space-md py-space-xs rounded-full font-label-md text-label-md bg-surface-container-lowest text-primary shadow-sm transition-all duration-200 cursor-pointer flex items-center gap-space-xs';
+        toggleMonthly.className = 'px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all duration-200 cursor-pointer';
+      } else {
+        // Monthly state: Plus $10, Pro $20
+        pricePlus.textContent = '$10';
+        periodPlus.textContent = '/ month';
+        notePlus.classList.add('hidden');
+        btnTextPlus.textContent = 'Upgrade to Plus ($10/mo)';
+
+        pricePro.textContent = '$20';
+        periodPro.textContent = '/ month';
+        notePro.classList.add('hidden');
+        btnTextPro.textContent = 'Upgrade to Pro ($20/mo)';
+
+        // Toggle buttons style
+        toggleMonthly.className = 'px-space-md py-space-xs rounded-full font-label-md text-label-md bg-surface-container-lowest text-primary shadow-sm transition-all duration-200 cursor-pointer';
+        toggleAnnual.className = 'px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all duration-200 cursor-pointer flex items-center gap-space-xs';
+      }
+    }
+
+    toggleMonthly.addEventListener('click', () => {
+      isAnnual = false;
+      updatePricingUI();
+    });
+
+    toggleAnnual.addEventListener('click', () => {
+      isAnnual = true;
+      updatePricingUI();
+    });
+
+    function openModal(tier) {
+      if (tier === 'plus') {
+        modalTierName.textContent = 'BambiFound Plus Plan';
+        if (isAnnual) {
+          modalAmount.textContent = '$96.00';
+          modalBillingCycle.textContent = 'Billed annually ($8/mo) · 2 months free';
+          confirmBtnText.textContent = 'Confirm Membership ($96/yr)';
+        } else {
+          modalAmount.textContent = '$10.00';
+          modalBillingCycle.textContent = 'Billed monthly · Cancel anytime';
+          confirmBtnText.textContent = 'Confirm Membership ($10/mo)';
+        }
+      } else {
+        modalTierName.textContent = 'BambiFound Pro Plan';
+        if (isAnnual) {
+          modalAmount.textContent = '$192.00';
+          modalBillingCycle.textContent = 'Billed annually ($16/mo) · 2 months free';
+          confirmBtnText.textContent = 'Confirm Membership ($192/yr)';
+        } else {
+          modalAmount.textContent = '$20.00';
+          modalBillingCycle.textContent = 'Billed monthly · Cancel anytime';
+          confirmBtnText.textContent = 'Confirm Membership ($20/mo)';
+        }
+      }
+      checkoutModal.classList.remove('hidden');
+      checkoutModal.classList.add('flex');
+    }
+
+    function closeModal() {
+      checkoutModal.classList.add('hidden');
+      checkoutModal.classList.remove('flex');
+    }
+
+    upgradePlusBtn.addEventListener('click', () => openModal('plus'));
+    upgradeProBtn.addEventListener('click', () => openModal('pro'));
+    closeModalBtn.addEventListener('click', closeModal);
+
+    checkoutModal.addEventListener('click', (e) => {
+      if (e.target === checkoutModal) closeModal();
+    });
+
+    const confirmCheckoutBtn = document.getElementById('confirmCheckoutBtn');
+    confirmCheckoutBtn.addEventListener('click', () => {
+      confirmBtnText.textContent = 'Processing...';
+      setTimeout(() => {
+        alert('Welcome to your upgraded BambiFound Tier! Your account permissions and intro allotments have expanded.');
+        closeModal();
+        confirmBtnText.textContent = 'Confirmed!';
+      }, 700);
+    });
+
+    const addPaymentBtn = document.getElementById('addPaymentBtn');
+    if (addPaymentBtn) {
+      addPaymentBtn.addEventListener('click', () => {
+        alert('Prompting secure Stripe modal to tokenize new corporate card or Apple/Google Pay credentials.');
+      });
+    }
+  })();
+</script></main><footer class="w-full bg-surface-container-low mt-space-xl"><div class="max-w-7xl mx-auto px-margin py-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><span class="font-label-sm text-label-sm text-on-surface-variant">© 2025 BambiFound. Archival ecosystem for high-conviction ventures.</span><span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>All systems operational</span></div><div class="flex items-center gap-space-lg"><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terms-of-service" href="#">Terms of Service</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="curation-guidelines" href="#">Curation Standards</a></div></div></footer></body></html>
