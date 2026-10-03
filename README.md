@@ -20,7 +20,7 @@ BambiFound is an AI-powered startup ecosystem designed to help founders, early-s
 
 BambiFound utilizes a decoupled production architecture:
 
-- **Production Frontend (Netlify):** [https://bambi-found.netlify.app](https://bambi-found.netlify.app)
+- **Production Frontend (Netlify):** [https://bambifound.netlify.app](https://bambifound.netlify.app)
   *(Note: Vercel demo also available at `https://bambi-found.vercel.app`)*
 - **Production Backend (Render/Railway):** NestJS REST API
 - **Database:** Neon PostgreSQL
