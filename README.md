@@ -94,7 +94,18 @@ The Vite frontend will start on **`http://localhost:3000`**.
 
 ---
 
-## 5. Testing Instructions
+## 5. Onboarding Flow & Testing Instructions
+
+### Running Onboarding Locally
+1. Start the PostgreSQL database and backend server (`http://localhost:4000`).
+2. Start the frontend Vite app (`http://localhost:3000`).
+3. Register or log in to automatically route to `/onboarding`.
+4. The 4-step onboarding flow consists of:
+   - **Step 1: Multi-Intent Discovery** (`bambifound_onboarding_builder_intent`)
+   - **Step 2: Capability Graph** (`bambifound_onboarding_skills_strengths`)
+   - **Step 3: Background & Desired Alignment** (`bambifound_onboarding_builder_experience`)
+   - **Step 4: Intelligent Synergy Profile** (`bambifound_onboarding_matching_matrix`)
+5. You can complete all steps or click **Skip for now** at any step to proceed directly to `/dashboard`.
 
 ### Server Unit Tests
 ```bash

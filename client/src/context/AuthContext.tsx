@@ -6,6 +6,10 @@ export interface User {
   email: string;
   fullName: string | null;
   emailVerified: boolean;
+  onboardingCompleted: boolean;
+  onboardingSkipped: boolean;
+  onboardingStep: number;
+  onboardingData: Record<string, any>;
   createdAt: string;
   updatedAt: string;
 }
@@ -17,6 +21,8 @@ interface AuthContextType {
   login: (data: { email: string; password: string }) => Promise<void>;
   register: (data: { email: string; password: string; fullName?: string }) => Promise<void>;
   logout: () => Promise<void>;
+  updateUser: (updatedFields: Partial<User>) => void;
+  refreshUser: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -65,6 +71,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  const updateUser = (updatedFields: Partial<User>) => {
+    setUser((prev) => (prev ? { ...prev, ...updatedFields } : null));
+  };
+
+  const refreshUser = async () => {
+    try {
+      const res = await api.get('/auth/me');
+      setUser(res.data);
+    } catch {
+      // ignore
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -74,6 +93,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         login,
         register,
         logout,
+        updateUser,
+        refreshUser,
       }}
     >
       {children}
