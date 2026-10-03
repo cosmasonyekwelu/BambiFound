@@ -10,12 +10,11 @@ This document is the SINGLE CANONICAL IMPLEMENTATION ROADMAP for BambiFound. It 
 4. Current repository state.
 
 ## 3. Current Repository Baseline
-*   `client/`: **DOES NOT EXIST**
-*   `server/`: **DOES NOT EXIST**
-*   `docker-compose.yml`: **DOES NOT EXIST**
+*   `client/`: **COMPLETE** (React + Vite + Tailwind + Auth UI)
+*   `server/`: **COMPLETE** (NestJS + Prisma + Auth API + Swagger)
+*   `docker-compose.yml`: **COMPLETE** (PostgreSQL + pgvector + Mailpit)
 *   `docs/SYSTEM_DESIGN.md`: **COMPLETE**
 *   `PRD.md`: **COMPLETE**
-**Conclusion:** The repository requires full initialization starting from Phase 1.
 
 ## 4. Implementation Principles
 *   Fastest reliable path to MVP.
@@ -26,9 +25,9 @@ This document is the SINGLE CANONICAL IMPLEMENTATION ROADMAP for BambiFound. It 
 
 ## 5. Final Architecture Summary
 *   **Repository:** Single Git repo, two independent apps (`client/` and `server/`).
-*   **Frontend (Client):** React, Vite, TS, Tailwind, shadcn/ui, TanStack Query, React Hook Form, Zod.
+*   **Frontend (Client):** React, Vite, TS, Tailwind, TanStack Query, React Hook Form, Zod.
 *   **Backend (Server):** NestJS, TS, REST, Prisma.
-*   **Database:** Neon (Managed PostgreSQL + pgvector).
+*   **Database:** PostgreSQL + pgvector (Docker locally / Neon in Prod).
 *   **Deployment:** Vercel (Frontend), Render (Backend).
 *   **External Services:** Cloudinary (Media), Monnify Sandbox (Payments), OpenAI (AI Primary), Groq (AI Fallback).
 
@@ -49,7 +48,7 @@ Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &
 *   **Purpose:** Create the dual-application structure.
 *   **Dependencies:** None
 *   **Implementation:** Scaffold `client/` (Vite React-TS) and `server/` (NestJS CLI). Set up root linting and Git configs.
-*   **Status:** NOT STARTED
+*   **Status:** **COMPLETE**
 
 ---
 
@@ -58,7 +57,7 @@ Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &
 *   **Purpose:** Provision local PostgreSQL (with pgvector) and Mailpit.
 *   **Dependencies:** BOOT-001
 *   **Implementation:** Add `docker-compose.yml`, local volumes, health checks.
-*   **Status:** NOT STARTED
+*   **Status:** **COMPLETE**
 
 ---
 
@@ -67,7 +66,7 @@ Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &
 *   **Purpose:** Connect NestJS to PostgreSQL.
 *   **Dependencies:** INFRA-001
 *   **Implementation:** Initialize Prisma, set `DATABASE_URL`, create base `User` schema, run first migration.
-*   **Status:** NOT STARTED
+*   **Status:** **COMPLETE**
 
 ---
 
@@ -76,7 +75,7 @@ Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &
 *   **Purpose:** Establish REST conventions and global middleware.
 *   **Dependencies:** DB-001
 *   **Implementation:** Global validation pipe (Zod integration), exception filters, Swagger documentation setup, `/api/health` endpoint.
-*   **Status:** NOT STARTED
+*   **Status:** **COMPLETE**
 
 ---
 
@@ -84,8 +83,8 @@ Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &
 **WEB-001 — React/Vite Bootstrap**
 *   **Purpose:** Establish UI conventions.
 *   **Dependencies:** BOOT-001
-*   **Implementation:** Install Tailwind, shadcn/ui, TanStack Query, React Router. Setup base layouts and global error boundary.
-*   **Status:** NOT STARTED
+*   **Implementation:** Install Tailwind, TanStack Query, React Router. Setup base layouts and global error boundary.
+*   **Status:** **COMPLETE**
 
 ---
 
@@ -94,13 +93,13 @@ Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &
 *   **Purpose:** JWT Access/Refresh flow.
 *   **Dependencies:** API-001
 *   **Implementation:** Registration, Login, Logout endpoints. Argon2id password hashing. HttpOnly cookie handling for refresh tokens.
-*   **Status:** NOT STARTED
+*   **Status:** **COMPLETE**
 
 **AUTH-002 — Frontend Auth State**
 *   **Purpose:** Client-side protected routes.
 *   **Dependencies:** AUTH-001, WEB-001
 *   **Implementation:** Login/Register forms matching Stitch designs, Auth context, Axios interceptor for JWT refresh, protected route wrappers.
-*   **Status:** NOT STARTED
+*   **Status:** **COMPLETE**
 
 ---
 
@@ -109,7 +108,7 @@ Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &
 *   **Purpose:** Public entry point.
 *   **Dependencies:** WEB-001
 *   **Implementation:** Match approved Stitch design for the landing page.
-*   **Status:** NOT STARTED
+*   **Status:** **COMPLETE**
 
 ---
 
@@ -313,65 +312,3 @@ Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &
 **DOC-001 — Final Documentation**
 *   **Implementation:** Update `README.md` with explicit local run instructions. Finalize API docs.
 *   **Status:** NOT STARTED
-
----
-
-## 36. Traceability Matrix
-
-| PRD Requirement | Phase | Task ID | Area | Acceptance Criterion |
-| :--- | :--- | :--- | :--- | :--- |
-| Independent Repos | Phase 1 | BOOT-001 | Root | Two isolated folders |
-| Local DB/Infra | Phase 2 | INFRA-001 | Docker | Postgres starts locally |
-| JWT Authentication | Phase 6 | AUTH-001 | API | Secure login works |
-| Profile Creation | Phase 8 | PROFILE-001| API/Web| User stores profile data |
-| Startup Listings | Phase 10 | STARTUP-001| API | 1 free startup created |
-| Vector Similarity | Phase 13 | VECTOR-001 | DB/API | pgvector semantic match |
-| AI Fallback | Phase 12 | AI-001 | API | Groq handles OpenAI failure|
-| Messaging | Phase 16 | MSG-001 | API/Web| WSS chat works |
-| Monnify Sandbox | Phase 18 | PAY-001 | API | Webhook processed |
-| Vercel/Render Prod | Phase 23,24| DEPLOY-003| Ops | Sites are live |
-
----
-
-## 37. Design Dependencies
-The following frontend implementation tasks are strictly blocked until Google Stitch designs are approved:
-*   Onboarding / Profile forms
-*   Dashboard
-*   Discover / Matches
-*   Match Detail
-*   Opportunities
-*   Startup Discovery
-*   Connections
-*   Messaging
-*   Settings
-
-*Status: **MISSING — DESIGN REQUIRED** for these screens.*
-
----
-
-## 38. Risks and Blockers
-*   **Synchronous AI Blockers:** AI abstraction (AI-001) is synchronous. If OpenAI hangs, HTTP requests will timeout. Mitigation: strict timeout configurations.
-*   **Frontend Blockers:** Implementation of specific routes halts completely if Stitch designs are unavailable.
-
----
-
-## 39. Deferred Features
-*   Investor intents and matching functionality.
-*   Redis / Background Jobs (BullMQ).
-*   Paid tier logic (Venture Studio/Serial tiers).
-*   Live Monnify payments (Sandbox only for MVP).
-*   Production APM/Observability.
-
----
-
-## 40. Final Definition of Done
-The BambiFound MVP is strictly "Done" when:
-*   Authentication is secure (JWT/Argon2id).
-*   Profiles, Intents, Startups, and Opportunities can be created and queried.
-*   AI successfully abstracts OpenAI/Groq for extraction and `pgvector` semantic matching.
-*   Users can Connect and Message in real-time.
-*   Media successfully uploads to Cloudinary.
-*   Monnify Sandbox processes webhooks successfully.
-*   The application is deployed securely to Vercel (Frontend), Render (Backend), and Neon (Database).
-*   Approved Stitch designs are accurately implemented.
-*   The core user journey (Find &rarr; Match &rarr; Connect &rarr; Build) functions end-to-end in production.
