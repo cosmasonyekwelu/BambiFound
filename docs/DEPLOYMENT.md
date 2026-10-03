@@ -1,153 +1,89 @@
 # BambiFound Deployment & Production Setup Guide
 
-This document outlines the environment configuration, local development workflow, Paystack webhook testing, and production deployment procedures for the BambiFound application.
+This document outlines the environment configuration, Paystack integration, testing, and production deployment architecture for the BambiFound application.
 
 ---
 
-## 1. Environment Variables
+## 1. Deployment Architecture
+
+BambiFound uses a decoupled full-stack architecture:
+
+*   **Frontend (SPA):** React + Vite
+    *   **Deployed on:** Netlify
+*   **Backend (REST API):** NestJS
+    *   **Deployed on:** Existing backend deployment service
+*   **Database:** Neon PostgreSQL
+    *   **Vector Search:** pgvector (configured within Neon)
+*   **Payments:** Paystack
+    *   Test mode enabled for verification without real charges.
+
+*(Note: Cloudinary and OpenAI are planned/example integrations and are not yet fully configured in this deployment).*
+
+---
+
+## 2. Environment Variables
 
 ### Server (`server/.env`)
-| Variable | Description | Example / Default Value |
+| Variable | Description | Example / Placeholder |
 |---|---|---|
 | `PORT` | HTTP port for NestJS server | `4000` |
 | `DATABASE_URL` | PostgreSQL connection string | `postgresql://bambi_user:bambi_pass@localhost:5432/bambifound_db?schema=public` |
-| `JWT_SECRET` | Secret key for signing Access Tokens | `super_secret_jwt_access_key_bambifound_2025` |
-| `JWT_REFRESH_SECRET` | Secret key for signing Refresh Tokens | `super_secret_jwt_refresh_key_bambifound_2025` |
+| `JWT_SECRET` | Secret key for signing Access Tokens | `super_secret_jwt_access_key` |
+| `JWT_REFRESH_SECRET` | Secret key for signing Refresh Tokens | `super_secret_jwt_refresh_key` |
 | `JWT_ACCESS_EXPIRATION` | Access token lifespan | `15m` |
 | `JWT_REFRESH_EXPIRATION` | Refresh token lifespan | `7d` |
-| `FRONTEND_URL` | Client application origin for CORS & payment redirects | `http://localhost:3000` |
-| `PAYSTACK_SECRET_KEY` | Paystack Secret Key (Test or Live) | `sk_test_40840840840840814084084084084081` |
-| `PAYSTACK_PUBLIC_KEY` | Paystack Public Key (Test or Live) | `pk_test_40840840840840814084084084084081` |
+| `FRONTEND_URL` | Client application origin for CORS & payment redirects | `https://your-netlify-url.netlify.app` |
+| `PAYSTACK_SECRET_KEY` | Paystack Secret Key (Test) | `sk_test_...` |
+| `PAYSTACK_PUBLIC_KEY` | Paystack Public Key (Test) | `pk_test_...` |
+| `PAYSTACK_WEBHOOK_SECRET` | Paystack Webhook Secret | `(Use PAYSTACK_SECRET_KEY by default)` |
 
 ### Client (`client/.env`)
-| Variable | Description | Example / Default Value |
+| Variable | Description | Example / Placeholder |
 |---|---|---|
-| `VITE_API_URL` | Base URL pointing to NestJS backend REST API | `http://localhost:4000` |
+| `VITE_API_URL` | Base URL pointing to NestJS backend REST API | `https://your-backend-api.com` |
+
+> **Security Rule:** Never place secret API keys or database credentials into source code, documentation, or the frontend `VITE_` variables.
 
 ---
 
-## 2. Local Development Setup
+## 3. Paystack Integration Documentation
 
-### Prerequisites
-- Node.js (v20+ recommended)
-- PostgreSQL (16+) or Docker
-- npm or pnpm
+**Why Paystack?**
+BambiFound requires a secure payment gateway to process subscription and membership tier upgrades for founders and talent. Paystack handles payment initialization, secure checkout, and webhook verification asynchronously.
 
-### Step-by-Step Local Setup
-
-1. **Start PostgreSQL Database**
-   ```bash
-   # Option A: Native PostgreSQL
-   sudo service postgresql start
-   sudo -u postgres psql -c "CREATE USER bambi_user WITH PASSWORD 'bambi_pass';"
-   sudo -u postgres psql -c "CREATE DATABASE bambifound_db OWNER bambi_user;"
-
-   # Option B: Docker Compose
-   docker compose up -d
-   ```
-
-2. **Configure Environment Files**
-   ```bash
-   cp .env.example .env
-   cp server/.env.example server/.env
-   cp client/.env.example client/.env
-   ```
-
-3. **Install Dependencies & Migrate Database**
-   ```bash
-   # Server setup
-   cd server
-   npm install
-   npx prisma db push
-   npx prisma generate
-
-   # Client setup
-   cd ../client
-   npm install
-   ```
-
-4. **Run Server and Client**
-   ```bash
-   # Terminal 1: NestJS Backend (Port 4000)
-   cd server
-   npm run start:dev
-
-   # Terminal 2: React Frontend (Port 3000)
-   cd client
-   npm run dev
-   ```
+**Application Flow:**
+1. User logs into BambiFound and navigates to Membership settings.
+2. User selects a subscription tier (e.g., BambiFound PLUS).
+3. The NestJS backend initializes the payment via Paystack API, recording a pending transaction.
+4. User completes payment via Paystack Checkout. For testing, **Paystack Test Mode** is used (test card: `4084084084084081`).
+5. Upon successful checkout, Paystack redirects the user back to the frontend.
+6. The frontend calls the backend verification endpoint, OR Paystack asynchronously fires a `charge.success` webhook.
+7. The backend strictly validates the `x-paystack-signature` against the raw request body for idempotency and security.
+8. The backend upgrades the user's membership tier and records the successful payment history.
 
 ---
 
-## 3. Paystack Webhook Testing & Local Verification
+## 4. Frontend Deployment (Netlify)
 
-Paystack uses HMAC SHA512 signatures (`x-paystack-signature` header) computed over the raw request body Buffer.
+To deploy the React/Vite client to Netlify:
 
-### Testing Webhooks Locally via Ngrok
+1. Create a new site from Git in Netlify, pointing to the `/client` directory.
+2. Set Build Command: `npm run build`
+3. Set Publish Directory: `dist`
+4. Set Environment Variables:
+   - `VITE_API_URL` (points to the existing deployed NestJS backend).
+5. Ensure `netlify.toml` is present in the `client/` directory with the following SPA routing configuration to prevent 404s on direct navigation:
+   ```toml
+   [build]
+     command = "npm run build"
+     publish = "dist"
 
-1. Expose your local NestJS server:
-   ```bash
-   ngrok http 4000
+   [[redirects]]
+     from = "/*"
+     to = "/index.html"
+     status = 200
    ```
-2. Copy the generated public HTTPS URL (e.g. `https://abc123.ngrok-free.app`).
-3. In the [Paystack Dashboard](https://dashboard.paystack.com/#/settings/developer), set the **Webhook URL** to:
-   `https://abc123.ngrok-free.app/api/v1/payments/webhook`
-4. Use Paystack's official test cards for sandbox transactions:
-   - **Card Number:** `4084084084084081`
-   - **CVV:** `408`
-   - **Expiry:** Any future date (e.g. `12/30`)
-   - **PIN / OTP:** Any 4-digit number (e.g. `1234`)
-
-### Testing Webhooks via Mockpay / Curl
-To trigger a mock `charge.success` event manually for offline testing:
-```bash
-# Generate signature using PAYSTACK_SECRET_KEY
-SECRET="sk_test_40840840840840814084084084084081"
-BODY='{"event":"charge.success","data":{"reference":"<YOUR_PAYMENT_REFERENCE>","channel":"card"}}'
-SIG=$(echo -n "$BODY" | openssl dgst -sha512 -hmac "$SECRET" | sed 's/(stdin)= //')
-
-curl -X POST http://localhost:4000/api/v1/payments/webhook \
-  -H "Content-Type: application/json" \
-  -H "x-paystack-signature: $SIG" \
-  -d "$BODY"
-```
-
----
-
-## 4. Production Deployment
-
-### Database Provisioning (Neon / Supabase)
-1. Create a managed PostgreSQL instance on [Neon](https://neon.tech) or [Supabase](https://supabase.com).
-2. Copy the pooled connection string into `DATABASE_URL` (ensure `?sslmode=require` is appended).
-3. Apply schema migrations during deployment:
-   ```bash
-   npx prisma db push
-   ```
-
-### Backend Deployment (Render / Railway)
-1. Create a Web Service connected to the GitHub repository (pointing to `/server` root).
-2. Set Environment Variables in service settings (`DATABASE_URL`, `JWT_SECRET`, `JWT_REFRESH_SECRET`, `FRONTEND_URL`, `PAYSTACK_SECRET_KEY`, `PAYSTACK_PUBLIC_KEY`).
-3. Set Build Command:
-   ```bash
-   npm install && npx prisma db push && npx prisma generate && npm run build
-   ```
-4. Set Start Command:
-   ```bash
-   npm run start:prod
-   ```
-
-### Frontend Deployment (Vercel / Netlify)
-1. Create a project connected to the GitHub repository (pointing to `/client` root).
-2. Set Environment Variables:
-   - `VITE_API_URL`: Set to the deployed backend URL (e.g. `https://bambifound-api.onrender.com`).
-3. Set Build Command: `npm run build`
-4. Set Output Directory: `dist`
-
-### Paystack Live Configuration
-1. Log in to Paystack Dashboard and activate your live account.
-2. In **Settings -> Developer / API Keys**:
-   - Set **Live Webhook URL** to `https://<YOUR_API_DOMAIN>/api/v1/payments/webhook`.
-   - Copy `sk_live_...` and `pk_live_...` into production environment variables.
+6. **CORS:** Ensure the NestJS backend has CORS configured to accept requests from the Netlify production URL.
 
 ---
 
@@ -158,3 +94,5 @@ Run Playwright E2E tests before releasing code to production:
 # Ensure server (port 4000) and client (port 3000) are running, or rely on webServer config
 npx playwright test
 ```
+
+*Note on Payment Test:* The current `e2e/payment.spec.ts` test is an automated integration-flow test utilizing mocked/simulated Paystack responses or fallback logic provided by the backend sandbox when real API keys are not supplied in the `.env` file.

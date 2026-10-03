@@ -28,11 +28,11 @@ This document is the SINGLE CANONICAL IMPLEMENTATION ROADMAP for BambiFound. It 
 *   **Frontend (Client):** React, Vite, TS, Tailwind, TanStack Query, React Hook Form, Zod.
 *   **Backend (Server):** NestJS, TS, REST, Prisma.
 *   **Database:** PostgreSQL + pgvector (Docker locally / Neon in Prod).
-*   **Deployment:** Vercel (Frontend), Render (Backend).
-*   **External Services:** Cloudinary (Media), Monnify Sandbox (Payments), OpenAI (AI Primary), Groq (AI Fallback).
+*   **Deployment:** Netlify (Frontend), Render (Backend).
+*   **External Services:** Cloudinary (Media), Paystack Sandbox (Payments), OpenAI (AI Primary), Groq (AI Fallback).
 
 ## 6. Dependency Graph
-Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &rarr; Frontend Base &rarr; Auth &rarr; Profiles &rarr; Intent &rarr; Startups &rarr; Opportunities &rarr; AI Abstraction &rarr; AI Extraction & Embeddings &rarr; Hybrid Matching &rarr; Connections &rarr; Messaging &rarr; Cloudinary &rarr; Monnify &rarr; Security/Testing &rarr; Deploy (DB &rarr; API &rarr; Client).
+Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &rarr; Frontend Base &rarr; Auth &rarr; Profiles &rarr; Intent &rarr; Startups &rarr; Opportunities &rarr; AI Abstraction &rarr; AI Extraction & Embeddings &rarr; Hybrid Matching &rarr; Connections &rarr; Messaging &rarr; Cloudinary &rarr; Paystack &rarr; Security/Testing &rarr; Deploy (DB &rarr; API &rarr; Client).
 
 ---
 
@@ -221,7 +221,7 @@ Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &
 ---
 
 ## 25. Phase 18 — Payments
-**PAY-001 — Monnify Sandbox Integration**
+**PAY-001 — Paystack Sandbox Integration**
 *   **Purpose:** Test environment payments.
 *   **Dependencies:** API-001
 *   **Implementation:** NestJS Webhook receiver. Transaction initiation endpoints. Update internal entitlement state.
@@ -249,7 +249,7 @@ Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &
 
 ## 28. Phase 21 — Production Preparation
 **DEPLOY-001 — Environment Secrets**
-*   **Purpose:** Stage configs for Vercel, Render, Neon.
+*   **Purpose:** Stage configs for Netlify, Render, Neon.
 *   **Dependencies:** None
 *   **Implementation:** Define strict separation of CLIENT, SERVER, DB variables.
 *   **Status:** NOT STARTED
@@ -275,10 +275,10 @@ Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &
 ---
 
 ## 31. Phase 24 — Frontend Deployment
-**DEPLOY-004 — Vercel Deployment**
+**DEPLOY-004 — Netlify Deployment**
 *   **Purpose:** Deploy React Client.
 *   **Dependencies:** DEPLOY-003
-*   **Implementation:** Connect GitHub to Vercel. Set `VITE_API_URL` pointing to Render API.
+*   **Implementation:** Connect GitHub to Netlify. Set `VITE_API_URL` pointing to Render API.
 *   **Status:** NOT STARTED
 
 ---
@@ -287,7 +287,7 @@ Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &
 **DEPLOY-005 — CORS & Integration Test**
 *   **Purpose:** Ensure systems communicate.
 *   **Dependencies:** DEPLOY-004
-*   **Implementation:** Configure Render CORS to specifically allow Vercel domain. Create real account.
+*   **Implementation:** Configure Render CORS to specifically allow Netlify domain. Create real account.
 *   **Status:** NOT STARTED
 
 ---
@@ -295,7 +295,7 @@ Repo Init &rarr; Local Infra (Docker) &rarr; DB Setup (Prisma) &rarr; API Base &
 ## 33. Phase 26 — Production Verification
 **MVP-001 — Production Sandbox Validation**
 *   **Purpose:** E2E manual checks in Prod.
-*   **Implementation:** Verify Monnify webhooks reach Render. Verify Cloudinary images load on Vercel. Verify AI matching succeeds.
+*   **Implementation:** Verify Paystack webhooks reach Render. Verify Cloudinary images load on Netlify. Verify AI matching succeeds.
 *   **Status:** NOT STARTED
 
 ---
