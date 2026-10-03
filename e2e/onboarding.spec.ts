@@ -49,7 +49,7 @@ test.describe('BambiFound End-to-End Onboarding Flow & Guards', () => {
     // 6. Arrive at /dashboard
     await expect(page).toHaveURL(/\/dashboard/);
     await expect(page.locator('h1')).toContainText(`Welcome, ${user.fullName}!`);
-    await expect(page.getByText('Your dashboard is under construction.')).toBeVisible();
+    await expect(page.getByText('High-Conviction Builder Matches')).toBeVisible();
   });
 
   test('Flow 2: Skip Onboarding & Resume from Dashboard', async ({ page }) => {

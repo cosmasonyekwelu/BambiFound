@@ -47,6 +47,8 @@ export class AuthService {
       onboardingSkipped: user.onboardingSkipped,
       onboardingStep: user.onboardingStep,
       onboardingData: user.onboardingData,
+      membershipTier: user.membershipTier,
+      membershipExpiresAt: user.membershipExpiresAt,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     };

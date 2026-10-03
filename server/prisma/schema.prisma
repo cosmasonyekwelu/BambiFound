@@ -8,18 +8,37 @@ datasource db {
 }
 
 model User {
-  id                  String   @id @default(uuid())
-  email               String   @unique
+  id                  String    @id @default(uuid())
+  email               String    @unique
   passwordHash        String
   fullName            String?
-  emailVerified       Boolean  @default(false)
+  emailVerified       Boolean   @default(false)
   hashedRefreshToken  String?
-  onboardingCompleted Boolean  @default(false)
-  onboardingSkipped   Boolean  @default(false)
-  onboardingStep      Int      @default(1)
-  onboardingData      Json     @default("{}")
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  onboardingCompleted Boolean   @default(false)
+  onboardingSkipped   Boolean   @default(false)
+  onboardingStep      Int       @default(1)
+  onboardingData      Json      @default("{}")
+  membershipTier      String    @default("FREE")
+  membershipExpiresAt DateTime?
+  payments            Payment[]
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
 
   @@map("users")
+}
+
+model Payment {
+  id            String   @id @default(uuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reference     String   @unique
+  amount        Int
+  currency      String   @default("NGN")
+  planTier      String   @default("PLUS")
+  status        String   @default("pending")
+  paymentMethod String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("payments")
 }
