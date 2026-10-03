@@ -6,13 +6,17 @@ BambiFound is an AI-powered startup ecosystem designed to help founders, early-s
 
 ---
 
-## 1. Integrations & External Services
+## 1. External Services / Integrations
 
-- **Paystack (Implemented):** Payment processing and subscription/membership upgrades securely handled via Paystack Checkout and backend webhooks. Test mode is fully supported.
-- **Neon PostgreSQL (Implemented):** Managed cloud database solution, including pgvector for advanced profile and intent matching.
-- **OpenAI (Planned):** LLM integration for generating intelligent synergy profiles and explanations.
-- **Cloudinary (Planned):** Media asset management for user avatars and startup logos.
-- **Resend (Planned):** Transactional email delivery for account verification and updates.
+| Category | Service | BambiFound use |
+|---|---|---|
+| Payments | Paystack | Subscription/payment processing |
+| Media | Cloudinary | Image/file storage and delivery |
+| Database | Neon PostgreSQL | Persistent application data |
+| Email | Brevo | Transactional email |
+| AI | OpenAI | AI-powered matching/recommendations |
+
+*Note: Groq is retained as an optional AI provider/fallback where configured. It is part of the AI integration category and is not counted as a separate external service category.*
 
 ---
 
@@ -119,7 +123,7 @@ npx playwright test
 
 ## 7. Current Implementation Status
 
-- **Completed Core MVP:**
+- **Completed Core MVP & Integrations:**
   - Authenticated 4-Step Onboarding Flow (`/onboarding`).
   - Builder Command Center Dashboard (`/dashboard`).
   - Curated Builder Discovery (`/discover`).
@@ -128,5 +132,9 @@ npx playwright test
   - Profile Edit View (`/profile/edit`).
   - Venture Listings & Spin-out Tool (`/ventures`).
   - Settings & Membership Plans (`/settings/membership`).
-  - Paystack Payment Integration with HMAC SHA512 raw-body webhook verification (`/api/v1/payments/webhook`).
+  - Paystack Payment Integration with HMAC SHA512 raw-body webhook verification (`/api/v1/payments`).
+  - Cloudinary Media Asset Management (`/api/v1/media`).
+  - Brevo Transactional Email Service (`/api/v1/email`).
+  - OpenAI AI-powered Synergy Matching with Groq fallback (`/api/v1/ai`).
+  - Neon PostgreSQL Database with Prisma ORM (`DATABASE_URL`).
   - End-to-End Automated Testing with Playwright (`npx playwright test`).
