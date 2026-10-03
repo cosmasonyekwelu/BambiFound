@@ -6,6 +6,9 @@ import { z } from 'zod';
 import { useAuth } from '../../context/AuthContext';
 import { Navbar } from '../../components/Navbar';
 import { Footer } from '../../components/Footer';
+import { Input } from '../../components/ui/input';
+import { Button } from '../../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../components/ui/card';
 
 const loginSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -20,7 +23,7 @@ export const LoginPage: React.FC = () => {
   const location = useLocation();
   const [apiError, setApiError] = useState<string | null>(null);
 
-  const from = (location.state as { from?: { pathname?: string } })?.from?.pathname || '/';
+  const from = (location.state as { from?: { pathname?: string } })?.from?.pathname || '/dashboard';
 
   const {
     register,
@@ -42,70 +45,70 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-surface font-hanken text-on-surface flex flex-col justify-between">
+    <div className="min-h-screen bg-background flex flex-col justify-between">
       <Navbar />
 
-      <main className="flex-grow pt-28 pb-16 flex items-center justify-center px-gutter">
-        <div className="w-full max-w-md bg-surface-container-lowest rounded-xl border border-outline-variant/60 p-space-xl shadow-xs space-y-space-md">
-          <div className="text-center space-y- space-xs">
-            <h1 className="font-headline-md text-headline-md text-primary font-bold">Welcome back</h1>
-            <p className="font-body-sm text-on-surface-variant">Sign in to your BambiFound account</p>
-          </div>
-
-          {apiError && (
-            <div className="p-space-sm rounded-lg bg-error-container text-on-error-container text-sm">
-              {apiError}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-space-md">
-            <div className="space-y-1 text-left">
-              <label className="block font-label-sm text-on-surface font-semibold">Email address</label>
-              <input
-                type="email"
-                {...register('email')}
-                placeholder="name@company.com"
-                className="w-full h-11 px-space-md rounded-lg bg-surface border border-outline-variant text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm"
-              />
-              {errors.email && (
-                <p className="text-xs text-error mt-1">{errors.email.message}</p>
-              )}
-            </div>
-
-            <div className="space-y-1 text-left">
-              <div className="flex items-center justify-between">
-                <label className="block font-label-sm text-on-surface font-semibold">Password</label>
-                <Link to="/auth/forgot-password" className="text-xs text-primary font-semibold hover:underline">
-                  Forgot password?
-                </Link>
+      <main className="flex-grow pt-32 pb-16 flex items-center justify-center px-6">
+        <Card className="w-full max-w-md shadow-level-1">
+          <CardHeader className="text-center pb-2">
+            <CardTitle className="font-newsreader text-[28px] font-medium text-primary">Welcome back</CardTitle>
+            <CardDescription className="text-ink-secondary text-sm">Sign in to your BambiFound account</CardDescription>
+          </CardHeader>
+          <CardContent className="pt-4">
+            {apiError && (
+              <div className="p-3 mb-4 rounded-md bg-[#ffdad6] text-[#93000a] text-sm">
+                {apiError}
               </div>
-              <input
-                type="password"
-                {...register('password')}
-                placeholder="••••••••"
-                className="w-full h-11 px-space-md rounded-lg bg-surface border border-outline-variant text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm"
-              />
-              {errors.password && (
-                <p className="text-xs text-error mt-1">{errors.password.message}</p>
-              )}
+            )}
+
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <div className="space-y-2">
+                <label className="block text-[11px] font-semibold text-ink-secondary uppercase tracking-[0.04em]">Email address</label>
+                <Input
+                  type="email"
+                  {...register('email')}
+                  placeholder="name@company.com"
+                />
+                {errors.email && (
+                  <p className="text-xs text-[#ba1a1a] mt-1">{errors.email.message}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <label className="block text-[11px] font-semibold text-ink-secondary uppercase tracking-[0.04em]">Password</label>
+                  <Link to="/auth/forgot-password" className="text-xs text-primary font-semibold hover:underline">
+                    Forgot password?
+                  </Link>
+                </div>
+                <Input
+                  type="password"
+                  {...register('password')}
+                  placeholder="••••••••"
+                />
+                {errors.password && (
+                  <p className="text-xs text-[#ba1a1a] mt-1">{errors.password.message}</p>
+                )}
+              </div>
+
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full"
+                size="lg"
+              >
+                {isSubmitting ? 'Signing in...' : 'Sign In'}
+              </Button>
+            </form>
+
+            <div className="text-center text-sm text-ink-secondary pt-6">
+              Don't have an account?{' '}
+              <Link to="/auth/register" className="text-primary font-semibold hover:underline">
+                Create account
+              </Link>
             </div>
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full h-11 rounded-lg bg-primary-container text-on-primary font-label-md hover:bg-primary transition-all disabled:opacity-50 font-semibold"
-            >
-              {isSubmitting ? 'Signing in...' : 'Sign In'}
-            </button>
-          </form>
-
-          <div className="text-center text-sm text-on-surface-variant pt-space-xs">
-            Don't have an account?{' '}
-            <Link to="/auth/register" className="text-primary font-bold hover:underline">
-              Create account
-            </Link>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </main>
 
       <Footer />

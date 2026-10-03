@@ -1,99 +1,102 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Navbar } from '../../components/Navbar';
 import { Footer } from '../../components/Footer';
+import { Input } from '../../components/ui/input';
+import { Button } from '../../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../components/ui/card';
+
+const setNewPasswordSchema = z.object({
+  password: z.string().min(8, 'Password must be at least 8 characters'),
+  confirmPassword: z.string()
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Passwords don't match",
+  path: ["confirmPassword"],
+});
+
+type SetNewPasswordFormData = z.infer<typeof setNewPasswordSchema>;
 
 export const SetNewPasswordPage: React.FC = () => {
   const navigate = useNavigate();
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [apiError, setApiError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
-      setError('Passwords do not match');
-      return;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<SetNewPasswordFormData>({
+    resolver: zodResolver(setNewPasswordSchema),
+  });
+
+  const onSubmit = async (data: SetNewPasswordFormData) => {
+    try {
+      setApiError(null);
+      // API call to set new password
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      navigate('/auth/login', { state: { message: 'Password reset successful. Please log in.' } });
+    } catch (err: any) {
+      setApiError('Failed to reset password. The link might be expired.');
     }
-    if (password.length < 8) {
-      setError('Password must be at least 8 characters');
-      return;
-    }
-    setError(null);
-    setSubmitted(true);
-    setTimeout(() => {
-      navigate('/auth/login');
-    }, 2000);
   };
 
   return (
-    <div className="min-h-screen bg-surface font-hanken text-on-surface flex flex-col justify-between">
+    <div className="min-h-screen bg-background flex flex-col justify-between">
       <Navbar />
 
-      <main className="flex-grow pt-28 pb-16 flex items-center justify-center px-gutter">
-        <div className="w-full max-w-md bg-surface-container-lowest rounded-xl border border-outline-variant/60 p-space-xl shadow-xs space-y-space-md text-center">
-          <div className="w-12 h-12 rounded-full bg-primary-container/10 text-primary mx-auto flex items-center justify-center">
-            <span className="material-symbols-outlined text-2xl">key</span>
-          </div>
+      <main className="flex-grow pt-32 pb-16 flex items-center justify-center px-6">
+        <Card className="w-full max-w-md shadow-level-1">
+          <CardHeader className="text-center pb-2">
+            <CardTitle className="font-newsreader text-[28px] font-medium text-primary">Set new password</CardTitle>
+            <CardDescription className="text-ink-secondary text-sm">
+              Please enter your new password below.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="pt-4">
+            {apiError && (
+              <div className="p-3 mb-6 rounded-md bg-[#ffdad6] text-[#93000a] text-sm">
+                {apiError}
+              </div>
+            )}
 
-          <div className="space-y-space-xs">
-            <h1 className="font-headline-md text-headline-md text-primary font-bold">Set new password</h1>
-            <p className="font-body-sm text-on-surface-variant">Your new password must be at least 8 characters long.</p>
-          </div>
-
-          {error && (
-            <div className="p-space-sm rounded-lg bg-error-container text-on-error-container text-sm">
-              {error}
-            </div>
-          )}
-
-          {submitted ? (
-            <div className="p-space-md rounded-lg bg-secondary-container/50 text-primary space-y-space-xs">
-              <p className="font-label-sm font-bold">Password reset successfully!</p>
-              <p className="text-xs text-on-surface-variant">Redirecting to login...</p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-space-md text-left">
-              <div className="space-y-1">
-                <label className="block font-label-sm text-on-surface font-semibold">New Password</label>
-                <input
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <div className="space-y-2">
+                <label className="block text-[11px] font-semibold text-ink-secondary uppercase tracking-[0.04em]">New Password</label>
+                <Input
                   type="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="w-full h-11 px-space-md rounded-lg bg-surface border border-outline-variant text-on-surface focus:outline-none focus:border-primary text-sm"
+                  {...register('password')}
+                  placeholder="At least 8 characters"
                 />
+                {errors.password && (
+                  <p className="text-xs text-[#ba1a1a] mt-1">{errors.password.message}</p>
+                )}
               </div>
 
-              <div className="space-y-1">
-                <label className="block font-label-sm text-on-surface font-semibold">Confirm Password</label>
-                <input
+              <div className="space-y-2">
+                <label className="block text-[11px] font-semibold text-ink-secondary uppercase tracking-[0.04em]">Confirm New Password</label>
+                <Input
                   type="password"
-                  required
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="w-full h-11 px-space-md rounded-lg bg-surface border border-outline-variant text-on-surface focus:outline-none focus:border-primary text-sm"
+                  {...register('confirmPassword')}
+                  placeholder="At least 8 characters"
                 />
+                {errors.confirmPassword && (
+                  <p className="text-xs text-[#ba1a1a] mt-1">{errors.confirmPassword.message}</p>
+                )}
               </div>
 
-              <button
+              <Button
                 type="submit"
-                className="w-full h-11 rounded-lg bg-primary-container text-on-primary font-label-md hover:bg-primary transition-all font-semibold"
+                disabled={isSubmitting}
+                className="w-full"
+                size="lg"
               >
-                Reset Password
-              </button>
+                {isSubmitting ? 'Saving...' : 'Reset Password'}
+              </Button>
             </form>
-          )}
-
-          <div className="pt-space-xs text-sm">
-            <Link to="/auth/login" className="text-primary font-bold hover:underline">
-              Back to Sign In
-            </Link>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </main>
 
       <Footer />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { Button } from './ui/button';
 
 export const Navbar: React.FC = () => {
   const { user, isAuthenticated, logout } = useAuth();
@@ -12,57 +13,45 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-      <div className="h-20 max-w-[1360px] mx-auto px-gutter flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-space-md">
-          <div className="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold">
-            <span className="material-symbols-outlined text-xl text-on-primary-container">explore</span>
+    <header className="fixed top-0 left-0 right-0 w-full z-50 bg-background/90 backdrop-blur-md border-b border-hairline">
+      <div className="h-[72px] max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-md bg-primary text-canvas flex items-center justify-center font-bold">
+            B
           </div>
-          <span className="font-title-md text-title-md text-primary font-bold tracking-tight">BambiFound</span>
+          <span className="font-newsreader text-2xl font-medium tracking-tight text-primary">BambiFound</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-space-lg">
-          <a href="#discover" className="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors">
-            Discover People
+        <nav className="hidden md:flex items-center gap-8">
+          <a href="#discover" className="text-sm font-medium text-ink-secondary hover:text-ink-primary transition-colors">
+            Discover
           </a>
-          <a href="#startups" className="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors">
+          <a href="#startups" className="text-sm font-medium text-ink-secondary hover:text-ink-primary transition-colors">
             Startups
           </a>
-          <a href="#opportunities" className="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors">
+          <a href="#opportunities" className="text-sm font-medium text-ink-secondary hover:text-ink-primary transition-colors">
             Opportunities
-          </a>
-          <a href="#how-it-works" className="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors">
-            How It Works
           </a>
         </nav>
 
-        <div className="flex items-center gap-space-sm">
+        <div className="flex items-center gap-4">
           {isAuthenticated ? (
-            <div className="flex items-center gap-space-sm">
-              <span className="font-label-sm text-on-surface-variant hidden sm:inline">
+            <div className="flex items-center gap-4">
+              <span className="text-sm font-medium text-ink-secondary hidden sm:inline">
                 {user?.fullName || user?.email}
               </span>
-              <button
-                onClick={handleLogout}
-                className="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-colors"
-              >
+              <Button variant="ghost" size="sm" onClick={handleLogout}>
                 Log Out
-              </button>
+              </Button>
             </div>
           ) : (
             <>
-              <Link
-                to="/auth/login"
-                className="inline-flex px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-colors"
-              >
-                Log In
-              </Link>
-              <Link
-                to="/auth/register"
-                className="inline-flex items-center justify-center px-space-lg py-space-sm rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md transition-all active:scale-[0.985]"
-              >
-                Get Started
-              </Link>
+              <Button variant="ghost" asChild>
+                <Link to="/auth/login">Log In</Link>
+              </Button>
+              <Button asChild>
+                <Link to="/auth/register">Get Started</Link>
+              </Button>
             </>
           )}
         </div>

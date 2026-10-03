@@ -1,192 +1,399 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_blank" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_auth" name="shell-type"/>
+<title>Verify Your Email — BambiFound</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary-fixed-variant": "#414845", "on-primary-container": "#80a690", "on-tertiary-fixed-variant": "#753400", "on-primary": "#ffffff", "secondary-fixed-dim": "#c0c8c4", "tertiary": "#381500", "on-surface-variant": "#414844", "primary": "#002517", "inverse-primary": "#a9cfb9", "primary-fixed": "#c4ecd4", "primary-container": "#183b2b", "on-tertiary-container": "#e88341", "surface": "#f8faf6", "on-tertiary-fixed": "#321200", "outline-variant": "#c1c8c2", "surface-bright": "#f8faf6", "inverse-surface": "#2e312f", "on-background": "#191c1a", "surface-tint": "#436653", "on-error": "#ffffff", "surface-container-lowest": "#ffffff", "secondary": "#58605c", "on-secondary": "#ffffff", "surface-variant": "#e1e3df", "primary-fixed-dim": "#a9cfb9", "secondary-fixed": "#dce4df", "on-secondary-fixed": "#161d1a", "tertiary-fixed-dim": "#ffb68c", "inverse-on-surface": "#f0f1ed", "on-surface": "#191c1a", "surface-container-low": "#f3f4f0", "surface-container-high": "#e7e9e5", "on-secondary-container": "#5b635f", "secondary-container": "#d7dfda", "on-error-container": "#93000a", "on-tertiary": "#ffffff", "tertiary-container": "#592600", "surface-container": "#edeeeb", "error": "#ba1a1a", "on-primary-fixed": "#002113", "error-container": "#ffdad6", "tertiary-fixed": "#ffdbc9", "surface-container-highest": "#e1e3df", "outline": "#727973", "surface-dim": "#d9dad7", "background": "#f8faf6", "on-primary-fixed-variant": "#2b4e3d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-sm": "1.25rem", "margin": "2.5rem", "gutter-sm": "1rem", "gutter": "1.5rem", "space-md": "1rem", "space-sm": "0.5rem", "space-xl": "2.5rem", "space-lg": "1.5rem", "space-xs": "0.25rem" }, "fontFamily": { "headline-md": ["Hanken Grotesk"], "headline-sm": ["Hanken Grotesk"], "title-md": ["Hanken Grotesk"], "headline-lg": ["Hanken Grotesk"], "label-sm": ["Hanken Grotesk"], "body-md": ["Hanken Grotesk"], "label-md": ["Hanken Grotesk"], "display-lg-mobile": ["Hanken Grotesk"], "body-lg": ["Hanken Grotesk"], "display-lg": ["Hanken Grotesk"], "body-sm": ["Hanken Grotesk"], "headline-lg-mobile": ["Hanken Grotesk"] }, "fontSize": { "headline-md": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }], "title-md": ["1.125rem", { "lineHeight": "1.625rem", "letterSpacing": "-0.005em", "fontWeight": "500" }], "headline-lg": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "600" }], "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.03em", "fontWeight": "600" }], "body-md": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }], "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "600" }], "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "0em", "fontWeight": "400" }], "display-lg": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "-0.03em", "fontWeight": "700" }], "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "letterSpacing": "0.005em", "fontWeight": "400" }], "headline-lg-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><main class="min-h-screen w-full flex flex-col justify-center items-center py-space-xl px-margin-sm bg-surface"><div class="flex flex-col w-full items-center justify-center relative">
-<div class="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary-fixed/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
-<div class="absolute -bottom-24 right-1/4 w-80 h-80 bg-tertiary-fixed/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
-<div class="w-full max-w-xl mx-auto flex flex-col items-center">
-<div class="mb-space-xl flex flex-col items-center">
-<img alt="BambiFound Institutional Platform" class="h-10 w-auto object-contain transition-transform duration-300 hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/AEtjO1WMP8MZTDpdvt9jBxQoQrBh3rh19QodOGhjuewp6KmO85kgoO1tBMgt3BcfuEvvn0zTyOyaCNwk7jMnPc_PcpgQR3SMjKqEn8G3sfrTY0N7qNTTHd0UW-7aMOBOVXupG6k1Xe3lJbB3zU_T22R6AFoicgnr2jyYCFobXb2mLCOJCLB7uy1raz473s56-r2ZG7c766rnDjR3GSbR10l31yQd6oBXs8Dlc-YAQmp-7cXjlrp2zOKgd-wn2x8F"/>
-<div class="flex items-center gap-space-xs mt-space-sm bg-surface-container px-space-md py-1 rounded-full">
-<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Syndicate Key Protocol · v4.18</span>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-low": "#f1f4ef",
+            "outline-variant": "#c2c8c2",
+            "surface-variant": "#e0e3de",
+            "on-tertiary-container": "#cf7249",
+            "on-surface": "#191d1a",
+            "secondary-container": "#b9ebc9",
+            "tertiary-container": "#441500",
+            "on-primary-fixed": "#0b1f15",
+            "surface-bright": "#f7faf5",
+            "primary-fixed-dim": "#b5ccbc",
+            "surface-dim": "#d8dbd6",
+            "primary-fixed": "#d0e8d7",
+            "secondary-fixed": "#bceecc",
+            "inverse-surface": "#2d312e",
+            "on-tertiary-fixed": "#360f00",
+            "on-secondary": "#ffffff",
+            "surface-tint": "#4e6356",
+            "on-secondary-container": "#3f6c51",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#002111",
+            "on-surface-variant": "#424844",
+            "surface-container-highest": "#e0e3de",
+            "inverse-primary": "#b5ccbc",
+            "on-background": "#191d1a",
+            "surface-container": "#ecefea",
+            "tertiary-fixed-dim": "#ffb597",
+            "tertiary-fixed": "#ffdbcd",
+            "on-error": "#ffffff",
+            "secondary": "#3a684d",
+            "surface": "#f7faf5",
+            "surface-container-high": "#e6e9e4",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#374b3f",
+            "inverse-on-surface": "#eff2ec",
+            "tertiary": "#210600",
+            "on-primary": "#ffffff",
+            "secondary-fixed-dim": "#a1d2b1",
+            "outline": "#737873",
+            "background": "#f7faf5",
+            "primary-container": "#14281d",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#224f36",
+            "on-tertiary-fixed-variant": "#79310c",
+            "primary": "#011209",
+            "on-primary-container": "#7a9081",
+            "surface-container-lowest": "#ffffff",
+            "error": "#ba1a1a"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "space-xl": "2.5rem",
+            "margin-sm": "1rem",
+            "gutter-sm": "1rem",
+            "margin": "2rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem"
+          },
+          fontFamily: {
+            "headline-lg": ["Newsreader", "serif"],
+            "display-lg": ["Newsreader", "serif"],
+            "headline-md": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "body-md": ["Plus Jakarta Sans", "sans-serif"],
+            "body-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "label-md": ["Plus Jakarta Sans", "sans-serif"],
+            "label-sm": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          fontSize: {
+            "headline-lg": ["36px", { lineHeight: "44px", letterSpacing: "-0.015em", fontWeight: "500" }],
+            "display-lg": ["56px", { lineHeight: "64px", letterSpacing: "-0.02em", fontWeight: "400" }],
+            "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "headline-sm": ["18px", { lineHeight: "26px", fontWeight: "600" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "body-md": ["15px", { lineHeight: "24px", fontWeight: "400" }],
+            "body-sm": ["13px", { lineHeight: "20px", fontWeight: "400" }],
+            "label-md": ["13px", { lineHeight: "18px", letterSpacing: "0.02em", fontWeight: "600" }],
+            "label-sm": ["11px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "600" }]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#fbf9f5] text-on-surface min-h-screen flex flex-col font-body-md antialiased selection:bg-secondary-container selection:text-primary-container">
+<!-- TOP NAVIGATION HEADER -->
+<header class="w-full border-b border-surface-container bg-surface-bright/80 backdrop-blur-md sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+<!-- Clean BambiFound Brand Logo (no duplicated wordmark) -->
+<a class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-lg" href="#">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-surface-bright flex items-center justify-center shadow-md transition-transform duration-200 group-hover:scale-105">
+<span class="material-symbols-outlined text-2xl text-secondary-fixed">forest</span>
 </div>
+<div class="flex flex-col">
+<span class="font-headline-md text-xl tracking-tight text-primary leading-none font-bold">BambiFound</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant/80 tracking-wider uppercase mt-0.5">Venture Protocol</span>
 </div>
-<div class="w-full bg-surface-container-lowest rounded-xl shadow-xl p-space-lg md:p-space-xl relative overflow-hidden transition-all duration-300">
-<div class="absolute top-0 left-0 right-0 h-1.5 bg-surface-container-high">
-<div class="h-full bg-primary transition-all duration-500 ease-out" id="securityProgress" style="width: 50%;"></div>
-</div>
-<div class="flex flex-col items-center text-center">
-<div class="relative mb-space-lg mt-space-xs">
-<div class="w-16 h-16 rounded-xl bg-surface-container-low flex items-center justify-center text-primary-container shadow-sm group">
-<svg class="w-8 h-8 text-primary-container transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
-<rect height="16" rx="3" width="20" x="2" y="4"></rect>
-<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-</svg>
-</div>
-<div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary shadow-sm">
-<span class="material-symbols-outlined text-sm font-semibold">lock</span>
-</div>
-</div>
-<h1 class="font-headline-md text-headline-md text-on-surface mb-space-xs">Verify Your Email</h1>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto leading-relaxed">
-          We sent a 6-digit cryptographic verification code to 
-          <span class="font-title-md text-title-md text-on-surface font-semibold bg-surface-container-low px-1.5 py-0.5 rounded">cosmas.g@kazimesh.org</span> 
-          to activate your 1 free startup listing and investor passport.
-        </p>
-<div class="mt-space-md inline-flex items-center gap-1.5 bg-surface-container px-space-md py-1 rounded-full text-on-surface-variant">
-<span class="material-symbols-outlined text-base text-primary">content_paste_go</span>
-<span class="font-label-sm text-label-sm font-medium">Pasting from clipboard supported</span>
-</div>
-<div class="w-full mt-space-xl">
-<label class="sr-only" for="otp-1">Verification Code</label>
-<div class="flex justify-center items-center gap-2 sm:gap-3" id="otpContainer">
-<input class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center font-display-lg-mobile text-display-lg-mobile font-bold text-on-surface bg-surface-container-low rounded-lg outline-none transition-all duration-200 focus:bg-surface-container-lowest focus:shadow-md focus:text-primary cursor-pointer selection:bg-transparent" id="otp-1" inputmode="numeric" maxlength="1" type="text" value="8"/>
-<input class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center font-display-lg-mobile text-display-lg-mobile font-bold text-on-surface bg-surface-container-low rounded-lg outline-none transition-all duration-200 focus:bg-surface-container-lowest focus:shadow-md focus:text-primary cursor-pointer selection:bg-transparent" id="otp-2" inputmode="numeric" maxlength="1" type="text" value="4"/>
-<input class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center font-display-lg-mobile text-display-lg-mobile font-bold text-on-surface bg-surface-container-low rounded-lg outline-none transition-all duration-200 focus:bg-surface-container-lowest focus:shadow-md focus:text-primary cursor-pointer selection:bg-transparent" id="otp-3" inputmode="numeric" maxlength="1" type="text" value="2"/>
-<div class="w-1.5 h-1.5 rounded-full bg-outline-variant mx-0.5"></div>
-<input autofocus="" class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center font-display-lg-mobile text-display-lg-mobile font-bold text-on-surface bg-surface-container-lowest shadow-md rounded-lg outline-none transition-all duration-200 focus:bg-surface-container-lowest focus:shadow-lg focus:text-primary cursor-pointer selection:bg-transparent ring-2 ring-primary/20" id="otp-4" inputmode="numeric" maxlength="1" type="text"/>
-<input class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center font-display-lg-mobile text-display-lg-mobile font-bold text-on-surface bg-surface-container-low rounded-lg outline-none transition-all duration-200 focus:bg-surface-container-lowest focus:shadow-md focus:text-primary cursor-pointer selection:bg-transparent" id="otp-5" inputmode="numeric" maxlength="1" type="text"/>
-<input class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center font-display-lg-mobile text-display-lg-mobile font-bold text-on-surface bg-surface-container-low rounded-lg outline-none transition-all duration-200 focus:bg-surface-container-lowest focus:shadow-md focus:text-primary cursor-pointer selection:bg-transparent" id="otp-6" inputmode="numeric" maxlength="1" type="text"/>
-</div>
-<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm mt-space-lg px-2 text-on-surface-variant font-label-md text-label-md">
-<div class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-base text-secondary">schedule</span>
-<span>Didn't receive code?</span>
-<button class="text-primary font-semibold hover:underline disabled:opacity-50 disabled:cursor-not-allowed disabled:no-underline" disabled="" id="resendBtn">
-                Resend in <span class="tabular-nums font-bold" id="timerSpan">00:42</span>
-</button>
-</div>
-<a class="text-secondary hover:text-on-surface transition-colors duration-150 inline-flex items-center gap-1" href="javascript:void(0)">
-<span>Change email address</span>
-<span class="material-symbols-outlined text-sm">edit</span>
+</a>
+<!-- Right Nav Links -->
+<nav class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-6">
+<a class="font-label-md text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#">Overview</a>
+<a class="font-label-md text-body-sm text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-1.5" href="#">
+<span class="material-symbols-outlined text-base">support</span>
+<span>Help Center</span>
 </a>
 </div>
-<div class="mt-space-lg">
-<button class="w-full bg-primary-container hover:bg-primary active:scale-[0.99] text-on-primary py-3.5 px-space-lg rounded-lg font-headline-sm text-headline-sm transition-all duration-200 shadow-md flex items-center justify-center gap-2 group" id="submitBtn" type="button">
-<span>Verify &amp; Claim 1 Free Startup Slot</span>
-<span class="material-symbols-outlined text-xl transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
+<div class="h-4 w-px bg-outline-variant/50 hidden md:block"></div>
+<a class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-outline-variant hover:border-secondary bg-surface hover:bg-surface-container transition-all text-on-surface font-label-md text-label-md shadow-sm" href="#">
+<span>Log In</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</nav>
+</div>
+</header>
+<!-- MAIN BODY CONTAINER -->
+<main class="flex-1 flex items-center justify-center p-6 md:p-12 relative overflow-hidden">
+<!-- Atmospheric Background Ambient Elements -->
+<div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-secondary-container/30 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+<div class="absolute -bottom-24 right-1/4 w-[480px] h-[480px] bg-tertiary-fixed/20 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+<div class="w-full max-w-xl mx-auto">
+<!-- Elevated High-Craft Card -->
+<div class="relative bg-surface-container-lowest/95 backdrop-blur-xl border border-surface-container-highest/80 shadow-[0_20px_60px_-15px_rgba(20,40,29,0.08)] rounded-2xl p-6 sm:p-10 flex flex-col items-center text-center ring-1 ring-black/[0.03]">
+<!-- Bespoke Animated Delivery Badge -->
+<div class="relative mb-6">
+<div class="w-24 h-24 rounded-full bg-surface-container-low/80 p-1.5 flex items-center justify-center relative shadow-inner ring-1 ring-surface-variant">
+<svg class="w-full h-full transform -rotate-90 absolute inset-0" viewbox="0 0 96 96">
+<circle class="text-surface-container-highest/60" cx="48" cy="48" fill="none" r="43" stroke="currentColor" stroke-width="2.5"></circle>
+<circle class="text-secondary transition-all duration-1000 ease-linear" cx="48" cy="48" fill="none" id="countdown-circle" r="43" stroke="currentColor" stroke-dasharray="270" stroke-dashoffset="65" stroke-linecap="round" stroke-width="2.5"></circle>
+</svg>
+<div class="w-16 h-16 rounded-full bg-primary-container text-surface-bright flex items-center justify-center shadow-lg relative z-10">
+<span class="material-symbols-outlined text-3xl text-secondary-fixed" style="font-variation-settings: 'FILL' 1;">mark_email_unread</span>
+</div>
+<!-- Dispatch Live Ping Status -->
+<div class="absolute -top-1 -right-1 z-20 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-lowest border border-surface-variant shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+<span class="font-label-sm text-[10px] uppercase font-bold text-on-surface-variant tracking-wider">Dispatched</span>
+</div>
+</div>
+</div>
+<!-- Category Tag / Eyebrow -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-low border border-surface-variant mb-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary">verified_user</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Authentication &amp; Onboarding · Step 02</span>
+</div>
+<!-- Headline & Editorial Subtitle -->
+<h1 class="font-headline-lg text-3xl sm:text-4xl text-primary mb-3 font-normal tracking-tight">
+          Check your inbox
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-2">
+          We sent a temporary verification link to <span class="font-semibold text-primary bg-surface-container-low px-2 py-0.5 rounded border border-surface-variant/50" id="user-email">alex@buildspace.so</span>
+</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 max-w-sm mb-7">
+          Click the link to confirm your account and begin your founder onboarding.
+        </p>
+<!-- Quick Launchers (Grounded secondary outline buttons) -->
+<div class="w-full flex flex-wrap items-center justify-center gap-3 mb-6">
+<a class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-surface-container-lowest border border-outline-variant hover:border-secondary hover:bg-surface-container-low transition-all shadow-sm font-label-md text-label-md text-on-surface group" href="https://mail.google.com" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-lg text-on-tertiary-container group-hover:scale-110 transition-transform">mail</span>
+<span>Open Gmail</span>
+</a>
+<a class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-surface-container-lowest border border-outline-variant hover:border-secondary hover:bg-surface-container-low transition-all shadow-sm font-label-md text-label-md text-on-surface group" href="https://outlook.live.com" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-lg text-secondary group-hover:scale-110 transition-transform">markunread</span>
+<span>Open Outlook</span>
+</a>
+</div>
+<!-- Transition Card: Continue to Onboarding -->
+<div class="w-full bg-surface-container-low border border-surface-variant/80 rounded-xl p-4 sm:p-5 mb-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-xl">verified</span>
+</div>
+<div>
+<div class="font-headline-sm text-base text-primary font-semibold">Already confirmed?</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Continue directly to founder onboarding setup</div>
+</div>
+</div>
+<button class="w-full sm:w-auto px-5 py-2.5 rounded-full bg-primary-container hover:bg-primary text-surface-bright transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 shadow-md flex items-center justify-center gap-2 font-label-md text-label-md shrink-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-container" type="button">
+<span>Continue to Onboarding</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
 </button>
 </div>
+<!-- Resend & Modification Controls -->
+<div class="w-full flex flex-col items-center justify-center pb-2 gap-2">
+<div class="flex items-center justify-center gap-2 flex-wrap">
+<button class="font-label-md text-label-md text-outline cursor-not-allowed transition-colors duration-150 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full hover:bg-surface-container-low" disabled="" id="resend-btn" type="button">
+<span class="material-symbols-outlined text-base animate-spin" id="resend-spinner" style="display: none;">sync</span>
+<span id="resend-text">Resend email in <span class="font-bold text-on-surface" id="timer">45s</span></span>
+</button>
+<span class="text-outline-variant font-label-sm">•</span>
+<button class="font-label-md text-label-md text-secondary hover:text-primary transition-colors py-1.5 px-2 rounded hover:underline focus:outline-none" id="change-email-btn" type="button">
+              Change email address
+            </button>
 </div>
-<div class="mt-space-xl p-space-md bg-surface rounded-lg w-full text-left flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-primary text-xl mt-0.5 shrink-0">verified_user</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
-<strong class="text-on-surface font-semibold">Institutional Assurance:</strong> BambiFound guarantees zero-spam communications. We only send critical investor syndicate signals and milestone telemetry.
-          </p>
+<!-- Edit Email Drawer/Box -->
+<div class="hidden w-full max-w-sm mt-3 p-2.5 bg-surface-container rounded-xl flex items-center gap-2 transition-all border border-surface-variant" id="email-edit-box">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-sm">edit</span>
+<input class="w-full pl-9 pr-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm outline-none border border-outline-variant/60 focus:border-secondary focus:ring-1 focus:ring-secondary" id="email-input" type="email" value="alex@buildspace.so"/>
+</div>
+<button class="px-3.5 py-1.5 rounded-lg bg-primary-container text-on-primary font-label-sm text-label-sm hover:bg-primary transition-colors" id="save-email-btn" type="button">
+              Update
+            </button>
+<button class="px-2.5 py-1.5 text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface transition-colors" id="cancel-email-btn" type="button">
+              Cancel
+            </button>
+</div>
+<!-- Toast Notification -->
+<div class="hidden mt-2 px-3.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm flex items-center gap-1.5 shadow-sm" id="status-toast">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span id="toast-message">Verification email resent!</span>
+</div>
+</div>
+<!-- Deliverability Callout Box -->
+<div class="w-full mt-4 p-4 rounded-xl bg-surface-container-low border border-surface-variant/70 flex items-start gap-3.5 text-left">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center shrink-0 mt-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">help_outline</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-headline-sm text-sm text-primary font-semibold">Can’t find the email?</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Check your promotions or spam folder, or contact <a class="font-semibold text-secondary hover:underline" href="mailto:support@bambifound.com">support@bambifound.com</a> for priority assistance.
+            </p>
+</div>
+</div>
+<!-- Trust & Security Protocol Line -->
+<div class="mt-6 pt-5 w-full border-t border-surface-container flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-base text-secondary">lock</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Protected by 256-bit AES encryption · SOC2 Type II · Zero-trust protocol</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>BambiFound ID Service</span>
 </div>
 </div>
 </div>
-<div class="mt-space-lg flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-outline font-label-sm text-label-sm">
-<div class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-sm">shield</span>
-<span>TLS 1.3 Certified</span>
+<!-- Trust Metrics / Founder Micro Badge below card -->
+<div class="mt-6 flex items-center justify-center gap-3 font-label-sm text-label-sm text-on-surface-variant/80">
+<div class="flex -space-x-2 overflow-hidden">
+<span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary-container text-white text-[10px] ring-2 ring-[#fbf9f5] font-semibold">BF</span>
+<span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-secondary text-white text-[10px] ring-2 ring-[#fbf9f5] font-semibold">YC</span>
+<span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-on-tertiary-container text-white text-[10px] ring-2 ring-[#fbf9f5] font-semibold">500</span>
 </div>
-<span class="inline-block w-1 h-1 rounded-full bg-outline-variant"></span>
-<div class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-sm">key</span>
-<span>FIDO2 Ready</span>
-</div>
-<span class="inline-block w-1 h-1 rounded-full bg-outline-variant"></span>
-<div class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-sm">encrypted</span>
-<span>256-Bit HSM Protected</span>
+<span>Joined by 1,400+ top venture builders and capital partners</span>
 </div>
 </div>
+</main>
+<!-- GLOBAL BAMBIFOUND FOOTER -->
+<footer class="w-full border-t border-surface-container bg-surface-bright py-6 px-6 lg:px-12">
+<div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-label-sm text-label-sm text-on-surface-variant">
+<div>
+<span>BambiFound — Venture match &amp; founder onboarding platform. © 2025.</span>
+</div>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Security &amp; Compliance</a>
 </div>
 </div>
+</footer>
 <script>
-  (function() {
-    const inputs = Array.from(document.querySelectorAll('.otp-input'));
-    const progressBar = document.getElementById('securityProgress');
-    const timerSpan = document.getElementById('timerSpan');
-    const resendBtn = document.getElementById('resendBtn');
-    const submitBtn = document.getElementById('submitBtn');
+    (function() {
+      let seconds = 45;
+      const totalSeconds = 45;
+      const fullCircumference = 270;
+      const timerSpan = document.getElementById('timer');
+      const resendBtn = document.getElementById('resend-btn');
+      const resendText = document.getElementById('resend-text');
+      const resendSpinner = document.getElementById('resend-spinner');
+      const countdownCircle = document.getElementById('countdown-circle');
+      const toast = document.getElementById('status-toast');
+      const toastMsg = document.getElementById('toast-message');
 
-    function updateProgress() {
-      const filledCount = inputs.filter(inp => inp.value.trim().length > 0).length;
-      const pct = Math.round((filledCount / inputs.length) * 100);
-      if (progressBar) {
-        progressBar.style.width = pct + '%';
-      }
-    }
+      const changeEmailBtn = document.getElementById('change-email-btn');
+      const emailEditBox = document.getElementById('email-edit-box');
+      const emailInput = document.getElementById('email-input');
+      const saveEmailBtn = document.getElementById('save-email-btn');
+      const cancelEmailBtn = document.getElementById('cancel-email-btn');
+      const userEmailSpan = document.getElementById('user-email');
 
-    inputs.forEach((input, idx) => {
-      input.addEventListener('input', (e) => {
-        const val = e.target.value.replace(/[^0-9]/g, '');
-        e.target.value = val;
-        
-        if (val && idx < inputs.length - 1) {
-          inputs[idx + 1].focus();
-        }
-        updateProgress();
-      });
+      let interval = setInterval(updateTimer, 1000);
 
-      input.addEventListener('keydown', (e) => {
-        if (e.key === 'Backspace' && !e.target.value && idx > 0) {
-          inputs[idx - 1].focus();
-        }
-      });
-
-      input.addEventListener('paste', (e) => {
-        e.preventDefault();
-        const clipboardData = (e.clipboardData || window.clipboardData).getData('text');
-        const digits = clipboardData.replace(/[^0-9]/g, '').slice(0, inputs.length);
-        if (digits) {
-          digits.split('').forEach((char, i) => {
-            if (inputs[i]) {
-              inputs[i].value = char;
-            }
-          });
-          const nextFocus = Math.min(digits.length, inputs.length - 1);
-          inputs[nextFocus].focus();
-          updateProgress();
-        }
-      });
-    });
-
-    let secondsLeft = 42;
-    const interval = setInterval(() => {
-      secondsLeft--;
-      if (secondsLeft <= 0) {
-        clearInterval(interval);
-        if (timerSpan && resendBtn) {
-          timerSpan.textContent = 'Now';
-          resendBtn.disabled = false;
-        }
-      } else {
-        if (timerSpan) {
-          const strSec = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-          timerSpan.textContent = '00:' + strSec;
-        }
-      }
-    }, 1000);
-
-    if (submitBtn) {
-      submitBtn.addEventListener('click', () => {
-        const code = inputs.map(i => i.value).join('');
-        if (code.length === 6) {
-          submitBtn.innerHTML = `
-            <span class="inline-block animate-spin w-4 h-4 border-2 border-on-primary border-t-transparent rounded-full mr-2"></span>
-            Verifying cryptographic key...
-          `;
-          submitBtn.disabled = true;
-          setTimeout(() => {
-            submitBtn.innerHTML = `
-              <span class="material-symbols-outlined text-xl">check_circle</span>
-              <span>Listing Slot Activated!</span>
-            `;
-            submitBtn.classList.remove('bg-primary-container');
-            submitBtn.classList.add('bg-primary');
-          }, 1200);
+      function updateTimer() {
+        if (seconds > 0) {
+          seconds--;
+          if (timerSpan) timerSpan.innerText = seconds + 's';
+          if (countdownCircle) {
+            const offset = fullCircumference - (seconds / totalSeconds) * fullCircumference;
+            countdownCircle.style.strokeDashoffset = offset;
+          }
         } else {
-          const emptyIdx = inputs.findIndex(i => !i.value.trim());
-          if (emptyIdx !== -1) inputs[emptyIdx].focus();
+          clearInterval(interval);
+          enableResend();
+        }
+      }
+
+      function enableResend() {
+        resendBtn.disabled = false;
+        resendBtn.classList.remove('text-outline', 'cursor-not-allowed');
+        resendBtn.classList.add('text-secondary', 'hover:text-primary', 'cursor-pointer', 'font-semibold');
+        resendText.innerText = 'Resend verification link';
+        if (countdownCircle) countdownCircle.style.strokeDashoffset = fullCircumference;
+      }
+
+      resendBtn.addEventListener('click', function() {
+        if (seconds <= 0) {
+          resendBtn.disabled = true;
+          resendSpinner.style.display = 'inline-block';
+          resendText.innerText = 'Sending...';
+
+          setTimeout(() => {
+            resendSpinner.style.display = 'none';
+            showToast('Verification link sent again!');
+            seconds = 45;
+            resendBtn.disabled = true;
+            resendBtn.classList.add('text-outline', 'cursor-not-allowed');
+            resendBtn.classList.remove('text-secondary', 'hover:text-primary', 'cursor-pointer', 'font-semibold');
+            resendText.innerHTML = 'Resend email in <span id="timer" class="font-bold text-on-surface">45s</span>';
+            interval = setInterval(updateTimer, 1000);
+          }, 800);
         }
       });
-    }
 
-    updateProgress();
-  })();
-</script></main></body></html>
+      changeEmailBtn.addEventListener('click', function() {
+        emailEditBox.classList.remove('hidden');
+        emailInput.focus();
+      });
+
+      cancelEmailBtn.addEventListener('click', function() {
+        emailEditBox.classList.add('hidden');
+      });
+
+      saveEmailBtn.addEventListener('click', function() {
+        const val = emailInput.value.trim();
+        if (val && val.includes('@')) {
+          userEmailSpan.innerText = val;
+          emailEditBox.classList.add('hidden');
+          showToast('Updated destination to ' + val);
+          seconds = 45;
+          clearInterval(interval);
+          interval = setInterval(updateTimer, 1000);
+        }
+      });
+
+      function showToast(text) {
+        toastMsg.innerText = text;
+        toast.classList.remove('hidden');
+        setTimeout(() => {
+          toast.classList.add('hidden');
+        }, 4000);
+      }
+    })();
+  </script>
+</body></html>
