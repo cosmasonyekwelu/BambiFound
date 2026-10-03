@@ -44,6 +44,7 @@ bambifound/
 ├── client/                 # React + Vite + Tailwind CSS frontend
 │   ├── src/
 │   ├── netlify.toml        # Netlify SPA deployment config
+│   ├── vercel.json         # Vercel SPA routing rewrite config
 │   └── package.json
 ├── server/                 # NestJS + Prisma REST API
 │   ├── src/

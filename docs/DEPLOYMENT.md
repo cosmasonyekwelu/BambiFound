@@ -90,7 +90,10 @@ BambiFound requires a secure payment gateway to process subscription and members
 
 ---
 
-## 5. Frontend Deployment (Netlify)
+## 5. Frontend Deployment (Netlify & Vercel)
+
+### Netlify (Canonical Production Frontend)
+**Canonical URL:** `https://bambifound.netlify.app/`
 
 To deploy the React/Vite client to Netlify:
 
@@ -111,6 +114,28 @@ To deploy the React/Vite client to Netlify:
      status = 200
    ```
 6. **CORS:** Ensure the NestJS backend has CORS configured to accept requests from the Netlify production URL.
+
+### Vercel Deployment (Alternative Frontend Deployment)
+To deploy the BambiFound SPA on Vercel or resolve intermittent 404 NOT_FOUND errors on direct navigation / browser refresh:
+
+1. **Dashboard Project Settings:**
+   - **Framework Preset:** Vite
+   - **Root Directory:** `client` (or root `/` if deploying full repo)
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+   - **Environment Variable:** `VITE_API_URL` (points to NestJS REST API backend)
+2. **SPA Rewrite Configuration (`client/vercel.json`):**
+   ```json
+   {
+     "rewrites": [
+       {
+         "source": "/(.*)",
+         "destination": "/index.html"
+       }
+     ]
+   }
+   ```
+   *Note: SPA rewrites pass all non-static requests to `/index.html` allowing React Router to handle client-side routing while API requests continue using `VITE_API_URL` directly to the backend.*
 
 ---
 
