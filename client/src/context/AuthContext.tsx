@@ -10,6 +10,8 @@ export interface User {
   onboardingSkipped: boolean;
   onboardingStep: number;
   onboardingData: Record<string, any>;
+  membershipTier?: string;
+  membershipExpiresAt?: string | null;
   createdAt: string;
   updatedAt: string;
 }

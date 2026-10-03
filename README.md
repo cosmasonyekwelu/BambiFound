@@ -144,7 +144,22 @@ npm run build
 
 ---
 
-## 7. Current Implementation Phase
+## 7. Deployment & Payments
 
-- **Phases Completed:** 1 (Foundation), 2 (Local Infra), 3 (Database), 4 (Backend Foundation), 5 (Frontend Foundation), 6 (Authentication), 7 (Landing Page).
-- **Next Phase:** Phase 8 — Profiles.
+Full deployment documentation including environment variables, Paystack webhook testing via ngrok/mockpay, production deployment (Render, Vercel, Neon/Supabase), and CI/CD setup can be found in [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
+
+---
+
+## 8. Current Implementation Status
+
+- **Completed Core MVP:**
+  - Authenticated 4-Step Onboarding Flow (`/onboarding`).
+  - Builder Command Center Dashboard (`/dashboard`).
+  - Curated Builder Discovery (`/discover`).
+  - Intros & Dialogue Messaging Interface (`/messages`).
+  - Peer Profile View (`/profile/elena-vance` / `/profile/:id`).
+  - Profile Edit View (`/profile/edit`).
+  - Venture Listings & Spin-out Tool (`/ventures`).
+  - Settings & Membership Plans (`/settings/membership`).
+  - Paystack Payment Integration with HMAC SHA512 raw-body webhook verification (`/api/v1/payments/webhook`).
+  - End-to-End Automated Testing with Playwright (`npx playwright test`).
