@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { LoginPage } from './LoginPage';
@@ -22,8 +22,11 @@ describe('LoginPage OAuth Integration', () => {
 
   it('triggers Google OAuth redirect on button click', () => {
     const originalLocation = window.location;
-    delete (window as any).location;
-    window.location = { href: '' } as any;
+    const locationMock = { href: '' };
+    Object.defineProperty(window, 'location', {
+      writable: true,
+      value: locationMock,
+    });
 
     render(
       <BrowserRouter>
@@ -36,15 +39,21 @@ describe('LoginPage OAuth Integration', () => {
     const googleBtn = screen.getByText('Continue with Google');
     fireEvent.click(googleBtn);
 
-    expect(window.location.href).toContain('/api/auth/google');
+    expect(locationMock.href).toContain('/api/auth/google');
 
-    window.location = originalLocation;
+    Object.defineProperty(window, 'location', {
+      writable: true,
+      value: originalLocation,
+    });
   });
 
   it('triggers GitHub OAuth redirect on button click', () => {
     const originalLocation = window.location;
-    delete (window as any).location;
-    window.location = { href: '' } as any;
+    const locationMock = { href: '' };
+    Object.defineProperty(window, 'location', {
+      writable: true,
+      value: locationMock,
+    });
 
     render(
       <BrowserRouter>
@@ -57,8 +66,11 @@ describe('LoginPage OAuth Integration', () => {
     const githubBtn = screen.getByText('Continue with GitHub');
     fireEvent.click(githubBtn);
 
-    expect(window.location.href).toContain('/api/auth/github');
+    expect(locationMock.href).toContain('/api/auth/github');
 
-    window.location = originalLocation;
+    Object.defineProperty(window, 'location', {
+      writable: true,
+      value: originalLocation,
+    });
   });
 });
