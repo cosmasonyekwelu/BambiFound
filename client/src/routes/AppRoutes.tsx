@@ -6,6 +6,8 @@ import { RegisterPage } from '../pages/auth/RegisterPage';
 import { ForgotPasswordPage } from '../pages/auth/ForgotPasswordPage';
 import { SetNewPasswordPage } from '../pages/auth/SetNewPasswordPage';
 import { VerifyEmailPage } from '../pages/auth/VerifyEmailPage';
+import { OnboardingPage } from '../pages/OnboardingPage';
+import { DashboardPage } from '../pages/DashboardPage';
 
 export const AppRoutes: React.FC = () => {
   return (
@@ -16,6 +18,8 @@ export const AppRoutes: React.FC = () => {
       <Route path="/auth/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/auth/set-new-password" element={<SetNewPasswordPage />} />
       <Route path="/auth/verify-email" element={<VerifyEmailPage />} />
+      <Route path="/onboarding" element={<OnboardingPage />} />
+      <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

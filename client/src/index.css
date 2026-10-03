@@ -1,18 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
 @layer base {
-  :root {
-    --background: #FBF9F5;
-    --foreground: #1C201D;
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
   
   body {
-    @apply bg-background text-foreground font-plus-jakarta antialiased;
+    background-color: #f7faf5;
+    color: #191d1a;
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  main > :first-child {
+    margin-top: 0 !important;
   }
   
-  /* Remove old shadcn defaults if any, since we're using static colors from tailwind.config.js */
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* Material Symbols configuration */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar hiding */
+::-webkit-scrollbar {
+  display: none;
 }
