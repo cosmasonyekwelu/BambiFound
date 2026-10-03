@@ -9,22 +9,23 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-full text-label-md font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]",
   {
     variants: {
       variant: {
-        default: "bg-primary text-canvas hover:bg-primary-container hover:-translate-y-px shadow-sm",
+        default: "bg-primary-container text-on-primary hover:bg-primary shadow-sm",
         secondary:
-          "bg-surface text-ink-primary border border-hairline hover:bg-surface-cream hover:border-hairline-variant shadow-sm",
-        accent: "bg-tertiary-accent text-white hover:opacity-90 shadow-sm",
-        ghost: "hover:bg-sage-tint hover:text-ink-primary text-ink-secondary",
-        link: "text-ink-primary underline-offset-4 hover:underline",
+          "bg-surface-container-lowest text-on-surface border border-outline-variant/60 hover:bg-surface-container-low shadow-sm",
+        accent: "bg-tertiary-accent text-on-primary hover:opacity-95 shadow-sm",
+        ghost: "hover:bg-surface-container-low text-on-surface-variant hover:text-on-surface",
+        outline: "border border-outline-variant text-on-surface hover:bg-surface-container-low",
+        link: "text-secondary underline decoration-secondary/40 underline-offset-4 hover:text-primary",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 px-3 text-xs",
-        lg: "h-11 px-8",
-        icon: "h-10 w-10",
+        default: "h-11 px-5 py-2.5",
+        sm: "h-8 px-3.5 text-label-sm",
+        lg: "h-12 px-7 text-headline-sm",
+        icon: "h-10 w-10 p-0",
       },
     },
     defaultVariants: {

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Navbar } from '../../components/Navbar';
 import { Footer } from '../../components/Footer';
-import { Button } from '../../components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../components/ui/card';
 
 export const VerifyEmailPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -17,10 +15,9 @@ export const VerifyEmailPage: React.FC = () => {
         return;
       }
       try {
-        // API Call goes here
         await new Promise((resolve) => setTimeout(resolve, 1500));
         setStatus('success');
-      } catch (error) {
+      } catch {
         setStatus('error');
       }
     };
@@ -29,50 +26,88 @@ export const VerifyEmailPage: React.FC = () => {
   }, [token]);
 
   return (
-    <div className="min-h-screen bg-background flex flex-col justify-between">
+    <div className="min-h-screen bg-surface flex flex-col justify-between font-body-md text-on-surface antialiased">
       <Navbar />
 
-      <main className="flex-grow pt-32 pb-16 flex items-center justify-center px-6">
-        <Card className="w-full max-w-md shadow-level-1 text-center">
-          <CardHeader className="pb-2">
-            <div className="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-4 bg-sage-tint text-primary">
-              {status === 'loading' && (
-                <svg className="w-6 h-6 animate-spin" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-              )}
-              {status === 'success' && (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-              )}
-              {status === 'error' && (
-                <svg className="w-6 h-6 text-[#ba1a1a]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-              )}
-            </div>
-            <CardTitle className="font-newsreader text-[28px] font-medium text-primary">
-              {status === 'loading' && 'Verifying your email'}
-              {status === 'success' && 'Email verified'}
-              {status === 'error' && 'Verification failed'}
-            </CardTitle>
-            <CardDescription className="text-ink-secondary text-sm mt-2">
-              {status === 'loading' && 'Please wait while we verify your email address.'}
-              {status === 'success' && 'Your email has been successfully verified. You can now access all features.'}
-              {status === 'error' && 'The verification link is invalid or has expired.'}
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="pt-6">
+      <main className="flex-1 w-full pt-24 pb-16 flex items-center justify-center px-margin relative overflow-hidden">
+        <div className="absolute -top-32 -left-20 w-96 h-96 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
+        <div className="absolute -bottom-24 -right-16 w-80 h-80 rounded-full bg-secondary-fixed/30 blur-3xl pointer-events-none"></div>
+
+        <div className="relative w-full max-w-[460px] mx-auto flex flex-col items-center">
+          <div className="w-full bg-surface-container-lowest rounded-xl p-space-lg sm:p-space-xl shadow-[0_12px_28px_-6px_rgba(20,40,29,0.06),0_2px_6px_rgba(20,40,29,0.02)] border border-outline-variant/40 text-center">
+
+            {status === 'loading' && (
+              <div className="space-y-space-md py-space-md">
+                <div className="w-12 h-12 rounded-full bg-surface-container-low text-primary mx-auto flex items-center justify-center">
+                  <span className="material-symbols-outlined text-[24px] animate-spin">progress_activity</span>
+                </div>
+                <div>
+                  <h1 className="font-headline-lg text-headline-lg text-on-surface tracking-tight">Verifying email</h1>
+                  <p className="font-body-md text-body-md text-on-surface-variant mt-1">
+                    Please wait while we confirm your email verification link...
+                  </p>
+                </div>
+              </div>
+            )}
+
             {status === 'success' && (
-              <Button className="w-full" size="lg" asChild>
-                <Link to="/dashboard">Go to Dashboard</Link>
-              </Button>
+              <div className="space-y-space-md py-space-md">
+                <div className="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container mx-auto flex items-center justify-center">
+                  <span className="material-symbols-outlined text-[28px]">task_alt</span>
+                </div>
+                <div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sage-tint text-primary-container font-label-sm text-label-sm mb-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    Account Activated
+                  </div>
+                  <h1 className="font-headline-lg text-headline-lg text-on-surface tracking-tight">Email Verified!</h1>
+                  <p className="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
+                    Your BambiFound account is now verified. You are ready to complete your founder onboarding and start matching with builders.
+                  </p>
+                </div>
+                <div className="pt-space-sm space-y-space-sm">
+                  <Link
+                    to="/onboarding"
+                    className="w-full py-3 bg-primary-container text-on-primary hover:bg-primary font-headline-sm text-headline-sm font-semibold rounded-lg shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-space-sm active:scale-[0.98]"
+                  >
+                    <span>Proceed to Founder Onboarding</span>
+                    <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                  </Link>
+                  <Link
+                    to="/dashboard"
+                    className="w-full py-2.5 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg flex items-center justify-center transition-colors"
+                  >
+                    Go directly to Dashboard
+                  </Link>
+                </div>
+              </div>
             )}
+
             {status === 'error' && (
-              <Button className="w-full" size="lg" asChild>
-                <Link to="/auth/login">Return to Log In</Link>
-              </Button>
+              <div className="space-y-space-md py-space-md">
+                <div className="w-12 h-12 rounded-full bg-error-container text-on-error-container mx-auto flex items-center justify-center">
+                  <span className="material-symbols-outlined text-[28px]">link_off</span>
+                </div>
+                <div>
+                  <h1 className="font-headline-lg text-headline-lg text-on-surface tracking-tight">Verification Failed</h1>
+                  <p className="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
+                    This email verification link is invalid or has expired. Please request a new link or log in to resend.
+                  </p>
+                </div>
+                <div className="pt-space-sm space-y-space-sm">
+                  <Link
+                    to="/auth/login"
+                    className="w-full py-3 bg-primary-container text-on-primary hover:bg-primary font-headline-sm text-headline-sm font-semibold rounded-lg shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-space-sm active:scale-[0.98]"
+                  >
+                    <span>Return to Log In</span>
+                    <span className="material-symbols-outlined text-[18px]">west</span>
+                  </Link>
+                </div>
+              </div>
             )}
-          </CardContent>
-        </Card>
+
+          </div>
+        </div>
       </main>
 
       <Footer />
