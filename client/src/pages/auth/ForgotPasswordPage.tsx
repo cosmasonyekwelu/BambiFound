@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Navbar } from '../../components/Navbar';
 import { Footer } from '../../components/Footer';
+import { api } from '../../lib/api';
 
 const forgotPasswordSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -14,6 +15,7 @@ type ForgotPasswordFormData = z.infer<typeof forgotPasswordSchema>;
 
 export const ForgotPasswordPage: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const {
     register,
@@ -23,9 +25,16 @@ export const ForgotPasswordPage: React.FC = () => {
     resolver: zodResolver(forgotPasswordSchema),
   });
 
-  const onSubmit = async (_data: ForgotPasswordFormData) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSubmitted(true);
+  const onSubmit = async (data: ForgotPasswordFormData) => {
+    try {
+      setErrorMessage(null);
+      await api.post('/auth/forgot-password', { email: data.email });
+      setIsSubmitted(true);
+    } catch (err: any) {
+      setErrorMessage(
+        err.response?.data?.message || 'Failed to dispatch reset instructions. Please try again.',
+      );
+    }
   };
 
   return (
@@ -48,6 +57,13 @@ export const ForgotPasswordPage: React.FC = () => {
               </p>
             </div>
 
+            {errorMessage && (
+              <div className="p-3 mb-4 rounded-lg bg-red-900/20 text-red-200 border border-red-800/40 font-body-sm text-xs flex items-center gap-2">
+                <span className="material-symbols-outlined text-[18px]">error</span>
+                <span>{errorMessage}</span>
+              </div>
+            )}
+
             {isSubmitted ? (
               <div className="text-center space-y-space-md py-space-md">
                 <div className="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container mx-auto flex items-center justify-center">
@@ -56,7 +72,7 @@ export const ForgotPasswordPage: React.FC = () => {
                 <div>
                   <h3 className="font-headline-sm text-headline-sm text-primary">Check your email</h3>
                   <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
-                    We sent password reset instructions to your email inbox.
+                    If an account exists for that email, password reset instructions have been sent.
                   </p>
                 </div>
                 <Link

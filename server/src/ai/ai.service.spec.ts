@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AiService } from './ai.service.js';
 import { ConfigService } from '@nestjs/config';
+import { PrismaService } from '../prisma/prisma.service.js';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 describe('AiService', () => {
@@ -10,6 +11,13 @@ describe('AiService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         AiService,
+        {
+          provide: PrismaService,
+          useValue: {
+            user: { findUnique: vi.fn(), findMany: vi.fn() },
+            match: { upsert: vi.fn() },
+          },
+        },
         {
           provide: ConfigService,
           useValue: {

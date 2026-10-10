@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -14,17 +14,149 @@ model User {
   fullName            String?
   emailVerified       Boolean   @default(false)
   hashedRefreshToken  String?
+  resetToken          String?
+  resetTokenExpiresAt DateTime?
+
   onboardingCompleted Boolean   @default(false)
   onboardingSkipped   Boolean   @default(false)
   onboardingStep      Int       @default(1)
-  onboardingData      String    @default("{}")
+  onboardingData      Json      @default("{}")
+
   membershipTier      String    @default("FREE")
   membershipExpiresAt DateTime?
+
+  profile             Profile?
   payments            Payment[]
+  intents             Intent[]
+  ventures            Venture[]
+
+  sentConnections     Connection[] @relation("SentConnections")
+  receivedConnections Connection[] @relation("ReceivedConnections")
+
+  sentMessages        Message[]    @relation("SentMessages")
+  receivedMessages    Message[]    @relation("ReceivedMessages")
+
+  sourceMatches       Match[]      @relation("SourceMatches")
+  targetMatches       Match[]      @relation("TargetMatches")
+
   createdAt           DateTime  @default(now())
   updatedAt           DateTime  @updatedAt
 
   @@map("users")
+}
+
+model Profile {
+  id              String   @id @default(uuid())
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  headline        String?
+  bio             String?
+  location        String?
+  avatarUrl       String?
+  role            String?
+  bandwidth       String?
+  category        String?
+  skills          String[] @default([])
+  interests       String[] @default([])
+  experience      String?
+  githubUrl       String?
+  linkedinUrl     String?
+  twitterUrl      String?
+  websiteUrl      String?
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("profiles")
+}
+
+model Intent {
+  id                   String   @id @default(uuid())
+  userId               String
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  intentType           String
+  naturalLanguageDesc  String?
+  structuredAttributes Json?    @default("{}")
+
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@map("intents")
+}
+
+model Venture {
+  id          String   @id @default(uuid())
+  ownerId     String
+  owner       User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  name        String
+  tagline     String?
+  description String?
+  stage       String?
+  industry    String?
+  lookingFor  String[] @default([])
+  website     String?
+  status      String   @default("ACTIVE")
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("ventures")
+}
+
+model Connection {
+  id          String   @id @default(uuid())
+  requesterId String
+  requester   User     @relation("SentConnections", fields: [requesterId], references: [id], onDelete: Cascade)
+
+  recipientId String
+  recipient   User     @relation("ReceivedConnections", fields: [recipientId], references: [id], onDelete: Cascade)
+
+  status      String   @default("PENDING") // PENDING, ACCEPTED, REJECTED, WITHDRAWN
+  note        String?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([requesterId, recipientId])
+  @@map("connections")
+}
+
+model Message {
+  id         String    @id @default(uuid())
+  senderId   String
+  sender     User      @relation("SentMessages", fields: [senderId], references: [id], onDelete: Cascade)
+
+  receiverId String
+  receiver   User      @relation("ReceivedMessages", fields: [receiverId], references: [id], onDelete: Cascade)
+
+  content    String
+  readAt     DateTime?
+
+  createdAt  DateTime  @default(now())
+
+  @@map("messages")
+}
+
+model Match {
+  id           String   @id @default(uuid())
+  sourceUserId String
+  sourceUser   User     @relation("SourceMatches", fields: [sourceUserId], references: [id], onDelete: Cascade)
+
+  targetUserId String
+  targetUser   User     @relation("TargetMatches", fields: [targetUserId], references: [id], onDelete: Cascade)
+
+  score        Int
+  reasoning    String?
+  status       String   @default("ACTIVE")
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([sourceUserId, targetUserId])
+  @@map("matches")
 }
 
 model Payment {

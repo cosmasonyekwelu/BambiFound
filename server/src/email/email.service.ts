@@ -98,6 +98,23 @@ export class EmailService {
     return this.sendTransactionalEmail(toEmail, subject, htmlContent);
   }
 
+  async sendPasswordResetEmail(toEmail: string, resetToken: string) {
+    const frontendUrl = this.configService.get<string>('FRONTEND_URL') || 'http://localhost:3000';
+    const resetUrl = `${frontendUrl}/auth/reset-password?token=${resetToken}`;
+    const subject = 'Reset Your BambiFound Password';
+    const htmlContent = `
+      <div style="font-family: sans-serif; color: #1E3A2B;">
+        <h2>Password Reset Request</h2>
+        <p>We received a request to reset your BambiFound password. Click the link below to set a new password:</p>
+        <p><a href="${resetUrl}" style="background: #1E3A2B; color: #ffffff; padding: 10px 18px; text-decoration: none; border-radius: 8px; display: inline-block;">Reset Password</a></p>
+        <p>Or copy and paste this URL into your browser:</p>
+        <p><code>${resetUrl}</code></p>
+        <p>This link expires in 1 hour. If you did not request a password reset, please ignore this email.</p>
+      </div>
+    `;
+    return this.sendTransactionalEmail(toEmail, subject, htmlContent);
+  }
+
   async sendPaymentReceipt(toEmail: string, planTier: string, reference: string) {
     const subject = `BambiFound Subscription Confirmed - ${planTier}`;
     const htmlContent = `

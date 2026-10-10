@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Navbar } from '../../components/Navbar';
 import { Footer } from '../../components/Footer';
+import { api } from '../../lib/api';
 
 const setNewPasswordSchema = z.object({
   password: z.string().min(8, 'Password must be at least 8 characters'),
-  confirmPassword: z.string()
+  confirmPassword: z.string(),
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Passwords don't match",
   path: ["confirmPassword"],
@@ -18,6 +19,9 @@ type SetNewPasswordFormData = z.infer<typeof setNewPasswordSchema>;
 
 export const SetNewPasswordPage: React.FC = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const token = searchParams.get('token') || '';
+
   const [apiError, setApiError] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -29,13 +33,25 @@ export const SetNewPasswordPage: React.FC = () => {
     resolver: zodResolver(setNewPasswordSchema),
   });
 
-  const onSubmit = async (_data: SetNewPasswordFormData) => {
+  const onSubmit = async (data: SetNewPasswordFormData) => {
+    if (!token) {
+      setApiError('Invalid or missing password reset token. Please request a new reset email.');
+      return;
+    }
+
     try {
       setApiError(null);
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      navigate('/auth/login', { state: { message: 'Password reset successful. Please log in.' } });
-    } catch (_err: any) {
-      setApiError('Failed to reset password. The link might be expired.');
+      await api.post('/auth/reset-password', {
+        token,
+        password: data.password,
+      });
+      navigate('/auth/login', {
+        state: { message: 'Password reset successful. Please log in with your new password.' },
+      });
+    } catch (err: any) {
+      setApiError(
+        err.response?.data?.message || 'Failed to reset password. The reset link may be expired or invalid.',
+      );
     }
   };
 
@@ -60,9 +76,18 @@ export const SetNewPasswordPage: React.FC = () => {
             </div>
 
             {apiError && (
-              <div className="p-space-sm mb-space-md rounded-lg bg-error-container text-on-error-container font-body-sm text-body-sm flex items-center gap-2">
+              <div className="p-3 mb-4 rounded-lg bg-red-900/20 text-red-200 border border-red-800/40 font-body-sm text-xs flex items-center gap-2">
                 <span className="material-symbols-outlined text-[18px]">error</span>
                 <span>{apiError}</span>
+              </div>
+            )}
+
+            {!token && (
+              <div className="p-3 mb-4 rounded-lg bg-amber-900/20 text-amber-200 border border-amber-800/40 font-body-sm text-xs flex flex-col gap-2">
+                <span>Missing reset token in URL parameters.</span>
+                <Link to="/auth/forgot-password" className="underline text-amber-300 font-bold">
+                  Request a new password reset email →
+                </Link>
               </div>
             )}
 
@@ -115,7 +140,7 @@ export const SetNewPasswordPage: React.FC = () => {
               <div className="pt-space-sm">
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !token}
                   className="w-full h-12 bg-primary-container text-on-primary hover:bg-primary font-headline-sm text-headline-sm font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-150 flex items-center justify-center gap-space-sm active:scale-[0.98] disabled:opacity-50"
                 >
                   <span>{isSubmitting ? 'Updating Password...' : 'Reset Password'}</span>

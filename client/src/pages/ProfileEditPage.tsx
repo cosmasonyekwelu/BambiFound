@@ -1,31 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { api } from '../lib/api';
 
 export const ProfileEditPage: React.FC = () => {
   const { user, updateUser } = useAuth();
   const navigate = useNavigate();
 
-  const [fullName, setFullName] = useState<string>(user?.fullName || 'Alex Morgan');
-  const [roleTitle, setRoleTitle] = useState<string>('Founding Systems & Full-Stack Engineer');
-  const [location, setLocation] = useState<string>('San Francisco, CA (Hybrid)');
+  const [fullName, setFullName] = useState<string>(user?.fullName || '');
+  const [headline, setHeadline] = useState<string>('');
+  const [location, setLocation] = useState<string>('');
   const [bandwidth, setBandwidth] = useState<string>('Full-time Co-founder (40+ hrs/wk)');
-  const [intent, setIntent] = useState<string>('Building a venture or project');
-  const [manifesto, setManifesto] = useState<string>(
-    'Building high-velocity developer tools with high system throughput. Seeking a product-minded commercial co-founder with domain expertise.'
-  );
+  const [category, setCategory] = useState<string>('Founding Builder');
+  const [bio, setBio] = useState<string>('');
+  const [skills, setSkills] = useState<string[]>([]);
+  const [githubUrl, setGithubUrl] = useState<string>('');
+  const [linkedinUrl, setLinkedinUrl] = useState<string>('');
+  const [twitterUrl, setTwitterUrl] = useState<string>('');
+  const [websiteUrl, setWebsiteUrl] = useState<string>('');
 
-  const [skills, setSkills] = useState<string[]>([
-    'TypeScript',
-    'PostgreSQL',
-    'Distributed Systems',
-    'Next.js',
-    'NestJS',
-    'AI Vector Engines',
-  ]);
   const [newSkillInput, setNewSkillInput] = useState<string>('');
-
+  const [isSaving, setIsSaving] = useState<boolean>(false);
   const [savedToast, setSavedToast] = useState<boolean>(false);
+
+  useEffect(() => {
+    const loadProfile = async () => {
+      try {
+        const res = await api.get('/profiles/me');
+        const p = res.data;
+        if (p.user?.fullName) setFullName(p.user.fullName);
+        if (p.headline) setHeadline(p.headline);
+        if (p.location) setLocation(p.location);
+        if (p.bandwidth) setBandwidth(p.bandwidth);
+        if (p.category) setCategory(p.category);
+        if (p.bio) setBio(p.bio);
+        if (p.skills && Array.isArray(p.skills)) setSkills(p.skills);
+        if (p.githubUrl) setGithubUrl(p.githubUrl);
+        if (p.linkedinUrl) setLinkedinUrl(p.linkedinUrl);
+        if (p.twitterUrl) setTwitterUrl(p.twitterUrl);
+        if (p.websiteUrl) setWebsiteUrl(p.websiteUrl);
+      } catch {
+        // use default state
+      }
+    };
+    loadProfile();
+  }, []);
 
   const handleAddSkill = (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,11 +58,30 @@ export const ProfileEditPage: React.FC = () => {
     setSkills(skills.filter((s) => s !== skillToRemove));
   };
 
-  const handleSaveProfile = (e: React.FormEvent) => {
+  const handleSaveProfile = async (e: React.FormEvent) => {
     e.preventDefault();
-    updateUser({ fullName });
-    setSavedToast(true);
-    setTimeout(() => setSavedToast(false), 3000);
+    setIsSaving(true);
+    try {
+      await api.patch('/profiles/me', {
+        headline,
+        location,
+        bandwidth,
+        category,
+        bio,
+        skills,
+        githubUrl,
+        linkedinUrl,
+        twitterUrl,
+        websiteUrl,
+      });
+      updateUser({ fullName });
+      setSavedToast(true);
+      setTimeout(() => setSavedToast(false), 3000);
+    } catch {
+      // ignore
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   return (
@@ -103,7 +141,7 @@ export const ProfileEditPage: React.FC = () => {
 
         {savedToast && (
           <div className="mb-6 p-4 bg-[#1b3326] border border-[#2d523e] rounded-xl text-xs text-[#82dbac] flex items-center justify-between">
-            <span>Profile changes saved successfully!</span>
+            <span>Profile changes saved successfully in PostgreSQL!</span>
             <button onClick={() => setSavedToast(false)} className="text-[#a1aca4]">✕</button>
           </div>
         )}
@@ -128,11 +166,12 @@ export const ProfileEditPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-[#c1c8c2] mb-1">Primary Title / Focus</label>
+                <label className="block text-xs font-medium text-[#c1c8c2] mb-1">Professional Headline / Role</label>
                 <input
                   type="text"
-                  value={roleTitle}
-                  onChange={(e) => setRoleTitle(e.target.value)}
+                  value={headline}
+                  placeholder="e.g. AI Systems Architect & Ex-Scale AI Lead"
+                  onChange={(e) => setHeadline(e.target.value)}
                   className="w-full bg-[#0c1511] border border-[#23352b] rounded-xl p-3 text-xs text-[#e1e3df] focus:outline-none focus:border-[#82dbac]"
                   required
                 />
@@ -143,6 +182,7 @@ export const ProfileEditPage: React.FC = () => {
                 <input
                   type="text"
                   value={location}
+                  placeholder="e.g. San Francisco, CA (Remote)"
                   onChange={(e) => setLocation(e.target.value)}
                   className="w-full bg-[#0c1511] border border-[#23352b] rounded-xl p-3 text-xs text-[#e1e3df] focus:outline-none focus:border-[#82dbac]"
                 />
@@ -163,31 +203,33 @@ export const ProfileEditPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Section 2: Intent & Manifesto */}
+          {/* Section 2: Category & Bio */}
           <div className="bg-[#121c17] border border-[#23352b] rounded-2xl p-6 space-y-4">
             <h2 className="text-lg font-newsreader font-semibold text-[#f0f2ee] mb-2">
-              Intent & Builder Philosophy
+              Focus Category & Narrative
             </h2>
 
             <div>
-              <label className="block text-xs font-medium text-[#c1c8c2] mb-1">Primary Ecosystem Intent</label>
+              <label className="block text-xs font-medium text-[#c1c8c2] mb-1">Primary Category</label>
               <select
-                value={intent}
-                onChange={(e) => setIntent(e.target.value)}
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
                 className="w-full bg-[#0c1511] border border-[#23352b] rounded-xl p-3 text-xs text-[#e1e3df] focus:outline-none focus:border-[#82dbac]"
               >
-                <option value="Building a venture or project">I’m building a venture or project</option>
-                <option value="Looking for a co-founder">I’m looking for a technical or commercial co-founder</option>
-                <option value="Looking for a startup to join">I’m looking for an early-stage venture to join</option>
+                <option value="AI Architect">AI Architect</option>
+                <option value="Founding Engineer">Founding Engineer</option>
+                <option value="Product Lead">Product Lead</option>
+                <option value="Founding Operator">Founding Operator</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#c1c8c2] mb-1">Builder Narrative / Manifesto</label>
+              <label className="block text-xs font-medium text-[#c1c8c2] mb-1">Builder Narrative / Bio</label>
               <textarea
                 rows={4}
-                value={manifesto}
-                onChange={(e) => setManifesto(e.target.value)}
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                placeholder="Share your background, what you're building, and the exact co-founder alignment you seek..."
                 className="w-full bg-[#0c1511] border border-[#23352b] rounded-xl p-3 text-xs text-[#e1e3df] focus:outline-none focus:border-[#82dbac]"
               />
             </div>
@@ -196,7 +238,7 @@ export const ProfileEditPage: React.FC = () => {
           {/* Section 3: Skills Graph */}
           <div className="bg-[#121c17] border border-[#23352b] rounded-2xl p-6 space-y-4">
             <h2 className="text-lg font-newsreader font-semibold text-[#f0f2ee] mb-2">
-              Strengths & Skills Graph
+              Strengths & Capabilities Graph
             </h2>
 
             <div className="flex flex-wrap gap-2 mb-4">
@@ -217,7 +259,7 @@ export const ProfileEditPage: React.FC = () => {
             <div className="flex gap-2">
               <input
                 type="text"
-                placeholder="Add a new skill or tech stack tag..."
+                placeholder="Add a new capability tag..."
                 value={newSkillInput}
                 onChange={(e) => setNewSkillInput(e.target.value)}
                 className="flex-1 bg-[#0c1511] border border-[#23352b] rounded-xl p-3 text-xs text-[#e1e3df] focus:outline-none focus:border-[#82dbac]"
@@ -232,6 +274,59 @@ export const ProfileEditPage: React.FC = () => {
             </div>
           </div>
 
+          {/* Section 4: Social / External Links */}
+          <div className="bg-[#121c17] border border-[#23352b] rounded-2xl p-6 space-y-4">
+            <h2 className="text-lg font-newsreader font-semibold text-[#f0f2ee] mb-2">
+              External Profiles
+            </h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-medium text-[#c1c8c2] mb-1">GitHub URL</label>
+                <input
+                  type="url"
+                  value={githubUrl}
+                  placeholder="https://github.com/yourhandle"
+                  onChange={(e) => setGithubUrl(e.target.value)}
+                  className="w-full bg-[#0c1511] border border-[#23352b] rounded-xl p-3 text-xs text-[#e1e3df] focus:outline-none focus:border-[#82dbac]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-[#c1c8c2] mb-1">LinkedIn URL</label>
+                <input
+                  type="url"
+                  value={linkedinUrl}
+                  placeholder="https://linkedin.com/in/yourhandle"
+                  onChange={(e) => setLinkedinUrl(e.target.value)}
+                  className="w-full bg-[#0c1511] border border-[#23352b] rounded-xl p-3 text-xs text-[#e1e3df] focus:outline-none focus:border-[#82dbac]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-[#c1c8c2] mb-1">Twitter / X URL</label>
+                <input
+                  type="url"
+                  value={twitterUrl}
+                  placeholder="https://x.com/yourhandle"
+                  onChange={(e) => setTwitterUrl(e.target.value)}
+                  className="w-full bg-[#0c1511] border border-[#23352b] rounded-xl p-3 text-xs text-[#e1e3df] focus:outline-none focus:border-[#82dbac]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-[#c1c8c2] mb-1">Personal Website URL</label>
+                <input
+                  type="url"
+                  value={websiteUrl}
+                  placeholder="https://yourwebsite.com"
+                  onChange={(e) => setWebsiteUrl(e.target.value)}
+                  className="w-full bg-[#0c1511] border border-[#23352b] rounded-xl p-3 text-xs text-[#e1e3df] focus:outline-none focus:border-[#82dbac]"
+                />
+              </div>
+            </div>
+          </div>
+
           {/* Action Buttons */}
           <div className="flex items-center justify-end gap-4 pt-4">
             <button
@@ -243,9 +338,10 @@ export const ProfileEditPage: React.FC = () => {
             </button>
             <button
               type="submit"
-              className="px-6 py-3 rounded-xl bg-[#82dbac] text-[#0c1511] text-xs font-bold hover:bg-[#97f0c1] transition-all"
+              disabled={isSaving}
+              className="px-6 py-3 rounded-xl bg-[#82dbac] text-[#0c1511] text-xs font-bold hover:bg-[#97f0c1] transition-all disabled:opacity-50"
             >
-              Save Profile Changes
+              {isSaving ? 'Saving...' : 'Save Profile Changes'}
             </button>
           </div>
         </form>

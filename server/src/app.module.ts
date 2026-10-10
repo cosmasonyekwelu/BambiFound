@@ -9,6 +9,10 @@ import { PaymentsModule } from './payments/payments.module.js';
 import { CloudinaryModule } from './cloudinary/cloudinary.module.js';
 import { EmailModule } from './email/email.module.js';
 import { AiModule } from './ai/ai.module.js';
+import { ProfilesModule } from './profiles/profiles.module.js';
+import { ConnectionsModule } from './connections/connections.module.js';
+import { MessagesModule } from './messages/messages.module.js';
+import { VenturesModule } from './ventures/ventures.module.js';
 
 @Module({
   imports: [
@@ -22,6 +26,10 @@ import { AiModule } from './ai/ai.module.js';
     CloudinaryModule,
     EmailModule,
     AiModule,
+    ProfilesModule,
+    ConnectionsModule,
+    MessagesModule,
+    VenturesModule,
   ],
 })
 export class AppModule {}

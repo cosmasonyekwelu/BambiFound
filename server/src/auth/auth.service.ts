@@ -1,8 +1,10 @@
-import { Injectable, ConflictException, UnauthorizedException } from '@nestjs/common';
+import { Injectable, ConflictException, UnauthorizedException, BadRequestException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import * as argon2 from 'argon2';
+import * as crypto from 'crypto';
 import { UsersService } from '../users/users.service.js';
+import { EmailService } from '../email/email.service.js';
 import { RegisterDto } from './dto/register.dto.js';
 import { LoginDto } from './dto/login.dto.js';
 import { User } from '@prisma/client';
@@ -33,6 +35,7 @@ export interface AuthResponse {
 export class AuthService {
   constructor(
     private readonly usersService: UsersService,
+    private readonly emailService: EmailService,
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
   ) {}
@@ -90,6 +93,9 @@ export class AuthService {
       fullName: registerDto.fullName,
     });
 
+    // Send welcome email asynchronously
+    this.emailService.sendWelcomeEmail(user.email, user.fullName || undefined).catch(() => {});
+
     const tokens = await this.generateTokens(user.id, user.email);
     await this.updateRefreshTokenHash(user.id, tokens.refreshToken);
 
@@ -116,6 +122,33 @@ export class AuthService {
     return {
       user: this.sanitizeUser(user),
       ...tokens,
+    };
+  }
+
+  async forgotPassword(email: string): Promise<{ message: string }> {
+    const user = await this.usersService.findByEmail(email);
+    if (user) {
+      const resetToken = crypto.randomBytes(32).toString('hex');
+      const expiresAt = new Date(Date.now() + 3600 * 1000); // 1 hour validity
+      await this.usersService.setResetToken(user.id, resetToken, expiresAt);
+      await this.emailService.sendPasswordResetEmail(user.email, resetToken);
+    }
+    return {
+      message: 'If an account exists with this email address, password reset instructions have been sent.',
+    };
+  }
+
+  async resetPassword(token: string, newPassword: string): Promise<{ message: string }> {
+    const user = await this.usersService.findByResetToken(token);
+    if (!user) {
+      throw new BadRequestException('Invalid or expired password reset token');
+    }
+
+    const passwordHash = await argon2.hash(newPassword, { type: argon2.argon2id });
+    await this.usersService.updatePassword(user.id, passwordHash);
+
+    return {
+      message: 'Password has been reset successfully. Please log in with your new password.',
     };
   }
 

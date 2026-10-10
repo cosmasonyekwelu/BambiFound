@@ -4,11 +4,13 @@ import { ConfigService } from '@nestjs/config';
 import { ConflictException, UnauthorizedException } from '@nestjs/common';
 import { AuthService } from './auth.service.js';
 import { UsersService } from '../users/users.service.js';
+import { EmailService } from '../email/email.service.js';
 import * as argon2 from 'argon2';
 
 describe('AuthService', () => {
   let service: AuthService;
   let usersService: Partial<UsersService>;
+  let emailService: Partial<EmailService>;
   let jwtService: Partial<JwtService>;
 
   const mockUser = {
@@ -18,6 +20,14 @@ describe('AuthService', () => {
     fullName: 'Test User',
     emailVerified: false,
     hashedRefreshToken: null,
+    onboardingCompleted: false,
+    onboardingSkipped: false,
+    onboardingStep: 1,
+    onboardingData: {},
+    membershipTier: 'FREE',
+    membershipExpiresAt: null,
+    resetToken: null,
+    resetTokenExpiresAt: null,
     createdAt: new Date(),
     updatedAt: new Date(),
   };
@@ -32,6 +42,11 @@ describe('AuthService', () => {
       updateHashedRefreshToken: vi.fn(),
     };
 
+    emailService = {
+      sendWelcomeEmail: vi.fn().mockResolvedValue({ status: 'mock_sent' }),
+      sendPasswordResetEmail: vi.fn().mockResolvedValue({ status: 'mock_sent' }),
+    };
+
     jwtService = {
       signAsync: vi.fn().mockResolvedValue('mock-token'),
       verifyAsync: vi.fn(),
@@ -41,6 +56,7 @@ describe('AuthService', () => {
       providers: [
         AuthService,
         { provide: UsersService, useValue: usersService },
+        { provide: EmailService, useValue: emailService },
         { provide: JwtService, useValue: jwtService },
         {
           provide: ConfigService,

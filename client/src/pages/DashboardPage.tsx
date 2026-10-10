@@ -1,65 +1,66 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { api } from '../lib/api';
 
 export const DashboardPage: React.FC = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+
+  const [matches, setMatches] = useState<any[]>([]);
+  const [ventures, setVentures] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   const [introModalOpen, setIntroModalOpen] = useState<boolean>(false);
-  const [selectedBuilder, setSelectedBuilder] = useState<string>('');
-  const [introMessage, setIntroMessage] = useState<string>('');
+  const [selectedBuilder, setSelectedBuilder] = useState<any>(null);
+  const [introNote, setIntroNote] = useState<string>('');
   const [introSentToast, setIntroSentToast] = useState<boolean>(false);
 
-  const handleOpenIntro = (builderName: string) => {
-    setSelectedBuilder(builderName);
-    setIntroMessage(`Hi ${builderName.split(' ')[0]}, I saw our match score on BambiFound and would love to connect on building together!`);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const [matchRes, ventureRes] = await Promise.all([
+          api.get('/ai/discover').catch(() => ({ data: [] })),
+          api.get('/ventures').catch(() => ({ data: [] })),
+        ]);
+        setMatches(matchRes.data || []);
+        setVentures(ventureRes.data || []);
+      } catch {
+        // ignore
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleOpenIntro = (builder: any) => {
+    setSelectedBuilder(builder);
+    setIntroNote(`Hi ${builder.name.split(' ')[0]}, I saw our match score on BambiFound and would love to connect on building together!`);
     setIntroModalOpen(true);
   };
 
-  const handleSendIntro = (e: React.FormEvent) => {
+  const handleSendIntro = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIntroModalOpen(false);
-    setIntroSentToast(true);
-    setTimeout(() => setIntroSentToast(false), 4000);
+    if (!selectedBuilder) return;
+    try {
+      await api.post('/connections', {
+        recipientId: selectedBuilder.id,
+        note: introNote,
+      });
+      setIntroModalOpen(false);
+      setIntroSentToast(true);
+      setTimeout(() => setIntroSentToast(false), 4000);
+    } catch {
+      setIntroModalOpen(false);
+    }
   };
 
   const handleLogout = async () => {
     await logout();
     navigate('/');
   };
-
-  const matches = [
-    {
-      id: 'elena-vance',
-      name: 'Elena Vance',
-      role: 'AI Systems Architect & Ex-Scale AI Lead',
-      score: 96,
-      avatar: 'EV',
-      tags: ['LLM Orchestration', 'PyTorch', 'Distributed Systems', 'Founding Tech'],
-      reasoning: 'Strong alignment in AI infrastructure, complementary operational skills, mutual interest in early-stage spin-outs.',
-      location: 'San Francisco, CA (Remote)',
-    },
-    {
-      id: 'marcus-thorne',
-      name: 'Marcus Thorne',
-      role: 'Full-Stack Product Engineer',
-      score: 92,
-      avatar: 'MT',
-      tags: ['TypeScript', 'Next.js', 'PostgreSQL', 'Rust'],
-      reasoning: 'Proven track record scaling B2B SaaS from 0 to 1, seeking equity-first co-founder role.',
-      location: 'New York, NY',
-    },
-    {
-      id: 'dr-priya-desai',
-      name: 'Dr. Priya Desai',
-      role: 'Bio-AI Research Lead & Stanford PhD',
-      score: 89,
-      avatar: 'PD',
-      tags: ['Computational Biology', 'Python', 'Grant Funding', 'Drug Discovery'],
-      reasoning: 'Looking for technical co-founder with strong software architecture experience to commercialize IP.',
-      location: 'Boston, MA',
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-[#0c1511] text-[#e1e3df] font-sans flex flex-col">
@@ -162,7 +163,7 @@ export const DashboardPage: React.FC = () => {
           <div className="mb-6 p-4 bg-[#1b3326] border border-[#2d523e] rounded-xl text-xs text-[#82dbac] flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-sm">check_circle</span>
-              <span>Intro request successfully sent to <strong>{selectedBuilder}</strong>!</span>
+              <span>Intro request successfully sent to <strong>{selectedBuilder?.name}</strong>!</span>
             </div>
             <button onClick={() => setIntroSentToast(false)} className="text-[#a1aca4] hover:text-[#e1e3df]">✕</button>
           </div>
@@ -181,91 +182,97 @@ export const DashboardPage: React.FC = () => {
               </Link>
             </div>
 
-            <div className="space-y-4">
-              {matches.map((m) => (
-                <div
-                  key={m.id}
-                  className="bg-[#121c17] border border-[#23352b] hover:border-[#2e4539] rounded-2xl p-6 transition-all"
-                >
-                  <div className="flex items-start justify-between gap-4 mb-4">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-[#1e3025] border border-[#2e4338] flex items-center justify-center font-bold text-[#82dbac] text-sm">
-                        {m.avatar}
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <Link to={`/profile/${m.id}`} className="text-base font-semibold text-[#f0f2ee] hover:text-[#82dbac] transition-colors">
-                            {m.name}
-                          </Link>
-                          <span className="text-[10px] font-bold text-[#82dbac] bg-[#1a2d23] px-2 py-0.5 rounded-full border border-[#284234]">
-                            {m.score}% MATCH
-                          </span>
+            {isLoading ? (
+              <div className="text-center py-12 text-[#a1aca4]">Loading matches...</div>
+            ) : matches.length === 0 ? (
+              <div className="bg-[#121c17] border border-[#23352b] rounded-2xl p-8 text-center text-[#a1aca4]">
+                No other builders registered yet. Invite builders to join BambiFound!
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {matches.slice(0, 3).map((m) => (
+                  <div
+                    key={m.id}
+                    className="bg-[#121c17] border border-[#23352b] hover:border-[#2e4539] rounded-2xl p-6 transition-all"
+                  >
+                    <div className="flex items-start justify-between gap-4 mb-4">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-[#1e3025] border border-[#2e4338] flex items-center justify-center font-bold text-[#82dbac] text-sm">
+                          {m.avatar}
                         </div>
-                        <p className="text-xs text-[#a1aca4] mt-0.5">{m.role}</p>
-                        <p className="text-[11px] text-[#718076]">{m.location}</p>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <Link to={`/profile/${m.id}`} className="text-base font-semibold text-[#f0f2ee] hover:text-[#82dbac] transition-colors">
+                              {m.name}
+                            </Link>
+                            <span className="text-[10px] font-bold text-[#82dbac] bg-[#1a2d23] px-2 py-0.5 rounded-full border border-[#284234]">
+                              {m.score}% MATCH
+                            </span>
+                          </div>
+                          <p className="text-xs text-[#a1aca4] mt-0.5">{m.role}</p>
+                          <p className="text-[11px] text-[#718076]">{m.location}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Link
+                          to={`/profile/${m.id}`}
+                          className="px-3 py-1.5 rounded-lg bg-[#18241e] border border-[#27382d] text-xs font-medium text-[#c1c8c2] hover:text-[#e1e3df] transition-colors"
+                        >
+                          View Profile
+                        </Link>
+                        <button
+                          onClick={() => handleOpenIntro(m)}
+                          className="px-3 py-1.5 rounded-lg bg-[#82dbac] text-[#0c1511] text-xs font-bold hover:bg-[#97f0c1] transition-all"
+                        >
+                          Request Intro
+                        </button>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Link
-                        to={`/profile/${m.id}`}
-                        className="px-3 py-1.5 rounded-lg bg-[#18241e] border border-[#27382d] text-xs font-medium text-[#c1c8c2] hover:text-[#e1e3df] transition-colors"
-                      >
-                        View Profile
-                      </Link>
-                      <button
-                        onClick={() => handleOpenIntro(m.name)}
-                        className="px-3 py-1.5 rounded-lg bg-[#82dbac] text-[#0c1511] text-xs font-bold hover:bg-[#97f0c1] transition-all"
-                      >
-                        Request Intro
-                      </button>
+
+                    <p className="text-xs text-[#c1c8c2] bg-[#16221c] p-3 rounded-xl border border-[#203026] mb-4">
+                      <strong className="text-[#82dbac]">AI Vector Insight:</strong> {m.reasoning}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {m.tags && m.tags.map((tag: string, idx: number) => (
+                        <span key={idx} className="text-[11px] bg-[#18251e] text-[#a1aca4] px-2.5 py-1 rounded-lg border border-[#24352b]">
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
-
-                  <p className="text-xs text-[#c1c8c2] bg-[#16221c] p-3 rounded-xl border border-[#203026] mb-4">
-                    <strong className="text-[#82dbac]">AI Vector Insight:</strong> {m.reasoning}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {m.tags.map((tag, idx) => (
-                      <span key={idx} className="text-[11px] bg-[#18251e] text-[#a1aca4] px-2.5 py-1 rounded-lg border border-[#24352b]">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
 
-          {/* Right Column: Widgets & Signal Stream */}
+          {/* Right Column: Active Ventures & Signal Stream */}
           <div className="space-y-6">
             {/* Active Ventures Widget */}
             <div className="bg-[#121c17] border border-[#23352b] rounded-2xl p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-base font-newsreader font-semibold text-[#f0f2ee]">
-                  Your Ventures
+                  Ecosystem Ventures
                 </h3>
                 <Link to="/ventures" className="text-xs font-semibold text-[#82dbac] hover:underline">
-                  Manage
+                  View All
                 </Link>
               </div>
 
               <div className="space-y-3">
-                <div className="p-3.5 bg-[#16231c] border border-[#24372b] rounded-xl">
-                  <div className="flex items-center justify-between mb-1">
-                    <h4 className="text-xs font-semibold text-[#f0f2ee]">KiteFlow Systems</h4>
-                    <span className="text-[10px] text-[#82dbac] bg-[#1c2e25] px-2 py-0.5 rounded-full">Active</span>
-                  </div>
-                  <p className="text-[11px] text-[#a1aca4]">High-throughput event stream orchestration for AI workflows.</p>
-                </div>
-
-                <div className="p-3.5 bg-[#16231c] border border-[#24372b] rounded-xl">
-                  <div className="flex items-center justify-between mb-1">
-                    <h4 className="text-xs font-semibold text-[#f0f2ee]">Horizon Carbon</h4>
-                    <span className="text-[10px] text-[#a1aca4] bg-[#1a251f] px-2 py-0.5 rounded-full">Spin-out</span>
-                  </div>
-                  <p className="text-[11px] text-[#a1aca4]">Automated carbon offset intelligence for enterprise supply chains.</p>
-                </div>
+                {ventures.length === 0 ? (
+                  <p className="text-xs text-[#a1aca4]">No active venture listings yet.</p>
+                ) : (
+                  ventures.slice(0, 3).map((v) => (
+                    <div key={v.id} className="p-3.5 bg-[#16231c] border border-[#24372b] rounded-xl">
+                      <div className="flex items-center justify-between mb-1">
+                        <h4 className="text-xs font-semibold text-[#f0f2ee]">{v.name}</h4>
+                        <span className="text-[10px] text-[#82dbac] bg-[#1c2e25] px-2 py-0.5 rounded-full">{v.stage || 'Active'}</span>
+                      </div>
+                      <p className="text-[11px] text-[#a1aca4] line-clamp-2">{v.tagline || v.description}</p>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
 
@@ -279,9 +286,9 @@ export const DashboardPage: React.FC = () => {
                   <div className="w-2 h-2 rounded-full bg-[#82dbac] mt-1.5"></div>
                   <div>
                     <p className="text-xs text-[#e1e3df]">
-                      <strong>Elena Vance</strong> viewed your venture listing <em>KiteFlow Systems</em>.
+                      PostgreSQL data models synced with Neon.
                     </p>
-                    <span className="text-[10px] text-[#718076]">2 hours ago</span>
+                    <span className="text-[10px] text-[#718076]">Just now</span>
                   </div>
                 </div>
 
@@ -289,19 +296,9 @@ export const DashboardPage: React.FC = () => {
                   <div className="w-2 h-2 rounded-full bg-[#82dbac] mt-1.5"></div>
                   <div>
                     <p className="text-xs text-[#e1e3df]">
-                      New vector match: <strong>Marcus Thorne</strong> (+92% alignment).
+                      AI Synergy engine initialized with Brevo email notifications.
                     </p>
-                    <span className="text-[10px] text-[#718076]">5 hours ago</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 rounded-full bg-[#718076] mt-1.5"></div>
-                  <div>
-                    <p className="text-xs text-[#a1aca4]">
-                      System recommendation: Update your primary leverage focus for +5% match precision.
-                    </p>
-                    <span className="text-[10px] text-[#718076]">Yesterday</span>
+                    <span className="text-[10px] text-[#718076]">Active</span>
                   </div>
                 </div>
               </div>
@@ -311,11 +308,11 @@ export const DashboardPage: React.FC = () => {
       </main>
 
       {/* Intro Request Modal */}
-      {introModalOpen && (
+      {introModalOpen && selectedBuilder && (
         <div className="fixed inset-0 z-50 bg-[#0c1511]/80 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-[#15221c] border border-[#2a3d33] rounded-2xl p-6 max-w-md w-full shadow-2xl">
             <h3 className="text-xl font-newsreader font-semibold text-[#f0f2ee] mb-1">
-              Request Intro to {selectedBuilder}
+              Request Intro to {selectedBuilder.name}
             </h3>
             <p className="text-xs text-[#a1aca4] mb-4">
               Send a direct intro message powered by BambiFound match alignment.
@@ -328,8 +325,8 @@ export const DashboardPage: React.FC = () => {
                 </label>
                 <textarea
                   rows={4}
-                  value={introMessage}
-                  onChange={(e) => setIntroMessage(e.target.value)}
+                  value={introNote}
+                  onChange={(e) => setIntroNote(e.target.value)}
                   className="w-full bg-[#101914] border border-[#25392e] rounded-xl p-3 text-xs text-[#e1e3df] focus:outline-none focus:border-[#82dbac]"
                   required
                 />
