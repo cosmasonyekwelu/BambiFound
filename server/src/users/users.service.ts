@@ -49,12 +49,28 @@ export class UsersService {
       throw new Error('User not found');
     }
 
-    let mergedData = existing.onboardingData;
+    let currentObj: Record<string, any> = {};
+    if (existing.onboardingData) {
+      try {
+        currentObj = typeof existing.onboardingData === 'string'
+          ? JSON.parse(existing.onboardingData)
+          : (existing.onboardingData as Record<string, any>);
+      } catch (e) {
+        currentObj = {};
+      }
+    }
+
+    let mergedData = currentObj;
     if (data.onboardingData) {
-      const currentObj = typeof existing.onboardingData === 'object' && existing.onboardingData !== null
-        ? (existing.onboardingData as Record<string, any>)
-        : {};
-      mergedData = { ...currentObj, ...data.onboardingData };
+      let incomingObj: Record<string, any> = {};
+      try {
+        incomingObj = typeof data.onboardingData === 'string'
+          ? JSON.parse(data.onboardingData)
+          : data.onboardingData;
+      } catch (e) {
+        incomingObj = {};
+      }
+      mergedData = { ...currentObj, ...incomingObj };
     }
 
     return this.prisma.user.update({
@@ -63,7 +79,7 @@ export class UsersService {
         ...(data.onboardingStep !== undefined && { onboardingStep: data.onboardingStep }),
         ...(data.onboardingCompleted !== undefined && { onboardingCompleted: data.onboardingCompleted }),
         ...(data.onboardingSkipped !== undefined && { onboardingSkipped: data.onboardingSkipped }),
-        onboardingData: mergedData ?? {},
+        onboardingData: JSON.stringify(mergedData ?? {}),
       },
     });
   }
