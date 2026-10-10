@@ -6,11 +6,19 @@ export class OnboardingService {
   constructor(private readonly usersService: UsersService) {}
 
   private formatResponse(user: any) {
+    let parsedData = user.onboardingData;
+    if (typeof user.onboardingData === 'string') {
+      try {
+        parsedData = JSON.parse(user.onboardingData);
+      } catch (e) {
+        parsedData = {};
+      }
+    }
     return {
       onboardingCompleted: user.onboardingCompleted,
       onboardingSkipped: user.onboardingSkipped,
       onboardingStep: user.onboardingStep,
-      onboardingData: user.onboardingData,
+      onboardingData: parsedData,
     };
   }
 

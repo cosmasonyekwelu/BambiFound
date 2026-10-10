@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -17,7 +17,7 @@ model User {
   onboardingCompleted Boolean   @default(false)
   onboardingSkipped   Boolean   @default(false)
   onboardingStep      Int       @default(1)
-  onboardingData      Json      @default("{}")
+  onboardingData      String    @default("{}")
   membershipTier      String    @default("FREE")
   membershipExpiresAt DateTime?
   payments            Payment[]
