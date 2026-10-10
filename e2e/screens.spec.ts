@@ -24,6 +24,7 @@ test.describe('BambiFound New Stitch Screens Navigation & Functionality', () => 
     await expect(page).toHaveURL(/\/dashboard/);
 
     await expect(page.locator('h1')).toContainText(`Welcome, ${user.fullName}!`);
+    await page.waitForSelector('text=Elena Vance', { timeout: 10000 });
     await expect(page.getByRole('link', { name: 'Elena Vance' }).first()).toBeVisible();
     await expect(page.getByRole('link', { name: 'Marcus Thorne' }).first()).toBeVisible();
   });
@@ -61,7 +62,7 @@ test.describe('BambiFound New Stitch Screens Navigation & Functionality', () => 
     await page.click('button:has-text("Skip to Dashboard")');
 
     await page.goto('/ventures');
-    await expect(page.locator('h1')).toContainText('Your Venture Listings');
+    await expect(page.locator('h1')).toContainText('Venture Listings');
 
     // Open new venture modal
     await page.click('button:has-text("Spin Out or List Venture")');
@@ -70,7 +71,7 @@ test.describe('BambiFound New Stitch Screens Navigation & Functionality', () => 
     await page.click('button:has-text("Publish Venture Listing")');
 
     // Verify venture appears
-    await expect(page.getByRole('heading', { name: 'Apex Compute AI' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Apex Compute AI' }).first()).toBeVisible();
   });
 
   test('Intros & Messages interface sends message', async ({ page }) => {
@@ -87,7 +88,7 @@ test.describe('BambiFound New Stitch Screens Navigation & Functionality', () => 
 
     await page.goto('/messages');
     await expect(page.locator('h1')).toContainText('Intros & Dialogue');
-    await expect(page.getByRole('heading', { name: 'Elena Vance' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Elena Vance' }).first()).toBeVisible();
 
     // Send a message in chat
     await page.fill('input[placeholder^="Message"]', 'Hello from E2E test!');
@@ -134,6 +135,6 @@ test.describe('BambiFound New Stitch Screens Navigation & Functionality', () => 
     await page.fill('input[value="' + user.fullName + '"]', user.fullName + ' Updated');
     await page.click('button:has-text("Save Profile Changes")');
 
-    await expect(page.getByText('Profile changes saved successfully!')).toBeVisible();
+    await expect(page.getByText('Profile changes saved successfully')).toBeVisible();
   });
 });

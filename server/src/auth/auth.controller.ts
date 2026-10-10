@@ -65,6 +65,32 @@ export class AuthController {
     };
   }
 
+  @Post('forgot-password')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Request password reset instructions via email' })
+  @ApiResponse({ status: 200, description: 'Reset instructions dispatched if email exists' })
+  async forgotPassword(@Body('email') email: string) {
+    if (!email) {
+      throw new UnauthorizedException('Email address is required');
+    }
+    return this.authService.forgotPassword(email);
+  }
+
+  @Post('reset-password')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Reset password using valid reset token' })
+  @ApiResponse({ status: 200, description: 'Password reset successful' })
+  @ApiResponse({ status: 400, description: 'Invalid or expired token' })
+  async resetPassword(
+    @Body('token') token: string,
+    @Body('password') password: string,
+  ) {
+    if (!token || !password) {
+      throw new UnauthorizedException('Token and new password are required');
+    }
+    return this.authService.resetPassword(token, password);
+  }
+
   @Post('refresh')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Refresh access token using HttpOnly cookie' })

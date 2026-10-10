@@ -1,34 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { api } from '../lib/api';
 
 export const VenturesPage: React.FC = () => {
   const { user } = useAuth();
+  const [ventures, setVentures] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
-
-  const [ventures, setVentures] = useState([
-    {
-      id: 'kiteflow',
-      name: 'KiteFlow Systems',
-      stage: 'Early Prototype / Pre-Seed',
-      tagline: 'High-throughput event stream orchestration for AI agent workflows.',
-      description: 'Distributed event bus engine built in Rust & TypeScript. Looking for a commercial co-founder to lead customer discovery.',
-      status: 'Active',
-      rolesNeeded: ['Product Lead', 'GTM Advisor'],
-      created: '2 weeks ago',
-    },
-    {
-      id: 'horizon-carbon',
-      name: 'Horizon Carbon',
-      stage: 'Spin-out Ideation',
-      tagline: 'Automated carbon offset intelligence for enterprise supply chains.',
-      description: 'AI model evaluating supply chain emissions data with cryptographic verification audit trails.',
-      status: 'Spin-out',
-      rolesNeeded: ['Technical Lead', 'Climate Domain Expert'],
-      created: '1 month ago',
-    },
-  ]);
 
   const [newVenture, setNewVenture] = useState({
     name: '',
@@ -38,32 +19,53 @@ export const VenturesPage: React.FC = () => {
     rolesNeeded: 'Founding Engineer, Co-founder',
   });
 
-  const handleCreateVenture = (e: React.FormEvent) => {
+  const fetchVentures = async () => {
+    try {
+      setIsLoading(true);
+      const res = await api.get('/ventures');
+      setVentures(res.data || []);
+    } catch {
+      // Handle error
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchVentures();
+  }, []);
+
+  const handleCreateVenture = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newVenture.name.trim()) return;
 
-    const created = {
-      id: newVenture.name.toLowerCase().replace(/\s+/g, '-'),
-      name: newVenture.name,
-      stage: newVenture.stage,
-      tagline: newVenture.tagline || 'Next-generation AI venture.',
-      description: newVenture.description || 'Early stage venture listed on BambiFound.',
-      status: 'Active',
-      rolesNeeded: newVenture.rolesNeeded.split(',').map((r) => r.trim()),
-      created: 'Just now',
-    };
+    try {
+      setIsSubmitting(true);
+      const rolesArray = newVenture.rolesNeeded.split(',').map((r) => r.trim()).filter(Boolean);
+      await api.post('/ventures', {
+        name: newVenture.name.trim(),
+        tagline: newVenture.tagline.trim(),
+        description: newVenture.description.trim(),
+        stage: newVenture.stage,
+        lookingFor: rolesArray,
+      });
 
-    setVentures([created, ...ventures]);
-    setModalOpen(false);
-    setNewVenture({
-      name: '',
-      stage: 'Ideation / Prototype',
-      tagline: '',
-      description: '',
-      rolesNeeded: 'Founding Engineer, Co-founder',
-    });
-    setToastMessage(`Venture "${created.name}" successfully listed!`);
-    setTimeout(() => setToastMessage(null), 4000);
+      setModalOpen(false);
+      setNewVenture({
+        name: '',
+        stage: 'Ideation / Prototype',
+        tagline: '',
+        description: '',
+        rolesNeeded: 'Founding Engineer, Co-founder',
+      });
+      setToastMessage(`Venture "${newVenture.name}" successfully published to PostgreSQL!`);
+      fetchVentures();
+      setTimeout(() => setToastMessage(null), 4000);
+    } catch {
+      // ignore
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -107,7 +109,7 @@ export const VenturesPage: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
           <div>
             <h1 className="text-3xl font-newsreader font-semibold text-[#f0f2ee] mb-1">
-              Your Venture Listings
+              Venture Listings & Spin-Outs
             </h1>
             <p className="text-sm text-[#a1aca4]">
               List your active projects or spin-out ventures to attract high-conviction co-founders and fractional talent.
@@ -130,50 +132,58 @@ export const VenturesPage: React.FC = () => {
         )}
 
         {/* Ventures Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {ventures.map((v) => (
-            <div
-              key={v.id}
-              className="bg-[#121c17] border border-[#23352b] hover:border-[#2e4539] rounded-2xl p-6 flex flex-col justify-between transition-all"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-semibold text-[#82dbac] bg-[#1a2d23] px-2.5 py-1 rounded-full border border-[#284234]">
-                    {v.stage}
-                  </span>
-                  <span className="text-[11px] text-[#718076]">Listed {v.created}</span>
-                </div>
+        {isLoading ? (
+          <div className="text-center py-12 text-xs text-[#a1aca4]">Loading ventures from database...</div>
+        ) : ventures.length === 0 ? (
+          <div className="bg-[#121c17] border border-[#23352b] rounded-2xl p-12 text-center text-[#a1aca4]">
+            No venture listings yet. Click "+ Spin Out or List Venture" above to list your project!
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            {ventures.map((v) => (
+              <div
+                key={v.id}
+                className="bg-[#121c17] border border-[#23352b] hover:border-[#2e4539] rounded-2xl p-6 flex flex-col justify-between transition-all"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-semibold text-[#82dbac] bg-[#1a2d23] px-2.5 py-1 rounded-full border border-[#284234]">
+                      {v.stage || 'Active Venture'}
+                    </span>
+                    <span className="text-[11px] text-[#718076]">{v.owner?.fullName || 'Founder'}</span>
+                  </div>
 
-                <h3 className="text-xl font-newsreader font-semibold text-[#f0f2ee] mb-1">
-                  {v.name}
-                </h3>
-                <p className="text-xs font-medium text-[#a1aca4] mb-3">{v.tagline}</p>
-                <p className="text-xs text-[#c1c8c2] leading-relaxed mb-4">{v.description}</p>
+                  <h3 className="text-xl font-newsreader font-semibold text-[#f0f2ee] mb-1">
+                    {v.name}
+                  </h3>
+                  <p className="text-xs font-medium text-[#a1aca4] mb-3">{v.tagline}</p>
+                  <p className="text-xs text-[#c1c8c2] leading-relaxed mb-4">{v.description}</p>
 
-                <div className="mb-4">
-                  <span className="text-[10px] text-[#718076] uppercase tracking-wider block mb-1">Seeking Roles</span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {v.rolesNeeded.map((r, idx) => (
-                      <span key={idx} className="text-[10px] bg-[#18251e] text-[#82dbac] px-2.5 py-0.5 rounded-lg border border-[#24352b]">
-                        {r}
-                      </span>
-                    ))}
+                  <div className="mb-4">
+                    <span className="text-[10px] text-[#718076] uppercase tracking-wider block mb-1">Seeking Roles</span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {v.lookingFor && v.lookingFor.map((r: string, idx: number) => (
+                        <span key={idx} className="text-[10px] bg-[#18251e] text-[#82dbac] px-2.5 py-0.5 rounded-lg border border-[#24352b]">
+                          {r}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="pt-4 border-t border-[#1d2c23] flex items-center justify-between">
-                <span className="text-[11px] text-[#82dbac]">Matching Active</span>
-                <Link
-                  to="/discover"
-                  className="text-xs font-semibold text-[#c1c8c2] hover:text-[#82dbac]"
-                >
-                  Find Candidates →
-                </Link>
+                <div className="pt-4 border-t border-[#1d2c23] flex items-center justify-between">
+                  <span className="text-[11px] text-[#82dbac]">Matching Active</span>
+                  <Link
+                    to="/discover"
+                    className="text-xs font-semibold text-[#c1c8c2] hover:text-[#82dbac]"
+                  >
+                    Find Candidates →
+                  </Link>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </main>
 
       {/* New Venture Modal */}
@@ -243,9 +253,10 @@ export const VenturesPage: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-[#82dbac] text-[#0c1511] text-xs font-bold hover:bg-[#97f0c1]"
+                  disabled={isSubmitting}
+                  className="px-5 py-2 rounded-xl bg-[#82dbac] text-[#0c1511] text-xs font-bold hover:bg-[#97f0c1] disabled:opacity-50"
                 >
-                  Publish Venture Listing
+                  {isSubmitting ? 'Publishing...' : 'Publish Venture Listing'}
                 </button>
               </div>
             </form>
