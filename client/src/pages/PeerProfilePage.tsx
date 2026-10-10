@@ -92,6 +92,11 @@ export const PeerProfilePage: React.FC = () => {
 
       {/* Main Profile Area */}
       <main className="flex-1 max-w-[1280px] mx-auto w-full px-6 py-8">
+        {isLoading && (
+          <div className="mb-6 p-4 bg-[#15231c] border border-[#293e32] rounded-xl text-xs text-[#a1aca4]">
+            Loading profile...
+          </div>
+        )}
         {introToast && (
           <div className="mb-6 p-4 bg-[#1b3326] border border-[#2d523e] rounded-xl text-xs text-[#82dbac] flex items-center justify-between">
             <span>Intro request sent to <strong>{name}</strong>! Check Intros & Messages for updates.</span>

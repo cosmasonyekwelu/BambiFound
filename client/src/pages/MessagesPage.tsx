@@ -123,7 +123,11 @@ export const MessagesPage: React.FC = () => {
             </div>
 
             <div className="flex-1 overflow-y-auto divide-y divide-[#1b2b21]">
-              {conversations.length === 0 ? (
+              {isLoading ? (
+                <div className="p-6 text-xs text-[#a1aca4] text-center">
+                  Loading conversations...
+                </div>
+              ) : conversations.length === 0 ? (
                 <div className="p-6 text-xs text-[#a1aca4] text-center">
                   No connected conversations yet. Request intros on the Discover page to start chatting!
                 </div>
