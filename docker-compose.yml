@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   postgres:
     image: pgvector/pgvector:pg16
@@ -32,6 +30,26 @@ services:
       MP_SMTP_AUTH_ACCEPT_ANY: 1
     volumes:
       - mailpit_data:/data
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: bambifound-server
+    restart: always
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: 4000
+      NODE_ENV: production
+      DATABASE_URL: "postgresql://bambi_user:bambi_pass@postgres:5432/bambifound_db?sslmode=disable"
+      DIRECT_URL: "postgresql://bambi_user:bambi_pass@postgres:5432/bambifound_db?sslmode=disable"
+      JWT_SECRET: "bambifound_docker_jwt_secret_key_2025"
+      JWT_REFRESH_SECRET: "bambifound_docker_jwt_refresh_secret_key_2025"
+      FRONTEND_URL: "http://localhost:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
 
 volumes:
   postgres_data:

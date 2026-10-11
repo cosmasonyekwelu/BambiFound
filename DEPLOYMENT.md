@@ -58,8 +58,9 @@ Below are the environment variables used by the backend application (`server/.en
 
 ---
 
-## C. Local Development Commands
+## C. Local Development & Docker Commands
 
+### 1. Direct Node.js Local Commands
 All server commands must be run inside the `server/` directory:
 
 ```bash
@@ -87,6 +88,33 @@ npm test
 
 # 8. Check health check & database status endpoint
 curl http://localhost:4000/api/health
+```
+
+### 2. Docker & Containerized Hosting Commands
+
+The NestJS backend server is packaged using a multi-stage `Dockerfile` (`server/Dockerfile`).
+
+```bash
+# Build the Docker image for the NestJS server
+docker build -t bambifound-server ./server
+
+# Run the backend container manually
+docker run -d -p 4000:4000 --name bambifound-server \
+  -e DATABASE_URL="postgresql://user:pass@host:5432/dbname?sslmode=require" \
+  -e DIRECT_URL="postgresql://user:pass@host:5432/dbname?sslmode=require" \
+  -e JWT_SECRET="your_jwt_secret" \
+  -e JWT_REFRESH_SECRET="your_jwt_refresh_secret" \
+  -e FRONTEND_URL="http://localhost:3000" \
+  bambifound-server
+
+# Spin up complete stack (PostgreSQL + Mailpit + NestJS Server) with Docker Compose
+docker compose up --build -d
+
+# View server container logs
+docker compose logs -f server
+
+# Stop running Docker Compose services
+docker compose down
 ```
 
 ---
