@@ -27,7 +27,7 @@ BambiFound uses a decoupled full-stack architecture:
 *   **Frontend (SPA):** React + Vite
     *   **Deployed on:** Netlify
 *   **Backend (REST API):** NestJS
-    *   **Deployed on:** Render / Railway
+    *   **Deployed on:** Render / Railway / Docker Container (e.g., AWS ECS, GCP Cloud Run, DigitalOcean App Platform, Fly.io)
 *   **Database:** Neon PostgreSQL
     *   **Vector Search:** pgvector (configured within Neon)
 *   **Payments:** Paystack (Test mode enabled for verification without real charges)
@@ -139,7 +139,30 @@ To deploy the BambiFound SPA on Vercel or resolve intermittent 404 NOT_FOUND err
 
 ---
 
-## 6. End-to-End Automated Testing
+## 6. Docker Packaging & Containerized Hosting
+
+The NestJS server is packaged with a multi-stage `Dockerfile` (`server/Dockerfile`) for containerized deployment:
+
+```bash
+# Build production Docker image
+docker build -t bambifound-server ./server
+
+# Run container locally with environment configuration
+docker run -d -p 4000:4000 --name bambifound-server \
+  -e DATABASE_URL="postgresql://user:pass@host:5432/dbname?sslmode=require" \
+  -e DIRECT_URL="postgresql://user:pass@host:5432/dbname?sslmode=require" \
+  -e JWT_SECRET="your_jwt_secret" \
+  -e JWT_REFRESH_SECRET="your_jwt_refresh_secret" \
+  -e FRONTEND_URL="https://bambifound.netlify.app" \
+  bambifound-server
+
+# Orchestrate local environment using Docker Compose
+docker compose up --build -d
+```
+
+---
+
+## 7. End-to-End Automated Testing
 
 Run Playwright E2E tests before releasing code to production:
 ```bash

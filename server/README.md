@@ -44,6 +44,26 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Docker Containerization
+
+To package and run the server inside a Docker container:
+
+```bash
+# Build the Docker image from server directory
+docker build -t bambifound-server .
+
+# Run the container
+docker run -d -p 4000:4000 \
+  -e DATABASE_URL="postgresql://user:pass@host:5432/dbname?sslmode=require" \
+  -e DIRECT_URL="postgresql://user:pass@host:5432/dbname?sslmode=require" \
+  -e JWT_SECRET="your_jwt_secret" \
+  -e JWT_REFRESH_SECRET="your_jwt_refresh_secret" \
+  bambifound-server
+
+# Or run full stack from repository root via Docker Compose
+docker compose up --build -d
+```
+
 ## Run tests
 
 ```bash
