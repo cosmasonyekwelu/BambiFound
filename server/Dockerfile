@@ -44,5 +44,5 @@ COPY --from=builder /app/prisma ./prisma
 
 EXPOSE 4000
 
-# Apply pending Prisma database migrations and start production server
-CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main"]
+# Apply pending Prisma database migrations with fallback schema sync and start production server
+CMD ["sh", "-c", "(npx prisma migrate deploy || npx prisma db push --skip-generate) && node dist/main"]

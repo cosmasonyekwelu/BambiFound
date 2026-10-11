@@ -171,3 +171,27 @@ npx playwright test
 ```
 
 *Note on Integration Testing:* Automated integration tests utilize mocked/simulated external provider responses or sandbox mode logic when live API keys are not supplied in local test environments.
+
+---
+
+## 8. Database Migrations & Baselining Existing Schemas (Error P3005)
+
+When deploying the backend against an existing database instance that already contains schema tables but lacks Prisma's `_prisma_migrations` history table, `npx prisma migrate deploy` returns error `P3005` (`The database schema is not empty`).
+
+### Resolving Error P3005 in Existing Environments
+To baseline the database schema so Prisma migration history matches existing database tables:
+
+1. **Baseline Existing Migrations:**
+   Run the following commands against the database endpoint (using `DIRECT_URL`):
+   ```bash
+   npx prisma migrate resolve --applied 20261003090548_init
+   npx prisma migrate resolve --applied 20261003123050_add_onboarding_fields
+   npx prisma migrate resolve --applied 20261010065342_complete_schema
+   ```
+
+2. **Automated Docker Fallback:**
+   The production container startup command (`server/Dockerfile`) executes:
+   ```bash
+   (npx prisma migrate deploy || npx prisma db push --skip-generate) && node dist/main
+   ```
+   This ensures that if `prisma migrate deploy` fails due to unapplied schema states on non-empty databases, `prisma db push` safely synchronizes structure without crashing container deployment.
