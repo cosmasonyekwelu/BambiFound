@@ -145,6 +145,17 @@ docker compose down
   3. Ensure `?sslmode=require` query parameter is attached to the URL.
   4. Ensure `DIRECT_URL` is configured in `prisma/schema.prisma` for non-pooled migration operations.
 
+#### `P3005: The database schema is not empty`
+- **Cause:** `prisma migrate deploy` or `prisma migrate dev` was executed against an existing database that already contains tables/schemas but lacks Prisma's `_prisma_migrations` tracking table history.
+- **Fix / Baselining Existing Databases:**
+  1. To mark existing migrations as already applied without re-running SQL scripts against the live schema, baseline each existing migration:
+     ```bash
+     npx prisma migrate resolve --applied 20261003090548_init
+     npx prisma migrate resolve --applied 20261003123050_add_onboarding_fields
+     npx prisma migrate resolve --applied 20261010065342_complete_schema
+     ```
+  2. Alternatively, for automated container deployments, `npx prisma db push --skip-generate` can be used to synchronize schema definitions directly with non-empty existing databases.
+
 #### Special Character Encoding in Credentials
 - If your database password contains characters like `@`, `#`, `$`, or `/`, URL-encode them (e.g., `@` becomes `%40`, `#` becomes `%23`).
 
@@ -213,6 +224,7 @@ app.enableCors({
 |---|---|---|
 | `sh: 1: nest: not found` | `@nestjs/cli` was in `devDependencies` and omitted when Render ran production installation | Moved `@nestjs/cli` to `dependencies` in `server/package.json` |
 | `P1001` or connection timeout | Misconfigured connection string or missing SSL mode | Use Neon pooled URL for `DATABASE_URL` with `?sslmode=require` and direct URL for `DIRECT_URL` |
+| `P3005` Schema non-empty error | Existing database tables without Prisma `_prisma_migrations` history | Run `npx prisma migrate resolve --applied <migration_name>` or fallback to `npx prisma db push --skip-generate` |
 | CORS Origin blocked | Frontend domain missing in `FRONTEND_URL` | Update Render environment variable `FRONTEND_URL` to match client origin URL |
 | Port binding error | Server listening on `localhost` instead of `0.0.0.0` | Ensure `app.listen(port, '0.0.0.0')` is set in `server/src/main.ts` |
 
